@@ -1,0 +1,83 @@
+\chapter{Theoretical framework}
+
+
+\section{Frame of reference}
+The pre-processing step serves to improve the processing with other filters
+like “segmentation”, 
+
+best techniques for enhancement of X-ray image may not be best for enhancement
+for microscopic images. [6]
+
+The enhancement methods can broadly be divided into the following two
+categories: Spatial Domain Methods (SDM) and Frequency Domain Methods (FDM).
+Spatial domain methods which are operate directly on pixels. Frequency domain
+which operates on the Fourier transform of an image. [6]
+
+Many studies show that the histogram equalization is an effective method for
+improving the quality of medical images. [6, 8]. 
+
+\subsection{Bith depths}
+
+12-bit image (4096 levels of gray) displayed with 16 allocated bits appears
+dark. This happens because the maximal possible amplitude of 12-bit image for
+each pixel is 4095 and the maximal amplitude that can be displayed is 65535 (16
+allocated bits). Therefore, 4096 levels need to be linearly scaled to 65536
+levels to achieve good image displaying [8].
+
+
+\section{Conceptual framework}
+
+Digital image is a binary representation ...
+Pixel
+Histograms are frequency distributions, and histograms of images describe the frequency of the intensity values that occur in an image [9]. Image histogram offers a graphical representation of the tonal distribution of values in a digital image [10].
+Color model
+Grayscale
+Image processing
+Medical image processing
+DICOM
+***
+Different kind of medical images
+Las consideraciones técnicas (físicas) de cómo se obtienen los mamogramas están fuera del alcance de este trabajo. In screening mammography, as practiced in USA, (also in Mexico), two x-ray images of each breast, in the medio lateral oblique and craniocaudal views, are acquired. 
+MRI
+CT
+X-ray:
+Mammography is radiographic examination that is designed for detecting breast pathology, particularly breast cancer. [11]
+***
+Mammographic features characteristic of breast cancer are masses, particularly ones with irregular or “spiculated” margins; clusters of microcalcifications (tiny deposits of calcium); and architectural distortions of breast structures. 
+***
+Noise: 
+Nuclear images are generally the most noisy. Noise is also significant in MRI, CT, and ultrasound imaging. In comparison to these, radiography produces images with the least noise. 
+The noise can cover and reduce the visibility of certain features within the image. The loss of visibility is especially significant for low-contrast objects.
+***
+
+
+Noise in digital mammographies (Practical digital mammography by Beverly Hashimoto)
+De acuerdo a Hachimoto en las imágenes mamográficas tenemos cuatro tipos de ruido:
+*quantum
+*fixed electronic
+*señales secundarías
+*quanta secundario indirecto
+
+\subsection{Mamogramas}
+
+Un mamograma típicamente tiene de 12 a 16 bits de profundidad, con una
+resolución de 4000x5000 pixeles [13], [14].  
+
+2.3. Technological framework
+
+
+* Recordar escribir que en las primeras pruebas sólo se mejoró  la visualización del tejido graso y no del tejido mamario.
+
+
+* Recordar escribir sobre (general purpose computers)
+
+
+* Unsharp - masking to reduce noise.
+
+
+Libros que ayudarán con los conceptos teóricos:
+
+
+Formación física de las imágenes
+Algoritmos
+T
