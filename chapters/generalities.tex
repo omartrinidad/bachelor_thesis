@@ -10,10 +10,11 @@ mamografías, tarea a cargo de radiologos; hay un margen de error en la opinión
 de los radiologos.
 
 Es posible incrementar el éxito de los diagnósticos mejorando la apariencia
-(calidad) de la imagen, 
+(calidad) de la imagen, *introducir el preprocesamiento y escribir sobre los
+sistemas CAD-
 
-An important step in building such
-systems is the creation of databases of medical images. 
+-El estado del arte del preprocesamiento de mamografías está avanzado-, sin embargo,
+-es posible seguir contribuyendo a esta área del conocimiento-. 
 
 Dos bancos de datos similares al que se menciona en este trabajo son el Digital
 Database for Screening Mammograpy (DDSM) de la University of South Florida (USF) 
@@ -36,6 +37,9 @@ sistemas CAD.
 
 \section{Problema}
 \subsection{Planteamiento del problema}
+
+Se dispone de un banco de imágenes mamográficas sin procesar, el reto es mejorar
+su contraste, disminuir la cantidad de ruido.
 
 It was necessary to discover which filters are the best choice in order to
 obtain optimized images ready for afterward phases such as segmentation,
@@ -64,14 +68,10 @@ decir que hay un estado inicial y uno final
 la extensión del trabajo incluye --- filtros y tipos de filtros aplicados, imágenes listas para etapas posteriores. 
 hablar de base de datos más como un dataset que otra cosa --- estructura: imagen cruda, procesada y ficha
 
-
 a database of preprocessed mammograms, namely, mammograms without noise,
 reduction of artifacts and leveling of image quality.
 
 \subsubsection{Limitations}
-
-3. No se utilizarán clasificadores para evaluar el resultado, la evaluación será
-hecha principalmente por médicos, es decir, será una evaluación ------.
 
 \subsection{Research questions}
 
@@ -80,15 +80,13 @@ hecha principalmente por médicos, es decir, será una evaluación ------.
 \section{Objectives}
 \subsection{General objective}
 
-To create a data set with preprocessed mammograms with filters in the spatial
-or spectral transform domain.
+Crear un banco de datos de dominio público con mamografías preprocesadas.
 
 \subsection{Specific objectives}
 
-To create an electronic file for each image.
-To store the mammograms in a database oriented to storage and retrieval of images.
-To create an online database of domain public.
-To find what are the more suitable filters in the treatment of the image.
+Aplicar los algoritmos adecuados para preprocesar los mamogramas.
+Crear una ficha electrónica para cada caso.
+¿Crear un método?
 
 \section{Justification}
 
@@ -98,20 +96,4 @@ As mention before our project could be a first step in creating a CAD system.
 In the long term, the creation of this database would benefit the Mexican
 radiologists. It will improve the state of the art medical image processing in
 the country.
-
-\section{Methodology}
-
-We choosed a factorial design of experiments as a methodology.
-
-x experimental and processing parameters were chosen to be analysed in this
-research:
-
-1. Variable A: Operator in a filter X 
-2. Variable B: Operator in a filter X
-3. Variable C: Operator in a filter X
-Process of image preprocessing applied to our research:
-1. Image digitalisation        
-2. Image enhancing by filtering
-3. Evaluation with both histogramas and medical opinion.
-4. Presentation of the results
 
