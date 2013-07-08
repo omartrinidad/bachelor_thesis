@@ -4,14 +4,31 @@
 \newcommand*{\titleGP}{\begingroup 
 \centering % Center all text
 
-{\fontfamily{phv}\selectfont 
+{\fontfamily{phv}\selectfont
 
-    {\bfseries{\Large UNIVERSIDAD JUÁREZ AUTÓNOMA DE TABASCO}}\\
-    {\bfseries{\Large DIVISIÓN ACADÉMICA DE INFORMÁTICA Y SISTEMAS}}
+        % Logo UJAT
+        \begin{minipage}[t]{0.13\linewidth}
+        \begin{flushleft}
+            \includegraphics[width=1.5cm]{images/logo-ujat.eps}
+        \end{flushleft}
+        \end{minipage}
+        % Name of the University
+        \begin{minipage}[t]{0.72\linewidth}
+        \centering
+        {\fontfamily{phv}\selectfont
+        {\bfseries{\large UNIVERSIDAD JUÁREZ AUTÓNOMA DE TABASCO}}\\
+        {\bfseries{\normalsize DIVISIÓN ACADÉMICA DE INFORMÁTICA Y SISTEMAS}}}
+        \end{minipage}
+        % logo DAIS
+        \begin{minipage}[t]{0.13\linewidth}
+        \begin{flushright}
+            \includegraphics[width=2.5cm]{images/logo-dais.eps}
+        \end{flushright}
+        \end{minipage}
 
-    \rule{\textwidth}{2.3pt}\vspace*{-\baselineskip}\vspace{5pt} 
+    \rule{\textwidth}{2pt}\vspace*{-\baselineskip}\vspace{5pt} 
     \rule{\textwidth}{3pt}\vspace*{-\baselineskip}\vspace{5pt} 
-    \rule{\textwidth}{2.3pt}\\[\baselineskip] 
+    \rule{\textwidth}{2pt}\\[\baselineskip] 
     
     {\bfseries{\Large CREACIÓN DE UN BANCO DE DATOS DE MAMOGRAMAS
     PREPROCESADOS}}
@@ -34,7 +51,7 @@
     {\bfseries{\Large M. en C. Guillermo de los Santos Torres}}\\
     \vspace*{2\baselineskip} \vfill
 
-    Cunduacán, Tabasco(izquierda) ----> Fecha(derecha)
+    Cunduacán, Tabasco \hfill Agosto de 2013
 
 } % ending fontfamily configuration
 \endgroup}
