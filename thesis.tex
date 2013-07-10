@@ -3,26 +3,37 @@
 \usetikzlibrary{shapes, arrows, chains, positioning}
 \usepackage[noend]{algpseudocode}
 \usepackage{algorithm}
+\usepackage[spanish]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[obeyspaces]{url}
 \usepackage{graphicx,latexsym,amssymb,color}
 \usepackage{subfig}
 \usepackage{enumerate}
 \usepackage{listings}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{titletoc}
 
 % configure links
-\usepackage[]{hyperref}
-\hypersetup{
-    pdftex,
-    colorlinks   = false,
-    citecolor    = gray,
-    pdfborder    = {0 0 0} % this solution is temporal
-}
+%\usepackage{hyperref}
+%\hypersetup{
+%    pdftex,
+%    colorlinks   = false,
+%    citecolor    = gray,
+%    pdfborder    = {0 0 0} % this solution is temporal
+%}
 
-% changes in commmands
-%\renewcommand{\rmdefault}{phv} % Arial
-%\renewcommand{\sfdefault}{phv} % Arial
+% change the format of title chapters --> titlesec package
+\titleformat{\chapter}[hang]
+    {\selectfont\huge}
+    {\chaptertitlename\ \Roman{chapter}.}
+    {20pt} 
+    {\huge}
 
+% change the format of table of contents --> titletoc
+\titlecontents{chapter}
+
+% title page
 \input{front.tex}
 
 \begin{document}
