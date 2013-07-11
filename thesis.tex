@@ -27,11 +27,17 @@
 \titleformat{\chapter}[hang]
     {\selectfont\huge}
     {\chaptertitlename\ \Roman{chapter}.}
-    {20pt} 
-    {\huge}
+    {20pt}{\huge}
 
 % change the format of table of contents --> titletoc
+\renewcommand{\thechapter}{\Roman{chapter}}
 \titlecontents{chapter}
+    [0pt]
+    {\addvspace{1pt}} % space above the title
+    {\chaptertitlename\ {\thecontentslabel}. }
+    {}
+    {} % title ........... page X
+    [\addvspace{1pt}] % space below the title
 
 % title page
 \input{front.tex}
