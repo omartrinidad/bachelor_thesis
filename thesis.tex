@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper, oneside]{book}
+\documentclass[12pt, letter, oneside]{book}
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, chains, positioning}
 \usepackage[noend]{algpseudocode}
@@ -13,6 +13,9 @@
 \usepackage{times}
 \usepackage{titlesec}
 \usepackage{titletoc}
+\usepackage{setspace}
+    \onehalfspacing %space between lines
+
 
 % configure links
 %\usepackage{hyperref}
@@ -51,7 +54,12 @@
 
 \tableofcontents
 
+% space between paragraphs
+\setlength{\parskip}{\baselineskip}
+
 \input{chapters/generalities.tex}
 \input{chapters/conceptualframework.tex}
+\input{chapters/results.tex}
+\input{chapters/conclusions.tex}
 
 \end{document}
