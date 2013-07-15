@@ -17,14 +17,6 @@
     \onehalfspacing %space between lines
 
 
-% configure links
-%\usepackage{hyperref}
-%\hypersetup{
-%    pdftex,
-%    colorlinks   = false,
-%    citecolor    = gray,
-%    pdfborder    = {0 0 0} % this solution is temporal
-%}
 
 % change the format of title chapters --> titlesec package
 \titleformat{\chapter}[hang]
@@ -44,6 +36,15 @@
     {} % title ........... page X
     [\addvspace{1pt}] % space below the title
 
+% configure links
+\usepackage{hyperref}
+\hypersetup{
+    pdftex,
+    colorlinks   = true,
+    citecolor    = blue,
+    pdfborder    = {0 0 0} % this solution is temporal
+}
+
 % title page
 \input{front.tex}
 
@@ -52,14 +53,26 @@
 \pagestyle{empty} % Removes page numbers
 \titleGP
 
+\pagenumbering{roman}
+
+% dedicatoria y agradecimientos
+\input{chapters/thanks.tex}
+
 \tableofcontents
 
+% restart the count with arabic numbers
+\pagenumbering{arabic} \setcounter{page}{1}
 % space between paragraphs
 \setlength{\parskip}{\baselineskip}
 
+% content
 \input{chapters/generalities.tex}
 \input{chapters/conceptualframework.tex}
 \input{chapters/results.tex}
 \input{chapters/conclusions.tex}
+
+% bibliography
+\bibliographystyle{ieeetr}
+\bibliography{thesis}
 
 \end{document}
