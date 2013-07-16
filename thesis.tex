@@ -1,4 +1,4 @@
-\documentclass[12pt, letter, oneside]{book}
+\documentclass[12pt, letter, oneside]{report}
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, chains, positioning}
 \usepackage[noend]{algpseudocode}
@@ -16,13 +16,14 @@
 \usepackage{setspace}
     \onehalfspacing %space between lines
 
-
-
 % change the format of title chapters --> titlesec package
 \titleformat{\chapter}[hang]
     {\selectfont\huge}
     {\chaptertitlename\ \Roman{chapter}.}
     {20pt}{\huge}
+
+    % less space before chapter titles
+    \titlespacing*{\chapter}{0pt}{-50pt}{40pt}
 
 % change the format of table of contents --> titletoc
 \renewcommand{\thechapter}{\Roman{chapter}}
@@ -39,10 +40,9 @@
 % configure links
 \usepackage{hyperref}
 \hypersetup{
-    pdftex,
-    colorlinks   = true,
+    colorlinks,
     citecolor    = blue,
-    pdfborder    = {0 0 0} % this solution is temporal
+    pdfborder    = {0 0 0}, % this solution is temporal
 }
 
 % title page
@@ -50,18 +50,22 @@
 
 \begin{document}
 % front page
-\pagestyle{empty} % Removes page numbers
+\pagestyle{plain} 
 \titleGP
 
 \pagenumbering{roman}
+
+%empty page
+\newpage 
+\thispagestyle{empty}
+\mbox{}
 
 % dedicatoria y agradecimientos
 \input{chapters/thanks.tex}
 
 \tableofcontents
+\listoffigures
 
-% restart the count with arabic numbers
-\pagenumbering{arabic} \setcounter{page}{1}
 % space between paragraphs
 \setlength{\parskip}{\baselineskip}
 
@@ -71,8 +75,8 @@
 \input{chapters/results.tex}
 \input{chapters/conclusions.tex}
 
-% bibliography
-\bibliographystyle{ieeetr}
+% bibliography APA style
+\bibliographystyle{apalike} 
 \bibliography{thesis}
 
 \end{document}
