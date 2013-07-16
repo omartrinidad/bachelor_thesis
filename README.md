@@ -11,9 +11,9 @@ DAIS format.
 
 # ToDo:
 
-- Change color in ToC
-- Two title pages
-- Correct figure numbering and index
+- Change color in ToC *
+- Two title pages *
+- Correct figure numbering *
 
 # Changes:
 
@@ -23,3 +23,4 @@ DAIS format.
 - Number of pages in each page
 - Empty pages
 - Space between chapter and top of the page
+- Added short captions for LoF

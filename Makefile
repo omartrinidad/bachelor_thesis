@@ -20,5 +20,5 @@ read:
 clean:
 	 rm -f ${filename}.ps ${filename}.log ${filename}.aux 
 	 rm -f ${filename}.out ${filename}.dvi ${filename}.bbl ${filename}.blg
-	 rm -f ${filename}.toc 
+	 rm -f ${filename}.toc ${filename}.lof ${filename}.lot 
 
