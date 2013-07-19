@@ -11,16 +11,18 @@ DAIS format.
 
 # ToDo:
 
-- Change color in ToC *
-- Two title pages *
-- Correct figure numbering *
+- Change color and links in ToC
+- Correct numeration in the first pages
+- Avoid the error when is opened the file with Evince.
 
-# Changes:
+# Features:
 
 - Add author in cite 
+- Two title pages 
 - APA references
 - Roman page number in ToC
 - Number of pages in each page
 - Empty pages
 - Space between chapter and top of the page
 - Added short captions for LoF
+- Figure numbering and LoF with the format 'arabic-chapter.arabic-figure'.

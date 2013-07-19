@@ -51,21 +51,23 @@
 \begin{document}
 % front page
 \pagestyle{plain} 
-\titleGP
+\titlePage
 
 \pagenumbering{roman} 
 \setcounter{page}{1}
 \thispagestyle{empty}
 
 %empty page
-\newpage 
-\thispagestyle{empty}
-\mbox{}
+%\newpage 
+%\thispagestyle{empty}
+%\mbox{}
 
 % dedicatoria y agradecimientos
 \input{chapters/thanks.tex}
 
 \tableofcontents
+
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \listoffigures
 
 % space between paragraphs
