@@ -65,10 +65,16 @@
 % dedicatoria y agradecimientos
 \input{chapters/thanks.tex}
 
-\tableofcontents
+\begingroup
+    \hypersetup{linkcolor = black}
+    \tableofcontents
+\endgroup
 
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-\listoffigures
+\begingroup
+    \hypersetup{linkcolor = black}
+    \listoffigures
+\endgroup
 
 % space between paragraphs
 \setlength{\parskip}{\baselineskip}
