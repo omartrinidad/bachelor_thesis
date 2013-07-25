@@ -39,13 +39,28 @@
     [\addvspace{1pt}] % space below the title
 
 % configure links
-\usepackage{hyperref}
+\usepackage[pagebackref]{hyperref}
 \hypersetup{
     colorlinks,
     citecolor    = blue,
     pdfborder    = {0 0 0}, % this solution is temporal
 }
-\usepackage[hyperref]{backref}
+
+\renewcommand*{\backreflastsep}{, }
+\renewcommand*{\backreftwosep}{, }
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+    \ifcase #1 %
+        \relax % or 'No citations'
+    \or
+        (página #2). % page
+    \else
+        (páginas #2). % pages
+    \fi
+}
+
+% hack backref
+\input{hackbackref.tex}
 
 % title page
 \input{front.tex}
