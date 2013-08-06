@@ -9,13 +9,28 @@
 \usepackage{graphicx,latexsym,amssymb,color}
 \usepackage{subfig}
 \usepackage{enumerate}
-\usepackage{listings}
 \usepackage{times}
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{setspace}
     \onehalfspacing %space between lines
 \usepackage{todonotes}
+\usepackage{multirow} % combine cells in tabular environment
+\usepackage{amsmath} % multiline equation, split
+
+% rules of code
+\usepackage{listings}
+\lstset{
+    language=Matlab,
+    basicstyle={\small\ttfamily},
+    stringstyle=\color{gray},
+    keywordstyle=\color{blue},
+    numberstyle=\color{blue},
+    numbers=left,
+    frame=single, 
+    % rulesepcolor=\color{gray},
+    showstringspaces=false
+}
 
 % change the format of title chapters --> titlesec package
 \titleformat{\chapter}[hang]
