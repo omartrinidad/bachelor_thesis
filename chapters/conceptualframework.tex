@@ -1,6 +1,22 @@
 \chapter{Marco teórico}
 
-\section{Marco de referencia}
+\subsection{Imágenes médicas}
+La unidad básica de una imagen es el pixel, imagen, escala de grises, procesamiento de
+imágenes, procesamiento de imágenes médicas
+
+MRI, CT, X-ray
+
+\subsection{Mamogramas}
+A lo largo de este trabajo los términos mamografía, mastografía y mamograma
+serán usados indistintamente. 
+
+Un mamograma típicamente tiene de 12 a 16 bits de profundidad, con una
+resolución de 4000x5000 pixeles [13], [14].  
+
+Mammography is radiographic examination that is designed for detecting breast
+pathology, particularly breast cancer. [11]
+
+\subsection{DICOM}
 
 % --------------------
 \subsection{Cáncer de mama} % buscar un mejor subtítulo
@@ -9,17 +25,42 @@ en los tejidos de la mama. Nuevas celulas se forman cuando el cuerpo no las
 necesita. 
 
 \subsection{Proceso de formación de una mamografía}
-Obtener una imagen mamográfica es un desafío debido a que la mama está
-constituida por tejidos similares entre sí y porque las lesiones buscadas por
-el radiólogo que indicarían la presencia de un tumor son pequeñas o similares
-al tejido normal \cite{mx:cancer}. Las mamografías son imágenes obtenidas al
-exponer la mama a una dosis leve de rayos X. Los mastógrafos disponen de un
-receptor que captura ...
+Consideraciones técnicas avanzadas de cómo se obtiene un mamograma están fuera
+del alcance de este trabajo. Obtener una imagen mamográfica es un desafío
+debido a que la mama está constituida por tejidos similares entre sí y porque
+las lesiones buscadas por el radiólogo que indicarían la presencia de un tumor
+son pequeñas o similares al tejido normal \cite{mx:cancer}. Las mamografías son
+imágenes obtenidas al exponer la mama a una dosis leve de rayos X. Los
+mastógrafos disponen de un receptor que captura ...
 
 \subsection{Preprocesamiento}
 El preprocesamiento es la etapa previa al procesamiento de imágenes \textit{per
 se}, el principal objetivo de esta etapa es mejorar la calidad de la imagen
 para que quede lista para su posterior procesamiento \cite{ponraj2011survey}.
+
+\subsubsection{Preprocesamiento de mamografías}
+El preprocesamiento de mamografías es especial porque no es como los otros tipos
+de preprocesamiento, hay preprocesamiento específico para mamogramas.
+
+\subsection{Ruido}
+
+\subsection{Ruido en mamografías}
+Noise in digital mammographies (Practical digital mammography by Beverly
+Hashimoto) De acuerdo a Hachimoto en las imágenes mamográficas tenemos cuatro
+tipos de ruido:
+
+\begin{enumerate}
+    \item Ruido cuántico.
+    \item fixed electronic
+    \item señales secundarías
+    \item quanta secundario indirecto
+\end{enumerate}
+
+\subsection{Histogramas}
+Histograms are frequency distributions, and histograms of images describe the
+frequency of the intensity values that occur in an image [9]. Image histogram
+offers a graphical representation of the tonal distribution of values in a
+digital image [10].
 
 % --------------------
 
@@ -34,82 +75,18 @@ each pixel is 4095 and the maximal amplitude that can be displayed is 65535 (16
 allocated bits). Therefore, 4096 levels need to be linearly scaled to 65536
 levels to achieve good image displaying [8].
 
-
 \section{Conceptual framework}
 
-Digital image is a binary representation ...
-Pixel
-Histograms are frequency distributions, and histograms of images describe the frequency of the intensity values that occur in an image [9]. Image histogram offers a graphical representation of the tonal distribution of values in a digital image [10].
-Color model
-Grayscale
-Image processing
-Medical image processing
-DICOM
-***
-Different kind of medical images
-Las consideraciones técnicas (físicas) de cómo se obtienen los mamogramas están fuera del alcance de este trabajo. In screening mammography, as practiced in USA, (also in Mexico), two x-ray images of each breast, in the medio lateral oblique and craniocaudal views, are acquired. 
-MRI
-CT
-X-ray:
-Mammography is radiographic examination that is designed for detecting breast pathology, particularly breast cancer. [11]
-***
-Mammographic features characteristic of breast cancer are masses, particularly ones with irregular or “spiculated” margins; clusters of microcalcifications (tiny deposits of calcium); and architectural distortions of breast structures. 
-***
-Noise: 
-Nuclear images are generally the most noisy. Noise is also significant in MRI, CT, and ultrasound imaging. In comparison to these, radiography produces images with the least noise. 
-The noise can cover and reduce the visibility of certain features within the image. The loss of visibility is especially significant for low-contrast objects.
-***
+In screening mammography, as practiced in
+USA, (also in Mexico), two x-ray images of each breast, in the medio lateral
+oblique and craniocaudal views, are acquired. 
 
+Mammographic features characteristic of breast cancer are masses, particularly
+ones with irregular or “spiculated” margins; clusters of microcalcifications
+(tiny deposits of calcium); and architectural distortions of breast structures. 
 
-Noise in digital mammographies (Practical digital mammography by Beverly Hashimoto)
-De acuerdo a Hachimoto en las imágenes mamográficas tenemos cuatro tipos de ruido:
-*quantum
-*fixed electronic
-*señales secundarías
-*quanta secundario indirecto
-
-\subsection{Mamogramas}
-
-Un mamograma típicamente tiene de 12 a 16 bits de profundidad, con una
-resolución de 4000x5000 pixeles [13], [14].  
-
-2.3. Technological framework
-
-
-* Recordar escribir que en las primeras pruebas sólo se mejoró  la visualización del tejido graso y no del tejido mamario.
-
+* Recordar escribir que en las primeras pruebas sólo se mejoró  la
+visualización del tejido graso y no del tejido mamario.
 
 * Recordar escribir sobre (general purpose computers)
-
-
-* Unsharp - masking to reduce noise.
-
-
-Libros que ayudarán con los conceptos teóricos:
-
-
-Formación física de las imágenes
-Algoritmos
-
-\begin{figure}[h!]
-  \begin{center}
-    \hspace{\fill}
-    \subfloat[12 bits]{
-    \includegraphics[width=0.30\columnwidth]{images/logo-ujat}
-    }
-    \hfill
-    \subfloat[16 bits]{
-    \includegraphics[width=0.30\columnwidth]{images/logo-dais}
-    }
-    \hspace{\fill}
-
-  \caption[Comparison between 12 and 16 bits images]{On the left, the original
-  image in 12 bits visualized in Matlab, on the right, the same image in 16
-  bits. The images were visualized with an specific colormap in order to
-  enhance his color.} 
-
-  \end{center}
-  \label{bitconversionimage} 
-\end{figure}
-
 
