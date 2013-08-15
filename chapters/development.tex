@@ -2,14 +2,16 @@
 En este capítulo se presenta el método empleado para preprocesar los mamogramas
 digitales.
 
+\input{flowchart.tex}
+
 \section{Etapa de recolección}
 Las mamografías originalmente almacenadas en discos compactos, fueron extraídas
 y ... , removimos los datos privados de las imágenes, los únicos campos son los
-que se muestran en la ref{table:dicomdata} 
+que se muestran en la \ref{table:dicomtags} 
 
-\begin{table}
-  \caption{Card Information of Patient 0001} 
-  \label{examplecard}
+\begin{table}[h]
+  \caption{Etiquetas DICOM que permanecen en la imagen} 
+  \label{table:dicomtags}
 \begin{center}
 {\small
     \begin{tabular}{c|c}
@@ -18,6 +20,9 @@ que se muestran en la ref{table:dicomdata}
     {\bf Etiquetas} & 
     {\bf Descripción} \\
     \hline
+           (0000, 0001) & Bits alojados \\
+           (0000, 0001) & Bits alojados \\
+           (0000, 0001) & Bits alojados \\
            (0000, 0001) & Bits alojados \\
     \hline
     \end{tabular}
@@ -32,6 +37,15 @@ que se muestran en la ref{table:dicomdata}
 En esta sección se describe el método empleado para preprocesar las imágenes.
 
 \subsection{Reducción del área de trabajo}
-Los mamogramas recolectados tienen un -fondo-
+Los mamogramas recolectados tienen un -fondo- negro que cubre gran parte de la
+imagen. Con el fin de acelerar el tiempo de ejecución de los algoritmos es
+necesario remover esa área.
 
+\subsection{Conversión de bits}
+
+\subsection{Eliminación de ruido}
+
+\subsection{Mejora del contraste}
+
+\subsection{Compresión}
 
