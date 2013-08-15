@@ -102,10 +102,18 @@
     \tableofcontents
 \endgroup
 
+% change the format of figure captions
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \begingroup
     \hypersetup{linkcolor = black}
     \listoffigures
+\endgroup
+
+% change the format of table captions
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\begingroup
+    \hypersetup{linkcolor = black}
+    \listoftables
 \endgroup
 
 % space between paragraphs
