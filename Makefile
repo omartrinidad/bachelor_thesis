@@ -9,10 +9,10 @@ ps: dvi
 	 dvips ${filename}.dvi
 
 dvi:
-	 latex ${filename}
+	 latex -shell-escape ${filename}
 	 bibtex ${filename} || true
-	 latex ${filename}
-	 latex ${filename}
+	 latex -shell-escape ${filename}
+	 latex -shell-escape ${filename}
 
 read:
 	 evince ${filename}.pdf &
