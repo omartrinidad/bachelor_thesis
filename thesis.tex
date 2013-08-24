@@ -9,7 +9,7 @@
 \usepackage{graphicx,latexsym,amssymb,color}
 \usepackage{subfig}
 \usepackage{enumerate}
-\usepackage{times}
+%\usepackage{times}
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{setspace}
@@ -18,7 +18,7 @@
 \usepackage{multirow} % combine cells in tabular environment
 \usepackage{amsmath} % multiline equation, split
 \usepackage{minted} % fancy code hightlighting as Pygments
-    \usemintedstyle{tango}
+    \usemintedstyle{murphy}
     \renewcommand{\theFancyVerbLine}{
         \sffamily\textcolor[rgb]{0.1,0.1,0.1}{\scriptsize\arabic{FancyVerbLine}}
     }
@@ -132,6 +132,8 @@
 \setlength{\parskip}{\baselineskip}
 
 % content
+\input{chapters/introduction.tex}
+\input{chapters/summary.tex}
 \input{chapters/generalities.tex}
 \input{chapters/conceptualframework.tex}
 \input{chapters/development.tex}
