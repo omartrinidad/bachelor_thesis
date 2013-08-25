@@ -5,38 +5,35 @@
 
 \section{Antecedentes}
 
-Es díficil acceder a imágenes médicas con propósitos de investigación debido a
-cuestiones de privacidad. Este trabajo aborda la construcción de una colección
-de mamogramas preprocesados.
-
-\subsection{Breve reseña del cáncer de mama}
-
 El cáncer de mama es un grave problema de salud pública, es una de las
-principales causas de decesos en la población femenina de Tabasco y México. Una 
-forma de aminorar estas muertes es la detección temprana de este padecimiento, a
-su vez, el método más comúnmente empleado en su detección es el estudio de
-mamografías, tarea a cargo de radiologos; hay un margen de error en la opinión
-de los radiologos.
+principales causas de decesos en la población femenina de Tabasco y México
+\cite{inegi, mxcancer}. Una forma de aminorar estas muertes es la detección
+temprana de este padecimiento, a su vez, el método más comúnmente empleado en
+su detección es el estudio de mamografías, tarea a cargo de radiólogos.
 
-Es posible incrementar el éxito de los diagnósticos mejorando la apariencia
-(calidad) de la imagen, *introducir el preprocesamiento y escribir sobre los
-sistemas CAD-
+El diagnóstico de mamogramas no es una actividad trivial debido a factores como
+la fatiga, es una tarea subjetiva y por lo tanto hay un margen de error en la
+opinión de los radiólogos. Es posible incrementar el éxito de los diagnósticos
+mejorando la apariencia de la imagen, *introducir el preprocesamiento
+y escribir sobre los sistemas CAD-
 
 -El estado del arte del preprocesamiento de mamografías está avanzado-, sin embargo,
 -es posible seguir contribuyendo a esta área del conocimiento-. 
 
+Es díficil acceder a imágenes médicas con propósitos de investigación debido a
+cuestiones de privacidad. Este trabajo aborda la construcción de una colección
+de mamogramas preprocesados.
+
 Dos bancos de datos similares al que se menciona en este trabajo son el Digital
 Database for Screening Mammograpy (DDSM) de la University of South Florida
 (USF) \cite{heath2000digital} y el banco de datos MIAS MiniMammographic
-Database (mini-MIAS) \cite{sucklingmini}.  Ambos son ampliamente usados por la
+Database (mini-MIAS) \cite{sucklingmini}. Ambos son ampliamente usados por la
 comunidad de investigación sobre procesamiento y análisis de imágenes. El
 objetivo de este trabajo es crear un banco de datos similar a los que se
-mencionan arriba. 
+mencionan arriba. El proyecto fue -soportado- por el hospital Dr. Juan Graham
+Casasús, que nos dió un lote de mamogramas en bruto.
 
-Both of them are widely used by the mammographic image analysis research
-community.  Our main goal is to create a database similar to the above.  Our
-project was supported by “Dr. Juan Graham Casasus” hospital who gave us a batch
-of raw mammograms in DICOM file format [3].  especificar, el problema DEL
+especificar, el problema DEL
 hospitlal --diagnóstico-- segunda opinión, decir que no se ha implementado algo
 así, pero que existe
  
@@ -51,32 +48,36 @@ sistemas CAD.
 Se dispone de un banco de imágenes mamográficas sin procesar, el reto es mejorar
 su contraste, disminuir la cantidad de ruido.
 
-It was necessary to discover which filters are the best choice in order to
-obtain optimized images ready for afterward phases such as segmentation,
-processing or analysis. Namely, it was necessary to reduce the noise and other
-artifacts in the image. Furthermore, we need to create an electronic file for
-each image. These data are obtained from each DICOM file and with the help of
-specialized doctors.  The most important data is the medical mammogram
-diagnosis. Mammograms are classified according to the American College of
-Radiology (ACR) in BI-RADS. Mammography Atlas, edition 4th [4].
+Fue necesario descubrir que algoritmos son la mejor opción para mejorar la calidad de la imagen.
+
+Crear una ficha electrónica por cada estudio.
+
+Los datos más relevantes son los diagnósticos BIRADS.
 
 The assessment categories are:
-a. Mammographic assessment incomplete:
-1. Category 0: Need additional imaging evaluation and/or prior mammograms for comparison.
-b. Mammographic assessment complete:
-1. Category 1: Negative.
-2. Category 2: Benign finding(s).
-3. Category 3: Probably benign finding.
-4. Category 4: Suspicious abnormality.
-5. Category 5: Highly suggestive of malignancy.         
-6. Category 6: Proven malignancy.
+\begin{enumerate}[a)]
+    \item Mammographic assessment incomplete:
+    \begin{enumerate}[i.]
+        \item Categoría 0: Need additional imaging evaluation and/or prior
+        mammograms for comparison.
+    \end{enumerate}
+    \item Mammographic assessment complete:
+    \begin{enumerate}[i.]
+        \item Categoría 1: Negative.
+        \item Categoría 2: Benign finding(s).
+        \item Categoría 3: Probably benign finding.
+        \item Categoría 4: Suspicious abnormality.
+        \item Categoría 5: Highly suggestive of malignancy.         
+        \item Categoría 6: Proven malignancy.
+    \end{enumerate}
+\end{enumerate}
 
-\subsection{Delimitation of the investigation}
-\subsubsection{Scope}
+\subsection{Delimitación de la investigación}
 
 decir que hay un estado inicial y uno final
+
 la extensión del trabajo incluye --- filtros y tipos de filtros aplicados, imágenes listas para etapas posteriores. 
-hablar de base de datos más como un dataset que otra cosa --- estructura: imagen cruda, procesada y ficha
+ --- estructura: imagen cruda, procesada y ficha
 
 a database of preprocessed mammograms, namely, mammograms without noise,
 reduction of artifacts and leveling of image quality.
@@ -96,9 +97,10 @@ Crear un banco de datos de dominio público con mamografías preprocesadas.
 
 Aplicar los algoritmos adecuados para preprocesar los mamogramas.
 Crear una ficha electrónica para cada caso.
-¿Crear un método?
 
 \section{Justification}
+
+El proyecto es útil para
 
 Our project is useful for the scientific community dedicated to processing and
 image analysis, mainly those who are dedicated to the study of medical images.
