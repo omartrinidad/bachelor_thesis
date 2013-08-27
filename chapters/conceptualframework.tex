@@ -1,3 +1,4 @@
+% las imágenes son díficiles de ser interpretadas
 \chapter{Marco teórico}
 
 \section{Imágenes médicas}
@@ -8,6 +9,8 @@ procesamiento de imágenes, procesamiento de imágenes médicas
 
 \section{DICOM}
 Mencionar DICOMDIR aquí.
+DICOM es el estándar en las imágenes médicas, fue desarrollado por la ACR en
+conjunto con NEMA \cite{acrnema, pianykh2011digital}.
 
 \subsection{Estructura de un archivo DICOM}
 Mencionar las etiquetas.
@@ -39,10 +42,23 @@ son pequeñas o similares al tejido normal \cite{mx:cancer}. Las mamografías so
 imágenes obtenidas al exponer la mama a una dosis leve de rayos X. Los
 mastógrafos disponen de un receptor que captura ...
 
+%In screening mammography, as practiced in
+%USA, (also in Mexico), two x-ray images of each breast, in the medio lateral
+%oblique and craniocaudal views, are acquired. 
+
+\subsection{Lesiones comunes}
+
+%Mammographic features characteristic of breast cancer are masses, particularly
+%ones with irregular or “spiculated” margins; clusters of microcalcifications
+%(tiny deposits of calcium); and architectural distortions of breast structures. 
+
 \subsection{Preprocesamiento}
 El preprocesamiento es la etapa previa al procesamiento de imágenes \textit{per
 se}, el principal objetivo de esta etapa es mejorar la calidad de la imagen
-para que quede lista para su posterior procesamiento \cite{ponraj2011survey}.
+para que quede lista para su posterior procesamiento \cite{ponraj2011survey}
+que muchas veces son algoritmos para un sistema CAD (Computer Aided Diagnosis).
+El preprocesamiento también se utiliza para mejorar la visibilidad del
+observador \cite{rahmati2010new}. 
 
 \subsubsection{Preprocesamiento de mamografías}
 El preprocesamiento de mamografías es especial porque no es como los otros tipos
@@ -51,6 +67,7 @@ de preprocesamiento, hay preprocesamiento específico para mamogramas.
 \section{Ruido}
 
 \subsection{Ruido en mamografías}
+
 Noise in digital mammographies (Practical digital mammography by Beverly
 Hashimoto) De acuerdo a Hachimoto en las imágenes mamográficas tenemos cuatro
 tipos de ruido:
@@ -83,18 +100,59 @@ each pixel is 4095 and the maximal amplitude that can be displayed is 65535 (16
 allocated bits). Therefore, 4096 levels need to be linearly scaled to 65536
 levels to achieve good image displaying [8].
 
-\section{Conceptual framework}
+\section{Trabajos relacionados}
 
-In screening mammography, as practiced in
-USA, (also in Mexico), two x-ray images of each breast, in the medio lateral
-oblique and craniocaudal views, are acquired. 
+Una gran cantidad de trabajos de investigación se han desarrollado en el
+campo del preprocesamiento de imágenes mamográficas. En esta sección se revisan
+varios enfoques expuestos en la literatura existente, algunos de los cuales se
+rescataron en este trabajo para crear un método híbrido que combina las
+fortalezas de estos. 
 
-Mammographic features characteristic of breast cancer are masses, particularly
-ones with irregular or “spiculated” margins; clusters of microcalcifications
-(tiny deposits of calcium); and architectural distortions of breast structures. 
+% Preprocessing related works
+El preprocesamiento de mamogramas engloba algunas tareas también válidas en
+el preprocesamiento de otro tipo de imágenes médicas como remoción de ruido,
+mejora de contraste o reducción del área de trabajo, no obstante, también
+existe el \textit{preprocesamiento orientado a mamografías} que comprende
+tareas como orientación de la dirección de la mama, la supresión del músculo
+pectoral o la detección del pezón.
 
-* Recordar escribir que en las primeras pruebas sólo se mejoró  la
-visualización del tejido graso y no del tejido mamario.
+\subsection{Remoción del músculo pectoral}
 
-* Recordar escribir sobre (general purpose computers)
+El trabajo de Maitra utiliza un método híbrido -mixto- de tres fases
+\cite{maitra2012technique}. La fase inicial es la mejora de contraste con el
+algoritmo CLAHE, después se aisla el músculo pectoral de la región de interés y
+finalmente se suprime utilizando el algoritmo \textit{seeding region growing}.
+El -enfoque- de Maitra es interesante, pues su método es orientado a
+mamografías. Su método pudo aislar el músculo pectoral en la mayoría de las
+imágenes de miniMIAS.
 
+Akram también propone la remoción del músculo pectoral además de etiquetas y
+artefactos \cite{akram2013preprocessing}. Su propuesta utiliza el método de
+contorno activo. También Mirzaalian \cite{mirzaalian2007pre} enfoca su trabajo
+a la misma tarea.
+
+Otros trabajos como el de Rahmati \cite{rahmati2010new} concentran su atención en
+mejorar una sola tarea. Este trabajo propone una versión mejorada de CLAHE:
+FCLAHE. Su método trabaja las desventajas de CLAHE, que mejora el -frente- y el
+-fondo- linealmente, de tal manera que el resultado es una imagen con alto
+contraste al -frente- y en el -fondo-. La mejora del fondo puede conducir a que
+los radiólogos identifiquen -falsos positivos-. Para probar la eficiencia del
+algoritmo propuesto ejecutan un algoritmo de segmentación sobre imágenes que
+fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
+de FCLAHE.
+
+Dos Santos \cite{romualdopre}, \cite{dos2009mammography} propone un método para
+reducir el ruido cuántico, el ruido con más presencia en imágenes mamográficas.
+Utiliza la transformada de \textit{Anscombe} en conjunto con el filtro de
+Wiener para reducir el ruido, además del filtro Inverso del Dominio de la
+Frecuencia para mejorar las imágenes. Dado que el ruido cuántico puede ser
+descrito por la distribución de Poisson se utiliza la transformada de Anscombe
+para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
+el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD.
+
+Ponraj y Pisano hacen estudios extensivos del estado del arte del algoritmos
+utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
+\cite{pisano2000image}.
+
+La reducción del área de trabajo es estudiada por \cite{holguinpre} y
+\cite{dehghani2011method}.

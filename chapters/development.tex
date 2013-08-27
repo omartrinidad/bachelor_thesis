@@ -2,7 +2,7 @@
 En este capítulo se presenta el método empleado para preprocesar los mamogramas
 digitales.
 
-\shorthandoff{>} 
+\shorthandoff{>} % hack to combine tikZ and Spanish
     \input{flowcharthoriz.tex}
 \shorthandon{>} 
 
@@ -36,14 +36,17 @@ que se muestran en la \ref{table:dicomtags}
 %programación Python y la libreria PyDICOM.
 
 \section{Método}
-En esta sección se describe el método empleado para preprocesar las imágenes.
+Se eligió un método híbrido
 
 \subsection{Reducción del área de trabajo}
-Los mamogramas recolectados tienen un -fondo- negro que cubre gran parte de la
-imagen. Con el fin de acelerar el tiempo de ejecución de los algoritmos es
-necesario remover esa área.
+
+La primera etapa del método consiste en eliminar la región oscura que cubre
+gran parte de la imagen para acelerar el tiempo de ejecución de los
+procedimientos posteriores. El enfoque es similar al expuesto por Dehghani y
+Holguín \cite{dehghani2011method, holguinpre}.
 
 \subsection{Conversión de bits}
+
 Las mamografías que se obtuvieron son de 12 bits. Sin embargo al visualizarlas
 se obtiene una imagen opaca, esto es porque ...
 
@@ -175,12 +178,7 @@ for h=1:1:height
 end
 \end{minted}
 
-\begin{minted}{c}
-    /**
-    * Ejemplo resaltado sintaxis con minted
-    */
-    int main() {
-        printf("hello, world");
-        return 0;
-    }
-\end{minted}
+%Recordar escribir que en las primeras pruebas sólo se mejoró  la visualización
+%del tejido graso y no del tejido mamario.
+
+
