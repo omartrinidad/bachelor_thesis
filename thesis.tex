@@ -105,10 +105,11 @@
 \thispagestyle{empty}
 
 % stupid burocracia files
+\newpage
 \pdfbookmark[0]{Files}{Files}
-
     \pdfbookmark[1]{F5}{F5}
     \includepdf{f5.pdf}
+    \newpage
     \pdfbookmark[1]{F6}{F6}
     \includepdf{f6.pdf}
 
@@ -119,7 +120,10 @@
 % dedicatoria y agradecimientos
 \input{chapters/thanks.tex}
 
+% table of contents
 \begingroup
+    \newpage
+    \pdfbookmark[0]{Contenido}{Contenido}
     \hypersetup{linkcolor = black}
     \tableofcontents
 \endgroup
@@ -127,6 +131,8 @@
 % change the format of figure captions
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \begingroup
+    \newpage
+    \pdfbookmark[0]{Figuras}{Figuras}
     \hypersetup{linkcolor = black}
     \listoffigures
 \endgroup
@@ -134,6 +140,8 @@
 % change the format of table captions
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \begingroup
+    \newpage
+    \pdfbookmark[0]{Tablas}{Tablas}
     \hypersetup{linkcolor = black}
     \listoftables
 \endgroup
