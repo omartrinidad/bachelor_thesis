@@ -15,7 +15,7 @@
   } 
 \providecommand{\cmark}[2][]{\relax} 
 % -------------------------------------------------
-\begin{figure}[h!]
+\begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}[%
     >=triangle 60,              % Nice arrows; your taste may be different
@@ -24,7 +24,7 @@
     every join/.style={norm},   % Default linetype for connecting boxes
     ]
 
-{\small\ttfamily\selectfont
+{\small\ttfamily\fontfamily{lmodern}\selectfont
 % ------------------------------------------------- 
 % A few box styles 
 % <on chain> *and* <on grid> reduce the need for manual relative
@@ -89,6 +89,9 @@
   \draw [->,blue] (t1.west) -- (c1) |- (p2);
 
 % -------------------------------------------------
+
+    \draw[brown, thick] ($(p3.north west)+(-0.3,0.3)$)  rectangle ($(p5.south east)+(0.3,-0.3)$) 
+    node [right]{label};
 }
 \end{tikzpicture}
 \end{center}
