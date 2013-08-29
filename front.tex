@@ -6,10 +6,15 @@
 
 \newcommand*{\titlePage}{\begingroup 
 \centering % Center all text
-\thispagestyle{empty}
 
+% -----------------------------[ first cover] -------------------------------
 {\fontfamily{phv}\selectfont
-\pdfbookmark[0]{Cover}{Cover}
+    \pdfbookmark[0]{Cover}{Cover}
+
+    \thispagestyle{empty}
+
+    \pagenumbering{Roman} 
+    \setcounter{page}{1}
 
     % Logo UJAT
     \begin{minipage}[ht]{0.14\textwidth}
@@ -69,16 +74,20 @@
 
 } % ending fontfamily configuration
 
-%empty page
+% -----------------------------[ empty page ] -------------------------------
 \newpage 
 \thispagestyle{empty}
 \mbox{}
 
+% -----------------------------[ second cover] -------------------------------
 {\fontfamily{phv}\selectfont
+    \pdfbookmark[0]{SecondCover}{SecondCover}
 
     \newpage
     \thispagestyle{empty}
-    \pdfbookmark[0]{SecondCover}{SecondCover}
+
+    \pagenumbering{Roman} 
+    \setcounter{page}{3}
 
     % Logo UJAT
     \begin{minipage}[ht]{0.14\textwidth}
@@ -139,7 +148,7 @@
     {\bfseries{\Large Lic. Martha Patricia Silva Payró}}\\
     {\bfseries{\Large M. en C. Cristina López Ramírez}}\\
     {\bfseries{\Large Julian Assange}}\\
-    {\bfseries{\Large Ph. D. Nikola Tesla}}\\
+    {\bfseries{\Large Nikola Tesla}}\\
     \vspace*{2\baselineskip} \vfill
 
     Cunduacán, Tabasco \hfill Agosto de 2013
