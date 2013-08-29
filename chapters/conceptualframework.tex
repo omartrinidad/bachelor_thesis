@@ -116,7 +116,7 @@ existe el \textit{preprocesamiento orientado a mamografías} que comprende
 tareas como orientación de la dirección de la mama, la supresión del músculo
 pectoral o la detección del pezón.
 
-\subsection{Remoción del músculo pectoral}
+%\subsection{Remoción del músculo pectoral}
 
 El trabajo de Maitra utiliza un método híbrido -mixto- de tres fases
 \cite{maitra2012technique}. La fase inicial es la mejora de contraste con el
@@ -128,8 +128,15 @@ imágenes de miniMIAS.
 
 Akram también propone la remoción del músculo pectoral además de etiquetas y
 artefactos \cite{akram2013preprocessing}. Su propuesta utiliza el método de
-contorno activo. También Mirzaalian \cite{mirzaalian2007pre} enfoca su trabajo
-a la misma tarea.
+contorno activo. 
+
+Por su parte Mirzaalian \cite{mirzaalian2007pre} plantea un algoritmo para la
+extracción del contorno de la mama y otro para la extracción del músculo
+pectoral. Para extraer el contorno de la mama utiliza en conjunto la
+ecualización de histogramas, una técnica de -convolución- con una máscara, que
+sirve como un filtro de paso bajo, binarización y -labeling-, 
+
+%\subsection{Mejora de contraste}
 
 Otros trabajos como el de Rahmati \cite{rahmati2010new} concentran su atención en
 mejorar una sola tarea. Este trabajo propone una versión mejorada de CLAHE:
@@ -149,6 +156,8 @@ Frecuencia para mejorar las imágenes. Dado que el ruido cuántico puede ser
 descrito por la distribución de Poisson se utiliza la transformada de Anscombe
 para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
 el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD.
+
+%\subsection{Estudios extensivos}
 
 Ponraj y Pisano hacen estudios extensivos del estado del arte del algoritmos
 utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},

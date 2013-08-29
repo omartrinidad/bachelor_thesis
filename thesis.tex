@@ -8,6 +8,7 @@
 \usepackage[obeyspaces]{url}
 \usepackage{graphicx,latexsym,amssymb,color}
 \usepackage{subfig}
+\usepackage{pdfpages} % include external file
 \usepackage{enumerate}
 %\usepackage{times}
 \usepackage{titlesec}
@@ -61,12 +62,13 @@
     [\addvspace{1pt}] % space below the title
 
 % configure links
-\usepackage[pagebackref]{hyperref}
+\usepackage[pagebackref, bookmarks = true]{hyperref}
 \hypersetup{
     colorlinks,
     citecolor    = blue,
     pdfborder    = {0 0 0}, % this solution is temporal
 }
+\usepackage{bookmark}
 
 \renewcommand*{\backreflastsep}{, }
 \renewcommand*{\backreftwosep}{, }
@@ -101,7 +103,15 @@
 \setcounter{page}{1}
 \thispagestyle{empty}
 
-%empty page
+% stupid burocracia files
+
+\pdfbookmark[0]{Files}{Files}
+\pdfbookmark[1]{F5}{F5}
+\includepdf{f5.pdf}
+
+\pdfbookmark[1]{F6}{F6}
+\includepdf{f6.pdf}
+
 %\newpage 
 %\thispagestyle{empty}
 %\mbox{}
