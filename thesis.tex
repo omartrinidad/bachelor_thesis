@@ -1,4 +1,12 @@
-\documentclass[12pt, letter, oneside]{report}
+\newif\ifelectronic
+\electronictrue
+
+\ifelectronic
+    \documentclass[12pt, letter, oneside]{report}
+\else
+    \documentclass[10pt, letter, twoside]{report}
+\fi 
+
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, chains, positioning, calc}
 \usepackage[noend]{algpseudocode}
