@@ -2,17 +2,17 @@
 
 filename=thesis
 
-pdf: ps
-	 ps2pdf ${filename}.ps
+#pdf: ps
+#	 ps2pdf ${filename}.ps
 
-ps: dvi
-	 dvips ${filename}.dvi
+#ps: dvi
+#	 dvips ${filename}.dvi
 
-dvi:
-	 latex -shell-escape ${filename}
+pdf:
+	 pdflatex -shell-escape ${filename}
 	 bibtex ${filename} || true
-	 latex -shell-escape ${filename}
-	 latex -shell-escape ${filename}
+	 pdflatex -shell-escape ${filename}
+	 pdflatex -shell-escape ${filename}
 
 read:
 	 evince ${filename}.pdf &

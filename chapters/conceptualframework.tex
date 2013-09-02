@@ -30,15 +30,16 @@ alta resolución y baja radiación.
 % --------------------
 \subsection{Cáncer de mama} % buscar un mejor subtítulo
 El cáncer de mama es un padecimiento en el que se desarrollan células malignas
-en los tejidos de la mama. Nuevas celulas se forman cuando el cuerpo no las
+en los tejidos de la mama. Nuevas células se forman cuando el cuerpo no las
 necesita. 
 
 \subsection{Proceso de formación de una mamografía}
+
 Consideraciones técnicas avanzadas de cómo se obtiene un mamograma están fuera
 del alcance de este trabajo. Obtener una imagen mamográfica es un desafío
 debido a que la mama está constituida por tejidos similares entre sí y porque
 las lesiones buscadas por el radiólogo que indicarían la presencia de un tumor
-son pequeñas o similares al tejido normal \cite{mx:cancer}. Las mamografías son
+son pequeñas o similares al tejido normal \cite{mxcancer}. Las mamografías son
 imágenes obtenidas al exponer la mama a una dosis leve de rayos X. Los
 mastógrafos disponen de un receptor que captura ...
 
@@ -102,13 +103,63 @@ levels to achieve good image displaying [8].
 
 \section{Trabajos relacionados}
 
+% Other databases
+Existen múltiples bases de datos, públicas o privadas, utilizadas en estudios
+relacionados a la detección del cáncer de mama. Las características de ellas
+son diferentes. En la Tabla \ref{table:overviewdb} se muestran algunas de ellas.
+
+MIAS \cite{sucklingmini} aunque es el recurso más viejo, sigue siendo
+ampliamente utilizado. MIAS no tiene soporte actualmente. DDSM
+\cite{heath2000digital} es el recurso más utilizado. Es importante notar la
+presencia de dos recursos latinoamericanos, más específicamente, brasileños.
+
+\afterpage{
+    \clearpage
+\begin{landscape}
+%\begin{sidewaystable}
+\begin{table}[h]
+  \caption{Algunas bases de datos de mamografías digitales} 
+  \label{table:overviewdb}
+\begin{center}
+{\small
+    \begin{tabular}
+    {c| >{\centering\arraybackslash}m{1in} | >{\centering\arraybackslash}m{1in}|c| 
+    >{\centering\arraybackslash}m{0.6in} | >{\centering\arraybackslash}m{0.6in} |c|l|l}
+    \hline
+
+    {\bf Nombre} & 
+    {\bf Número de casos} & 
+    {\bf Número de imágenes} & 
+    {\bf Proyecciones} & 
+    {\bf Tipo de archivo} & 
+    {\bf Lugar de origen} & 
+    {\bf ACR} & 
+    {\bf BIRADS} & 
+    {\bf Año} \\
+    \hline
+    mini-MIAS & 161 & 322 & MLO & PGM & Reino Unido & 1994 & ACR & BIRADS \\
+    DDSM & 2620 & 10480 & MLO \& CC & LJPEG & Estados Unidos & 1999 & ACR & BIRADS \\
+    BancoWeb & 2620 & 10480 & MLO \& CC & LJPEG & Estados Unidos & 1999 & ACR & BIRADS \\
+    InBreast & 2620 & 10480 & MLO \& CC & LJPEG & Estados Unidos & 1999 & ACR & BIRADS \\
+    MIDAS & 2620 & 10480 & MLO \& CC & LJPEG & Estados Unidos & 1999 & ACR & BIRADS \\
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
+%\end{sidewaystable}
+\end{landscape}
+} % end of afterpage
+
+Un iniciativa reciente, InBreast \cite{inbreast}, 
+
+% Preprocessing related works
 Una gran cantidad de trabajos de investigación se han desarrollado en el
 campo del preprocesamiento de imágenes mamográficas. En esta sección se revisan
 varios enfoques expuestos en la literatura existente, algunos de los cuales se
 rescataron en este trabajo para crear un método híbrido que combina las
 fortalezas de estos. 
 
-% Preprocessing related works
 El preprocesamiento de mamogramas engloba algunas tareas también válidas en
 el preprocesamiento de otro tipo de imágenes médicas como remoción de ruido,
 mejora de contraste o reducción del área de trabajo, no obstante, también
