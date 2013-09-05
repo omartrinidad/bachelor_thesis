@@ -124,11 +124,24 @@ imágenes para probar algoritmos CAD y el \textit{Evaluación de Radiólogos}, q
 provee funcionalidades para evaluar el desempeño de un radiólogo.
 
 MIDAS (Mammographic Image Database for Automated Analysis) es una base de datos
-con muestras tomadas entre la población femenina en Brasil
-\cite{fernandes2012midas}. 
+con muestras tomadas entre la población femenina de Brasil
+\cite{fernandes2012midas}. De esta base de datos destaca la inclusión de
+secuencias de datos genómicas de los pacientes y su apertura a la colaboración
+externa, -brand new inovation-. MIDAS cuenta también con un sistema web.
 
-inbreast: \cite{moreira2012inbreast}, 
- openweb: \cite{matheus2011online}.
+BancoWeb es una base de datos creada por LAPIMO (Laboratório de Análise e
+Processamento de Imagens Médicas e Odontológicas) \cite{matheus2011online}.
+
+INbreast: \cite{moreira2012inbreast}, es una base de datos , los autores
+sugieren características esenciales de una base de datos que conllevaría a la
+creación de sistemas CAD.
+
+Magic-5 \cite{bellotti2004magic} es la evolución de GPCalma (Grid Platform for
+Computer Assisted Library for MAmmography) \cite{lauria2006gpcalma}, una base
+de datos distribuida. 
+
+Otras bases de datos mencionadas en la literatura son Trueta, LLNL, Málaga,
+NDMA.
 
 \afterpage{
     \clearpage
@@ -139,6 +152,7 @@ inbreast: \cite{moreira2012inbreast},
   \label{table:overviewdb}
 \begin{center}
 {\small
+    \rowcolors{1}{}{lightgray} 
     \begin{tabular}
     {c| >{\centering\arraybackslash}m{1in} | >{\centering\arraybackslash}m{1in}|c| 
     >{\centering\arraybackslash}m{0.6in} | >{\centering\arraybackslash}m{0.6in} |c|c|c}
@@ -154,13 +168,14 @@ inbreast: \cite{moreira2012inbreast},
     {\bf ACR} & 
     {\bf BIRADS} \\
     \hline
-    mini-MIAS & 161  & 322    & MLO       & PGM   & Reino Unido    & 1994 & ACR & yes \\
-    DDSM      & 2620 & 10480  & MLO \& CC & LJPEG & Estados Unidos & 1999 & ACR & yes \\
-    BancoWeb  & 2620 & 10480  & MLO \& CC & LJPEG & Brasil         & 1999 & ACR & yes \\
-    InBreast  & 2620 & 10480  & MLO \& CC & DICOM & Portugal       & 1999 & ACR & yes \\
-    MIDAS     & 100  & 600    & MLO \& CC & LJPEG & Brasil         & 1999 & ACR & yes \\
-    IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & ACR & yes \\
-    MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & ACR & yes \\
+    mini-MIAS & 161  & 322    & MLO       & PGM   & Reino Unido    & 1994 & yes & yes \\
+    DDSM      & 2620 & 10480  & MLO \& CC & LJPEG & Estados Unidos & 1999 & yes & yes \\
+    BancoWeb  & 320  & 1'400  & MLO \& CC & TIFF  & Brasil         & 1999 & yes & yes \\
+    INbreast  & 115  & 410    & MLO \& CC & DICOM & Portugal       & 2012 & yes & yes \\
+    MIDAS     & 100  & 600    & MLO       & DICOM & Brasil         & 2011 & yes & yes \\
+    IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\
+    MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\
+    Magic-5 (GPCalma) & 196  & 10480  & MLO \& CC & LJPEG & Italia & 2009 & ACR & yes \\
     \hline
     \end{tabular}
 }

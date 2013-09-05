@@ -7,6 +7,9 @@
     \documentclass[10pt, letter, twoside]{report}
 \fi 
 
+\usepackage[table]{xcolor}
+    \definecolor{lightgray}{gray}{0.9}
+
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, chains, positioning, calc}
 \usepackage[noend]{algpseudocode}
@@ -18,7 +21,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[obeyspaces]{url}
-\usepackage{graphicx,latexsym,amssymb,color}
+\usepackage{graphicx,latexsym,amssymb}
 \usepackage{subfig}
 \usepackage{pdfpages} % include external files
 \usepackage{enumerate}
@@ -27,7 +30,7 @@
 \usepackage{titletoc}
 \usepackage{setspace}
     \onehalfspacing %space between lines
-\usepackage{todonotes}
+% \usepackage{todonotes}
 \usepackage{multirow} % combine cells in tabular environment
 \usepackage{amsmath} % multiline equation, split
 \usepackage{minted} % fancy code hightlighting as Pygments
@@ -37,6 +40,7 @@
     }
 
 % \usepackage[none]{hyphenat} % problems with hyphenation
+
 
 % rules of code
 \usepackage{listings}
