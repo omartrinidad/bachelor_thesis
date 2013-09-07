@@ -5,8 +5,10 @@ En este capítulo se introducen conceptos e ideas utilizados en los capítulos
 posteriores. También se detallan trabajos similares.
 
 \section{Imágenes médicas}
+
 La unidad básica de una imagen es el pixel, imagen, escala de grises,
 procesamiento de imágenes, procesamiento de imágenes médicas
+\cite{suetens2009fundamentals}
 
 \subsection{MRI, CT, X-ray}
 
@@ -55,6 +57,34 @@ mastógrafos disponen de un receptor que captura ...
 %Mammographic features characteristic of breast cancer are masses, particularly
 %ones with irregular or “spiculated” margins; clusters of microcalcifications
 %(tiny deposits of calcium); and architectural distortions of breast structures. 
+
+\subsection{BI-RADS}
+
+BI-RADS (Breast Imaging Reporting and Data System Atlas)
+\cite{reston2003birads} provee la terminología básica y un sistema de
+clasificación para las mamografías.
+
+Las categorías de evaluación son:
+
+\begin{enumerate}[a)]
+    \item Categoría incompleta
+    \begin{enumerate}[i.]
+        \item Categoría 0: Necesita evaluación adicional y/o más mamografías para comparar.
+    \end{enumerate}
+    \item Mammographic assessment complete:
+    \begin{enumerate}[i.]
+        \item Categoría 1: Negativo.
+        \item Categoría 2: Hallazgo(s) benigno(s).
+        \item Categoría 3: Hallazgo(s) benignos(s) probable(s).
+        \item Categoría 4: Anormalidades sospechosas.
+        \item Categoría 5: Highly suggestive of malignancy.         
+        \item Categoría 6: Proven malignancy.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Sistemas CAD}
+
+<< lo que va aquí es muy importante >>
 
 \subsection{Preprocesamiento}
 El preprocesamiento es la etapa previa al procesamiento de imágenes \textit{per
@@ -233,14 +263,27 @@ algoritmo propuesto ejecutan un algoritmo de segmentación sobre imágenes que
 fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
 de FCLAHE.
 
+% =========[ denoising ]===========
+
 Dos Santos \cite{romualdopre}, \cite{dos2009mammography} propone un método para
-reducir el ruido cuántico, el ruido con más presencia en imágenes mamográficas.
+reducir el ruido quantum/Poisson, el ruido con más presencia en imágenes mamográficas.
 Utiliza la transformada de \textit{Anscombe} en conjunto con el filtro de
 Wiener para reducir el ruido, además del filtro Inverso del Dominio de la
 Frecuencia para mejorar las imágenes. Dado que el ruido cuántico puede ser
 descrito por la distribución de Poisson se utiliza la transformada de Anscombe
 para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
-el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD.
+el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD. 
+
+Naveed \cite{naveed2012quantum} propone un método de remoción de ruido dividido
+en dos módulos, detección y filtrado de ruido. La detección se lleva a cabo
+utilizando redes neuronales y para la remoción del ruido se utilizan tres
+filtros, que son \textit{non local mean} (NLM), el filtro adaptativo de Wiener
+y el frost filter based methos. La remoción busca preservar los detalles. Este
+estudio propone la eliminación del ruido impulsivo y cuántico. Se evalúa el
+método comparando la precisión de algoritmos de \textit{clasificación} en
+presencia/ausencia de ruido.
+
+% =========[ surveys ]===========
 
 Ponraj y Pisano hacen estudios extensivos del estado del arte del algoritmos
 utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
@@ -249,6 +292,4 @@ utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
 La reducción del área de trabajo es estudiada por \cite{holguinpre} y
 \cite{dehghani2011method}.
 
-La reducción del ruido es estudiada por ... Naveed propone un método para
-eliminar ambos tipos de ruido \cite{naveed2012quantum}. La remoción de ruido
-cuántico también ha sido propuesta por Romualdo \cite{romualdopre}
+
