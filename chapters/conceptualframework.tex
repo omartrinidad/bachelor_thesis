@@ -1,6 +1,9 @@
 % las imágenes son díficiles de ser interpretadas
 \chapter{Marco teórico}
 
+En este capítulo se introducen conceptos e ideas utilizados en los capítulos
+posteriores. También se detallan trabajos similares.
+
 \section{Imágenes médicas}
 La unidad básica de una imagen es el pixel, imagen, escala de grises,
 procesamiento de imágenes, procesamiento de imágenes médicas
@@ -113,7 +116,8 @@ ampliamente utilizado. MIAS no tiene soporte actualmente. DDSM
 \cite{heath2000digital} es el recurso más utilizado. Es importante notar la
 presencia de dos recursos latinoamericanos, más específicamente, brasileños.
 
-IRMA \cite{doi:10.1117/12.770325} ...
+IRMA (Image Retrieval in Medical Applications) is a extensive project
+\cite{doi:10.1117/12.770325} ...
 
 MIRaCLe (Mammography Image reading for Radiologists and Computers Learning
 Database) es un repositorio dinámico para el entrenamiento y evaluación de
@@ -175,7 +179,7 @@ NDMA.
     MIDAS     & 100  & 600    & MLO       & DICOM & Brasil         & 2011 & yes & yes \\[4ex] 
     IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\[4ex] 
     MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\[4ex] 
-    Magic-5 (GPCalma) & 196  & 10480  & MLO \& CC & LJPEG & Italia & 2009 & ACR & yes \\[4ex] 
+Magic-5 (GPCalma) & 967  & 3369  & MLO \& CC & DICOM & Italia      & 2002 & no  & yes \\[4ex] 
     \hline
     \end{tabular}
 }
@@ -219,8 +223,6 @@ pectoral. Para extraer el contorno de la mama utiliza en conjunto la
 ecualización de histogramas, una técnica de -convolución- con una máscara, que
 sirve como un filtro de paso bajo, binarización y -labeling-, 
 
-%\subsection{Mejora de contraste}
-
 Otros trabajos como el de Rahmati \cite{rahmati2010new} concentran su atención en
 mejorar una sola tarea. Este trabajo propone una versión mejorada de CLAHE:
 FCLAHE. Su método trabaja las desventajas de CLAHE, que mejora el -frente- y el
@@ -240,11 +242,13 @@ descrito por la distribución de Poisson se utiliza la transformada de Anscombe
 para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
 el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD.
 
-%\subsection{Estudios extensivos}
-
 Ponraj y Pisano hacen estudios extensivos del estado del arte del algoritmos
 utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
 \cite{pisano2000image}.
 
 La reducción del área de trabajo es estudiada por \cite{holguinpre} y
 \cite{dehghani2011method}.
+
+La reducción del ruido es estudiada por ... Naveed propone un método para
+eliminar ambos tipos de ruido \cite{naveed2012quantum}. La remoción de ruido
+cuántico también ha sido propuesta por Romualdo \cite{romualdopre}
