@@ -1,0 +1,181 @@
+\newif\ifelectronic
+\electronictrue
+
+\ifelectronic
+    \documentclass[12pt, letter, oneside]{report}
+\else
+    \documentclass[10pt, letter, twoside]{report}
+\fi 
+
+\usepackage[table]{xcolor}
+    \definecolor{lightgray}{gray}{0.9}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, chains, positioning, calc}
+\usepackage[noend]{algpseudocode}
+\usepackage{afterpage}
+\usepackage{pdflscape} % horizontal pages
+\usepackage{array} % control the size of columns in tables
+% \usepackage{rotating} % tables
+\usepackage{algorithm}
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[obeyspaces]{url}
+\usepackage{graphicx,latexsym,amssymb}
+\usepackage{subfig}
+\usepackage{pdfpages} % include external files
+\usepackage{enumerate}
+%\usepackage{times}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+    \onehalfspacing %space between lines
+% \usepackage{todonotes}
+\usepackage{multirow} % combine cells in tabular environment
+\usepackage{amsmath} % multiline equation, split
+\usepackage{minted} % fancy code hightlighting as Pygments
+    \usemintedstyle{murphy}
+    \renewcommand{\theFancyVerbLine}{
+        \sffamily\textcolor[rgb]{0.1,0.1,0.1}{\scriptsize\arabic{FancyVerbLine}}
+    }
+
+% \usepackage[none]{hyphenat} % problems with hyphenation
+
+
+% rules of code
+\usepackage{listings}
+\lstset{
+    language=Matlab,
+    basicstyle={\small\ttfamily},
+    stringstyle=\color{gray},
+    keywordstyle=\color{blue},
+    numberstyle=\color{blue},
+    numbers=left,
+    frame=single, 
+    % rulesepcolor=\color{gray},
+    showstringspaces=false
+}
+
+% change the format of title chapters --> titlesec package
+\titleformat{\chapter}[hang]
+    {\selectfont\huge}
+    {\chaptertitlename\ \Roman{chapter}.}
+    {20pt}{\huge}
+
+    % less space before chapter titles
+    \titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+
+% change the format of table of contents --> titletoc
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand\thesection{\arabic{chapter}.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\titlecontents{chapter}
+    [0pt]
+    {\addvspace{1pt}} % space above the title
+    {\chaptertitlename\ {\thecontentslabel}. }
+    {}
+    {} % title ........... page X
+    [\addvspace{1pt}] % space below the title
+
+% configure links
+\usepackage[pagebackref, bookmarks = true]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor    = blue,
+    pdfborder    = {0 0 0}, % this solution is temporal
+}
+\usepackage{bookmark}
+
+% backreferences
+\renewcommand*{\backreflastsep}{, }
+\renewcommand*{\backreftwosep}{, }
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+    \ifcase #1 %
+        \relax % or 'No citations'
+    \or
+        (página #2). % page
+    \else
+        (páginas #2). % pages
+    \fi
+}
+
+% change padding columns in tables
+\renewcommand{\tabcolsep}{3.5mm}
+% change padding rows in tables
+\renewcommand{\arraystretch}{1.5}
+
+% hack backref
+\input{hackbackref.tex}
+
+% title page
+\input{front.tex}
+
+\begin{document}
+% front page
+\pagestyle{plain} 
+\titlePage
+
+\newpage
+\pagenumbering{roman} 
+\setcounter{page}{1}
+\thispagestyle{empty}
+
+% stupid burocracia files
+\pdfbookmark[0]{Files}{Files}
+    \pdfbookmark[1]{F5}{F5}
+    \includepdf{f5.pdf}
+    \newpage
+    \pdfbookmark[1]{F6}{F6}
+    \includepdf{f6.pdf}
+
+%\newpage 
+%\thispagestyle{empty}
+%\mbox{}
+
+% dedicatoria y agradecimientos
+\input{chapters/thanks.tex}
+
+% table of contents
+\begingroup
+    \newpage
+    \pdfbookmark[0]{Contenido}{Contenido}
+    \hypersetup{linkcolor = black}
+    \tableofcontents
+\endgroup
+
+% change the format of figure captions
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\begingroup
+    \newpage
+    \pdfbookmark[0]{Figuras}{Figuras}
+    \hypersetup{linkcolor = black}
+    \listoffigures
+\endgroup
+
+% change the format of table captions
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\begingroup
+    \newpage
+    \pdfbookmark[0]{Tablas}{Tablas}
+    \hypersetup{linkcolor = black}
+    \listoftables
+\endgroup
+
+% space between paragraphs
+\setlength{\parskip}{\baselineskip}
+
+% content
+\input{chapters/introduction.tex}
+\input{chapters/summary.tex}
+\input{chapters/generalities.tex}
+\input{chapters/conceptualframework.tex}
+\input{chapters/development.tex}
+\input{chapters/results.tex}
+\input{chapters/conclusions.tex}
+
+% bibliography APA style
+\bibliographystyle{apalike} 
+\bibliography{thesis}
+
+\end{document}

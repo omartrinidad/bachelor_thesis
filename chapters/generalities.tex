@@ -1,0 +1,100 @@
+\chapter{Generalidades}
+
+% restart the count with arabic numbers
+\pagenumbering{arabic} \setcounter{page}{1}
+
+\section{Antecedentes}
+
+El cáncer de mama es un grave problema de salud pública, es una de las
+principales causas de decesos en la población femenina de Tabasco y México
+\cite{inegi, mxcancer}. Una forma de aminorar estas muertes es la detección
+temprana de este padecimiento, a su vez, el método más comúnmente empleado en
+su detección es el estudio de mamografías, tarea a cargo de radiólogos.
+
+El diagnóstico de mamogramas no es una actividad trivial debido a factores como
+la fatiga, ser una tarea repetitiva, [citas] el uso de equipos de calidad no
+estandar, aunado a que es una tarea subjetiva y por lo tanto hay un margen de
+error en la opinión de los radiólogos. Es posible incrementar el éxito de los
+diagnósticos mejorando la apariencia de la imagen, *introducir el
+preprocesamiento y escribir sobre los sistemas CAD-
+
+%Recordar escribir sobre (general purpose computers)
+
+-El estado del arte del preprocesamiento de mamografías está avanzado-, sin embargo,
+-es posible seguir contribuyendo a esta área del conocimiento-. 
+
+Es díficil acceder a imágenes médicas con propósitos de investigación debido a
+cuestiones de privacidad. Este trabajo aborda la construcción de una colección
+de mamogramas preprocesados.
+
+Algunos bancos de datos similares al que se menciona en este trabajo son el Digital
+Database for Screening Mammograpy (DDSM) de la University of South Florida
+(USF) \cite{heath2000digital} y el banco de datos MIAS MiniMammographic
+Database (mini-MIAS) \cite{sucklingmini}. Otro banco de datos más reciente es
+InBreast \cite{moreira2012inbreast}.
+
+Ambos son ampliamente usados por la comunidad de investigación sobre
+procesamiento y análisis de imágenes. El objetivo de este trabajo es crear un
+banco de datos similar a los que se mencionan arriba. El proyecto fue
+-soportado- por el hospital Dr. Juan Graham Casasús, que nos dió un lote de
+mamogramas en bruto.
+
+especificar, el problema DEL
+hospitlal --diagnóstico-- segunda opinión, decir que no se ha implementado algo
+así, pero que existe
+ 
+.... info on what to look at for image treatment 
+
+La introducción de [15] da una explicación buena de por qué son buenos los
+sistemas CAD.
+
+\section{Problema}
+\subsection{Planteamiento del problema}
+
+Se dispone de un banco de imágenes mamográficas sin procesar, el reto es mejorar
+su contraste, disminuir la cantidad de ruido.
+
+Fue necesario descubrir que algoritmos son la mejor opción para mejorar la
+calidad de la imagen.
+
+Crear una ficha electrónica por cada estudio.
+
+Los datos más relevantes son los diagnósticos BIRADS.
+
+
+\subsection{Delimitación de la investigación}
+
+decir que hay un estado inicial y uno final
+
+la extensión del trabajo incluye --- filtros y tipos de filtros aplicados, imágenes listas para etapas posteriores. 
+ --- estructura: imagen cruda, procesada y ficha
+
+a database of preprocessed mammograms, namely, mammograms without noise,
+reduction of artifacts and leveling of image quality.
+
+\subsubsection{Limitations}
+
+\subsection{Research questions}
+
+1. What is the best combination of filters?
+
+\section{Objectives}
+\subsection{General objective}
+
+Crear un banco de datos de dominio público con mamografías preprocesadas.
+
+\subsection{Specific objectives}
+
+Aplicar los algoritmos adecuados para preprocesar los mamogramas.
+Crear una ficha electrónica para cada caso.
+
+\section{Justificación}
+
+La falta de una colección pública de mamogramas mexicanos.
+
+El proyecto es útil para la comunidad científica dedicada al procesamiento y
+análisis de imágenes médicas. A largo plazo, la creación de una colección de
+este tipo beneficiaría a los radiólogos mexicanos.
+
+Una colección de tal naturaleza también es útil para entrenar a radiólogos
+novatos.

@@ -1,0 +1,13 @@
+*.log
+*.aux
+*.out
+*.toc
+*.blg
+*.bbl
+*.dvi
+*.ps
+*.lot
+*.lof
+*.brf
+ujat-model.pdf
+images
