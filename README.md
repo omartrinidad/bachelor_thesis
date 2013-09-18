@@ -17,6 +17,7 @@ DAIS format.
 # Features:
 
 - Two title pages 
+- Section of documents
 - Bibliography (and references) APA style with `\bibliographystyle{apalike}`.
 - Backreferences with `hyperref` 
 - Roman page number in ToC
@@ -26,3 +27,13 @@ DAIS format.
 - Added short captions for LoF
 - Figure numbering and LoF with the format `arabic-chapter.arabic-figure`.
 - Titles with the format `Roman-chapter.arabic-section`.
+
+Español:
+
+# Características
+
+- Dos páginas de presentación
+- Sección de documentos extras
+- Bibliografía y referencias en el estilo APA con `\bibliographystyle{apalike}`
+- Referencias cruzadas en la bibliografía
+
