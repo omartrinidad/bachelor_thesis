@@ -1,6 +1,6 @@
 # Makefile
 
-filename=sdvc2013
+filename=conais2013
 
 pdf:
 	 pdflatex ${filename}
