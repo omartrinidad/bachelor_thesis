@@ -2,13 +2,16 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-
-\usetheme{boxes}
-\usecolortheme{beaver}
-\setbeamercolor{alerted text}{fg = blue}
-
+\input{cc_beamer}
 %code
 \usepackage{listings}
+
+\mode<presentation>
+{
+    \usetheme{boxes}
+    \usecolortheme{beaver}
+    \setbeamercolor{alerted text}{fg = blue}
+}
 
 \title[]{GUI de Apoyo para el Preprocesamiento de Imágenes Mamográficas}
 \author{Omar Trinidad Gutiérrez Méndez\\Juana Canul Reich}
@@ -16,6 +19,7 @@
 \date{Septiembre de 2013}
 
 \beamertemplateshadingbackground{gray!40}{white!2}
+\beamertemplatenavigationsymbolsempty
 
 \begin{document}
 
@@ -26,8 +30,20 @@
     \centering
      \includegraphics[height=1.66cm]{images/logo-dais.png}
   \end{figure}
+  \vfill
+\begin{center}
+    \CcGroupByNcSa{0.83}{0.95ex}\\[2.5ex]
+    {\tiny\CcNote{\CcLongnameByNcSa}}
+    \vspace*{-2.5ex}
+\end{center}
+
 \end{frame}
 
+
+\begin{frame}{Contenido}
+    \transdissolve
+    \tableofcontents[subsectionsonly, pausesections]
+\end{frame}
 
 \section{Introducción}
 \subsection{Cáncer de mama}
@@ -176,7 +192,39 @@
   \end{itemize}
 \end{frame}
 
+\subsection{Interfaz gráfica}
+\begin{frame}{Interfaz gráfica}
+\transdissolve
+  \pause
+  \begin{figure}
+    \centering
+     \includegraphics[height=5.7cm]{images/main-before.png}
+  \end{figure}
+\end{frame}
 
+\begin{frame}{Interfaz gráfica}
+\transdissolve
+  \begin{figure}
+    \centering
+     \includegraphics[height=5.7cm]{images/open-file.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Interfaz gráfica}
+\transdissolve
+  \begin{figure}
+    \centering
+     \includegraphics[height=5.7cm]{images/main-after.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Interfaz gráfica}
+\transdissolve
+  \begin{figure}
+    \centering
+     \includegraphics[height=5.7cm]{images/options.png}
+  \end{figure}
+\end{frame}
 
 \section{Conclusiones}
 \begin{frame}{Conclusiones}
