@@ -5,54 +5,43 @@
 
 \section{Antecedentes}
 
-El cáncer de mama es un grave problema de salud pública, es una de las
-principales causas de decesos en la población femenina de Tabasco y México
-\cite{inegi, mxcancer}. De acuerdo con la Organización Mundial de la Salud el
-cáncer de mama ,,, \cite{cancerreport}
+El cáncer de mama es un grave problema de salud pública, de acuerdo con la
+Organización Mundial de la Salud en 2008 el cáncer de mama fue el tipo de
+cáncer más común entre las mujeres y el que más muertes provocó
+\cite{cancerreport}. Las estadísticas son similares en Tabasco y México
+\cite{inegi, mxcancer}. La detección temprana de este padecimiento es la mejor
+forma de reducir el número de decesos, a su vez, el método más comúnmente
+empleado en su detección es el estudio de mamografías, tarea a cargo de
+radiólogos.
 
-Una forma de aminorar estas muertes es la detección
-temprana de este padecimiento, a su vez, el método más comúnmente empleado en
-su detección es el estudio de mamografías, tarea a cargo de radiólogos.
+% tarea repetitiva, mejorar los de 'tarea subjetiva'
+El estudio de mamogramas no es una actividad trivial, factores como la fatiga o
+el uso de equipos de calidad no estándar influyen en la precisión del
+diagnóstico.  Aunado a que es una tarea subjetiva y por lo tanto hay un margen
+de error en la opinión de los radiólogos. Los sistemas de \textit{detección
+asistida por computadora} o \textit{diagnóstico asistido por computadora} (CAD)
+fueron desarrollados para ayudar a los radiólogos en la interpretación de
+imágenes médicas. 
 
-El diagnóstico de mamogramas no es una actividad trivial debido a factores como
-la fatiga, ser una tarea repetitiva, [citas] el uso de equipos de calidad no
-estandar, aunado a que es una tarea subjetiva y por lo tanto hay un margen de
-error en la opinión de los radiólogos. Es posible incrementar el éxito de los
-diagnósticos mejorando la apariencia de la imagen, *introducir el
-preprocesamiento y escribir sobre los sistemas CAD-
+Se han hecho estudios sobre la precisión de los sistemas CAD.
+\cite{fenton2007influence}.
 
-%Recordar escribir sobre (general purpose computers)
+La comunidad científica ha hecho un esfuerzo considerable para la detección
+automatizada de lesiones mamográficas. 
 
--El estado del arte del preprocesamiento de mamografías está avanzado-, sin embargo,
--es posible seguir contribuyendo a esta área del conocimiento-. 
+El estudio de mamografías es un problema común en las ciencias computacionales,
+sin embargo, es posible seguir contribuyendo a esta área del conocimiento.
 
 Es díficil acceder a imágenes médicas con propósitos de investigación debido a
 cuestiones de privacidad. Este trabajo aborda la construcción de una colección
-de mamogramas preprocesados.
+de mamogramas preprocesados conocida como \textit{Collection of Preprocessed
+Digital Mammograms} (CPDM).
 
-Algunos bancos de datos similares al que se menciona en este trabajo son el Digital
-Database for Screening Mammograpy (DDSM) de la University of South Florida
-(USF) \cite{heath2000digital} y el banco de datos MIAS MiniMammographic
-Database (mini-MIAS) \cite{sucklingmini}. Otro banco de datos más reciente es
-InBreast \cite{moreira2012inbreast}.
+Las imágenes fueron recolectadas durante cuatro meses en Hospital de Alta
+Especialidad Dr. Juan Graham Casasús, que permitió la recolección de un lote de
+mamogramas digitales.
 
-Ambos son ampliamente usados por la comunidad de investigación sobre
-procesamiento y análisis de imágenes. El objetivo de este trabajo es crear un
-banco de datos similar a los que se mencionan arriba. El proyecto fue
--soportado- por el hospital Dr. Juan Graham Casasús, que nos dió un lote de
-mamogramas en bruto.
-
-especificar, el problema DEL
-hospitlal --diagnóstico-- segunda opinión, decir que no se ha implementado algo
-así, pero que existe
- 
-.... info on what to look at for image treatment 
-
-La introducción de [15] da una explicación buena de por qué son buenos los
-sistemas CAD.
-
-\section{Problema}
-\subsection{Planteamiento del problema}
+\section{Planteamiento del problema}
 
 Se dispone de un banco de imágenes mamográficas sin procesar, el reto es mejorar
 su contraste, disminuir la cantidad de ruido.
@@ -64,29 +53,13 @@ Crear una ficha electrónica por cada estudio.
 
 Los datos más relevantes son los diagnósticos BIRADS.
 
+\section{Objetivos}
 
-\subsection{Delimitación de la investigación}
-
-decir que hay un estado inicial y uno final
-
-la extensión del trabajo incluye --- filtros y tipos de filtros aplicados, imágenes listas para etapas posteriores. 
- --- estructura: imagen cruda, procesada y ficha
-
-a database of preprocessed mammograms, namely, mammograms without noise,
-reduction of artifacts and leveling of image quality.
-
-\subsubsection{Limitations}
-
-\subsection{Research questions}
-
-1. What is the best combination of filters?
-
-\section{Objectives}
-\subsection{General objective}
+\subsection{Objetivo general}
 
 Crear un banco de datos de dominio público con mamografías preprocesadas.
 
-\subsection{Specific objectives}
+\subsection{Objetivos específicos}
 
 Aplicar los algoritmos adecuados para preprocesar los mamogramas.
 Crear una ficha electrónica para cada caso.
