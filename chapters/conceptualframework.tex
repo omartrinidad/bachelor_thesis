@@ -1,17 +1,31 @@
 \chapter{Marco teórico}
+\label{marco}
 
-En este capítulo se introducen conceptos e ideas utilizados en los capítulos
-posteriores. También se detallan trabajos similares.
+Desde tiempos inmemorables las imágenes han acompañado al ser humano, desde las
+pinturas rupestres en la Cueva de Altamira, pasando por los códices Mayas, los
+daguerrotipos, las cámaras \textit{Pinhole} o los rayos X de Röntgen hasta las
+imágenes del Curiosity Rover de la NASA. En este capítulo se introducen
+conceptos básicos sobre las imágenes digitales, su procesamiento y su utilidad
+en la lucha contra el cáncer de mama. También se abordan ideas expuestas en
+trabajos similares.
 
-\section{Imágenes digitales}
+\section{Breve introdución a las imágenes digitales}
 
 Un \textit{pixel} es la unidad básica de una imagen digital. Las computadoras
 representan las \textit{imágenes digitales} como un arreglo bidimensional, cada
-posición de ese arreglo almacena un valor númerico.
+posición de ese arreglo almacena valores numéricos. 
 
-La escala de grises de una imagen es cuyo \textit{modo de color} es  . Son
-imágenes \textit{en blanco y negro}. En la imagen \ref{grayscales} podemos ver
-la misma imagen en diferente escala de grises.
+% insertar aquí imagen para explicar qué es un pixel
+
+La \textit{adquisición de imágenes} es la traducción de señales de luz a esos
+valores númericos. Las imágenes \textit{a color} generalmente almacenan una
+tripleta de valores, en cambio es posible representar las imágenes \textit{en
+blanco y negro} con un sólo valor por pixel.
+
+La \textit{escala de grises} de una imagen es el número de grises. En la imagen
+\ref{grayscales} podemos ver la misma imagen en diferente escala de grises.
+
+% insertar una fórmula para explicar qué es la escala de grises
 
 \begin{figure}[h]
     \centering
@@ -36,7 +50,10 @@ la misma imagen en diferente escala de grises.
 
 \subsection{Imágenes médicas}
 
-Uno de los usos más \cite{suetens2009fundamentals}
+Las imágenes digitales son utilizadas en muchos campos de la ciencia, uno de
+los usos que se le ha dado es en la medicina; existe una gran variedad de
+imágenes médicas \cite{suetens2009fundamentals}. Los tipos de imágenes médicas
+más importantes son:
 
 \begin{description}
     \item[Tomografía computarizada] Es algo que ...
@@ -182,6 +199,7 @@ allocated bits). Therefore, 4096 levels need to be linearly scaled to 65536
 levels to achieve good image displaying [8].
 
 \section{Trabajos relacionados}
+% You organize this section by idea, and not by author or by publication
 
 % Other databases
 Existen múltiples bases de datos, públicas o privadas, utilizadas en estudios
@@ -221,8 +239,13 @@ Magic-5 \cite{bellotti2004magic} es la evolución de GPCalma (Grid Platform for
 Computer Assisted Library for MAmmography) \cite{lauria2006gpcalma}, una base
 de datos distribuida. 
 
-Otras bases de datos mencionadas en la literatura son Trueta, LLNL, Málaga,
-NDMA.
+La Universidad de Calgary ha creado un banco de imágenes conocido como AMDI
+\cite{suri2006recent} cuya función principal es ser un atlas que ayude a los
+radiólogos a encontrar casos similares cuando emitir un diagnóstico se torna
+complicado. Pero también sirve como un sistema educativo
+\cite{guliato2009indiam}.
+
+% Otras bases de datos mencionadas en la literatura son Trueta, LLNL, Málaga, NDMA.
 
 \afterpage{
     \clearpage
