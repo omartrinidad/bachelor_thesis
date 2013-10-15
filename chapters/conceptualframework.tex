@@ -11,21 +11,40 @@ trabajos similares.
 
 \section{Breve introdución a las imágenes digitales}
 
-Un \textit{pixel} es la unidad básica de una imagen digital. Las computadoras
-representan las \textit{imágenes digitales} como un arreglo bidimensional, cada
-posición de ese arreglo almacena valores numéricos. 
+Hay muchos tipos de imágenes digitales, en esta tesis nos enfocaremos en las
+mamografías. Las imágenes digitales están formadas por una unidad básica
+llamada \textit{pixel}. Una computadora representa una imagen como un arreglo
+bidimensional de píxeles, cada posición de ese arreglo almacena valores
+numéricos, ver Figura \ref{pixeles}.
 
-% insertar aquí imagen para explicar qué es un pixel
+\begin{figure}[h]
+    \centering
+    \hspace{\fill}
+    \subfloat[]{\includegraphics[height=60mm]{images/computed-tomography.png}}
+    \hspace{\fill}
+  \caption{Representación de píxeles}
+  \label{pixeles}
+\end{figure}
 
-La \textit{adquisición de imágenes} es la traducción de señales de luz a esos
-valores númericos. Las imágenes \textit{a color} generalmente almacenan una
-tripleta de valores, en cambio es posible representar las imágenes \textit{en
-blanco y negro} con un sólo valor por pixel.
+La \textit{adquisición de imágenes} es el proceso por el cual una escena se
+convierte en un arreglo de píxeles -decir algo de la luz-. Las imágenes
+\textit{a color} generalmente almacenan una tripleta de valores, en cambio es
+posible representar las imágenes \textit{en blanco y negro} con un sólo valor
+por pixel. 
 
-La \textit{escala de grises} de una imagen es el número de grises. En la imagen
-\ref{grayscales} podemos ver la misma imagen en diferente escala de grises.
+% improve the explanation / write about bits de profundidad
+La \textit{escala de grises} de una imagen es el número valores desde el blanco
+hasta el negro. En la Figura \ref{grayscales} podemos ver la misma imagen en
+diferente escala de grises y la ecuación \ref{equation:grayscale} explica las
+escalas de grises.
 
-% insertar una fórmula para explicar qué es la escala de grises
+\begin{equation}
+\label{equation:grayscale}
+    \begin{split}
+            \ell &= \frac{2^{n}}{2^{m}} \\
+            c_{x,y} &= i_{x, y} \times \ell,
+    \end{split}
+\end{equation}
 
 \begin{figure}[h]
     \centering
@@ -55,11 +74,35 @@ los usos que se le ha dado es en la medicina; existe una gran variedad de
 imágenes médicas \cite{suetens2009fundamentals}. Los tipos de imágenes médicas
 más importantes son:
 
+% cross-sectional -> cortes transversales
 \begin{description}
-    \item[Tomografía computarizada] Es algo que ...
-    \item[Resonancia magnética] Es algo que ...
-    \item[Radiografías] Es algo que ...
+    \item[Tomografía computarizada] Es la imagen generada a partir de rayos X
+    del corte transversal de alguna parte del cuerpo.
+    \item[Resonancia magnética] Es una imagen generada por la propiedades
+    magnéticas de un tejido. La teoría sobre la cual descansa la generación de
+    imágenes de este tipos está ligada a la teoría especial de la relatividad y
+    la mecánica cuántica.
+    \item[Radiografías] Es la imagen generada 
+    \item[Ultrasonidos] Es la imagen generada 
+    \item[Medicina nuclear] Es la imagen generada 
 \end{description}
+
+\begin{figure}[h]
+    \centering
+
+    \hspace{\fill}
+    \subfloat[Tomografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hfill
+    \subfloat[Resonancia magnética]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hfill
+    \subfloat[Radiografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hspace{\fill}
+
+  \caption{Diferentes imágenes médicas obtenidas de \textit{The USC-SIPI Image Database}}
+  
+  \label{medicalimages}
+\end{figure}
+
 
 El \textit{procesamiento de imágenes} es el conjunto de técnicas y algoritmos
 utilizados para mejorar la calidad de las imágenes digitales, en ocasiones a la
@@ -189,14 +232,6 @@ frequency of the intensity values that occur in an image \cite{burger2008digital
 
 Muchos estudios muestran que la ecualización de histogramas es un método
 efectivo para mejorar la calidad de las imágenes médicas.
-
-\section{Bits de profundidad}
-
-12-bit image (4096 levels of gray) displayed with 16 allocated bits appears
-dark. This happens because the maximal possible amplitude of 12-bit image for
-each pixel is 4095 and the maximal amplitude that can be displayed is 65535 (16
-allocated bits). Therefore, 4096 levels need to be linearly scaled to 65536
-levels to achieve good image displaying [8].
 
 \section{Trabajos relacionados}
 % You organize this section by idea, and not by author or by publication
