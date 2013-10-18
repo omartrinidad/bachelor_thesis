@@ -15,36 +15,62 @@ Hay muchos tipos de imágenes digitales, en esta tesis nos enfocaremos en las
 mamografías. Las imágenes digitales están formadas por una unidad básica
 llamada \textit{pixel}. Una computadora representa una imagen como un arreglo
 bidimensional de píxeles, cada posición de ese arreglo almacena valores
-numéricos, ver Figura \ref{pixeles}.
+numéricos. 
 
-\begin{figure}[h]
-    \centering
-    \hspace{\fill}
-    \subfloat[]{\includegraphics[height=60mm]{images/computed-tomography.png}}
-    \hspace{\fill}
-  \caption{Representación de píxeles}
-  \label{pixeles}
-\end{figure}
+\shorthandoff{>} % hack to combine tikZ and Spanish
+    \input{coordinates.tex}
+\shorthandon{>} 
 
 La \textit{adquisición de imágenes} es el proceso por el cual una escena se
-convierte en un arreglo de píxeles -decir algo de la luz-. Las imágenes
-\textit{a color} generalmente almacenan una tripleta de valores, en cambio es
-posible representar las imágenes \textit{en blanco y negro} con un sólo valor
-por pixel. 
+convierte en un arreglo de píxeles.
 
-% improve the explanation / write about bits de profundidad
-La \textit{escala de grises} de una imagen es el número valores desde el blanco
-hasta el negro. En la Figura \ref{grayscales} podemos ver la misma imagen en
-diferente escala de grises y la ecuación \ref{equation:grayscale} explica las
-escalas de grises.
+La conversión de 
+ver la Ecuación \ref{eq:discretized}. % Light and discrete values 
 
 \begin{equation}
-\label{equation:grayscale}
+\label{eq:discretized}
     \begin{split}
-            \ell &= \frac{2^{n}}{2^{m}} \\
-            c_{x,y} &= i_{x, y} \times \ell,
+            f(x,y) & = 
+            \begin{pmatrix}
+                f(1,1) & f(1,2) & \cdots & f(1,y) \\
+                f(2,1) & f(2,2) & \cdots & f(2,y) \\
+                \vdots & \vdots & \ddots & \vdots \\
+                f(x,1) & f(x,2) & \cdots & f(x,y) \\
+            \end{pmatrix},
     \end{split}
 \end{equation}
+
+\begin{table}
+  \caption[Escala de grises]{Escalas de grises \cite{burger2008digital}} 
+  \label{table:grayscales}
+\begin{center}
+{\small
+    \begin{tabular}{c|c|c}
+    \hline
+    {\bf Bits por pixel} & 
+    {\bf Rango} & 
+    {\bf Uso} \\
+    \hline
+    1  & 0\dots1     & Imágenes binarias: documentos, fax \\
+    8  & 0\dots255   & Universal: Fotos, escaneos, impresiones   \\
+    12 & 0\dots4095  & Alta calidad: Fotos, escaneos, impresiones   \\
+    14 & 0\dots16383 & Profesional: Fotos, escaneos, impresiones   \\
+    16 & 0\dots65535 & Altísima calidad: Medicina, astronomía   \\
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
+
+En las imágenes \textit{a color} cada pixel generalmente tiene tres canales, es
+decir, almacena una tripleta de valores, las imágenes \textit{en escala de
+grises} en cambio tienen un sólo canal por pixel. El rango de valores que puede
+tomar cada pixel es conocido como \textit{bit de profundidad}. Cada pixel puede
+almacenar $2^k$ valores diferentes que son números enteros en el rango:
+$[0\dots2^k - 1]$ donde $0$ es representa el negro y $2^k$ el blanco. La Tabla
+\ref{table:grayscales} sumariza información sobre las imágenes en escala de
+grises y en la Figura \ref{grayscales} podemos ver la misma imagen con
+diferentes niveles de grises.
 
 \begin{figure}[h]
     \centering
@@ -67,85 +93,99 @@ escalas de grises.
   \label{grayscales}
 \end{figure}
 
-\subsection{Imágenes médicas}
-
-Las imágenes digitales son utilizadas en muchos campos de la ciencia, uno de
-los usos que se le ha dado es en la medicina; existe una gran variedad de
-imágenes médicas \cite{suetens2009fundamentals}. Los tipos de imágenes médicas
-más importantes son:
-
-% cross-sectional -> cortes transversales
-\begin{description}
-    \item[Tomografía computarizada] Es la imagen generada a partir de rayos X
-    del corte transversal de alguna parte del cuerpo.
-    \item[Resonancia magnética] Es una imagen generada por la propiedades
-    magnéticas de un tejido. La teoría sobre la cual descansa la generación de
-    imágenes de este tipos está ligada a la teoría especial de la relatividad y
-    la mecánica cuántica.
-    \item[Radiografías] Es la imagen generada 
-    \item[Ultrasonidos] Es la imagen generada 
-    \item[Medicina nuclear] Es la imagen generada 
-\end{description}
+La \textit{resolución} de una imagen es otro término que hay que definir. En la
+Figura \ref{resolution} podemos ver la misma imagen con diferente resolución.
 
 \begin{figure}[h]
     \centering
 
-    \hspace{\fill}
-    \subfloat[Tomografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
-    \hfill
-    \subfloat[Resonancia magnética]{\includegraphics[height=40mm]{images/computed-tomography.png}}
-    \hfill
-    \subfloat[Radiografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
-    \hspace{\fill}
+    \subfloat[256 niveles de grises]{\includegraphics[height=40mm]{images/lenna256.jpg}}
+    \subfloat[128 niveles de grises]{\includegraphics[height=40mm]{images/lenna128.jpg}}
+    \subfloat[64 niveles de grises]{\includegraphics[height=40mm]{images/lenna64.jpg}}
+    \subfloat[32 niveles de grises]{\includegraphics[height=40mm]{images/lenna32.jpg}}
 
-  \caption{Diferentes imágenes médicas obtenidas de \textit{The USC-SIPI Image Database}}
+    \bigskip
+
+    \subfloat[16 niveles de grises]{\includegraphics[height=40mm]{images/lenna16.jpg}}
+    \subfloat[8 niveles de grises]{\includegraphics[height=40mm]{images/lenna8.jpg}}
+    \subfloat[4 niveles de grises]{\includegraphics[height=40mm]{images/lenna4.jpg}}
+    \subfloat[2 niveles de grises]{\includegraphics[height=40mm]{images/lenna2.jpg}}
+
+  \caption{Diferentes resoluciones. Imagen de Lenna obtenida de
+  \textit{The USC-SIPI Image Database}}
+  
+  \label{resolution}
+\end{figure}
+
+\subsection{Imágenes médicas}
+
+% cross-sectional -> cortes transversales
+Uno de los usos más importantes de las imágenes digitales recae en la medicina,
+existe una gran variedad de imágenes médicas. Podemos mencionar las
+\textbf{tomografías computarizadas} que son imágenes del corte transversal de
+alguna parte del cuerpo, son generadas con rayos X. Las \textbf{resonancias
+magnéticas} son generadas a partir de la propiedades magnéticas de un tejido.
+La teoría sobre la cual descansa la generación de imágenes de este tipos está
+ligada a la teoría especial de la relatividad y la mecánica cuántica. Los
+\textbf{ultrasonidos} son generados a partir de ondas acústicas, su uso no es
+exclusivo de la medicina, también son usados en la sismología, el estudio de
+grietas microscópicas o en el estudio del fondo del mar. Las imágenes generadas
+por la \textbf{medicina nuclear} se valen del uso de isótopos radioactivos. Por
+último tenemos las \textbf{radiografías} (las mamografías son radiografías)
+\cite{suetens2009fundamentals}.
+
+\begin{figure}[h]
+    \centering
+
+    \subfloat[Tomografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hspace{1cm}
+    \subfloat[Resonancia magnética]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hspace{1cm}
+    \subfloat[Ultrasonido]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+
+    \bigskip
+
+    \subfloat[Medicina nuclear]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hspace{1cm}
+    \subfloat[Radiografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+
+  \caption{Diferentes imágenes médicas obtenidas de \textit{The Cancer Imaging Archive}}
   
   \label{medicalimages}
 \end{figure}
 
+\section{Técnicas de procesamiento de imágenes}
 
 El \textit{procesamiento de imágenes} es el conjunto de técnicas y algoritmos
-utilizados para mejorar la calidad de las imágenes digitales, en ocasiones a la
-vista del ojo humano pero también para extraer valores numéricos.
+utilizados para mejorar la calidad de las imágenes digitales, al ojo humano y
+también para extraer valores numéricos.
 
-\section{DICOM}
+Los \textit{histogramas} son distribuciones de frecuencia; el histograma de una
+imagen describe la frecuencia y la intensidad de valores que ocurren en una
+imagen \cite{burger2008digital}. Está demostrado que la ecualización de
+histogramas es un método efectivo para mejorar la calidad de las imágenes
+médicas.
 
-DICOM (Digital Imaging and Communication in Medicine) es el estándar en las
-imágenes médicas, fue desarrollado por la ACR (American College of Radiology)
-en conjunto con NEMA (National Electrical Manufacturers Association)
-\cite{acrnema, pianykh2011digital}.  
+\subsection{Mamografías}
 
-Mencionar DICOMDIR aquí.
+El \textit{cáncer de mama} es un padecimiento en el que se desarrollan células
+malignas en los tejidos de la mama, estas se duplican cada 100-300 días, un
+tumor de 1 cm ha realizado alrededor de treinta duplicaciones antes de alcanzar
+este tamaño, lo que implica que el cáncer de mama tiene, como mínimo, unos
+siete años de evolución. Tomando en cuenta lo anterior se entiende la
+importancia de la detección prematura de esta enfermedad \cite{mxcancer}.
 
-\subsection{Estructura de un archivo DICOM}
-
-Los archivos DICOM son más que un formato ... Mencionar las etiquetas.
-
-\subsection{Mamogramas}
-
-A lo largo de este trabajo los términos mamografía, mastografía y mamograma
-serán usados indistintamente. Las mamografías son examenes radiográficos
-diseñados para detectar patologías en la mama, particularmente el cáncer.
-
-Mammography is radiographic examination that is designed for detecting breast
-pathology, particularly breast cancer. \cite{bushberg2011essential}
-
-% --------------------
-\subsection{Cáncer de mama} % buscar un mejor subtítulo
-
-El cáncer de mama es un padecimiento en el que se desarrollan células malignas
-en los tejidos de la mama. Nuevas células se forman cuando el cuerpo no las
-necesita. 
+%Las mamografías son exámenes radiográficos diseñados para detectar el cáncer de
+%mamá \cite{bushberg2011essential}.
 
 \subsection{Proceso de formación de una mamografía}
 
-Consideraciones técnicas avanzadas de cómo se obtiene un mamograma están fuera
-del alcance de este trabajo. Obtener una imagen mamográfica es un desafío
-debido a que la mama está constituida por tejidos similares entre sí y porque
-las lesiones buscadas por el radiólogo que indicarían la presencia de un tumor
-son pequeñas o similares al tejido normal \cite{mxcancer}. Las mamografías son
-imágenes obtenidas al exponer la mama a una dosis leve de rayos X. Los
-mastógrafos disponen de un receptor que captura ...
+Obtener una imagen mamográfica es un desafío debido a que la mama está
+constituida por tejidos similares entre sí y porque las lesiones buscadas por
+el radiólogo que indicarían la presencia de un tumor son pequeñas o similares
+al tejido normal \cite{mxcancer}. Las mamografías son imágenes obtenidas al
+exponer la mama a una dosis leve de rayos X. Los mastógrafos disponen de un
+receptor que captura ...
 
 %In screening mammography, as practiced in USA, (also in Mexico), two x-ray
 %images of each breast, in the medio lateral oblique and craniocaudal views,
@@ -189,6 +229,20 @@ interpretaciones. Las categorías de evaluación son:
     \end{enumerate}
 \end{enumerate}
 
+\section{DICOM}
+
+DICOM (Digital Imaging and Communication in Medicine) es el estándar en las
+imágenes médicas, fue desarrollado por la ACR (American College of Radiology)
+en conjunto con NEMA (National Electrical Manufacturers Association)
+\cite{acrnema, pianykh2011digital}.  
+
+Mencionar DICOMDIR aquí.
+
+\subsection{Estructura de un archivo DICOM}
+
+Los archivos DICOM son más que un formato ... Mencionar las etiquetas.
+
+
 \subsection{Sistemas CAD}
 
 Un sistema CAD (Computer Aided Diagnosis) puede mejorar el desempeño de los
@@ -221,17 +275,6 @@ tipos de ruido:
     \item señales secundarías
     \item quanta secundario indirecto
 \end{enumerate}
-
-\section{Histogramas}
-Los histogramas son distribuciones de frecuencia, 
-
-Histograms are frequency distributions, and histograms of images describe the
-frequency of the intensity values that occur in an image \cite{burger2008digital}.
-
-% --------------------
-
-Muchos estudios muestran que la ecualización de histogramas es un método
-efectivo para mejorar la calidad de las imágenes médicas.
 
 \section{Trabajos relacionados}
 % You organize this section by idea, and not by author or by publication

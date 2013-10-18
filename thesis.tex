@@ -144,7 +144,7 @@
     \tableofcontents
 \endgroup
 
-% change the format of figure captions
+% change the format of figure numeration
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \begingroup
     \newpage
@@ -153,7 +153,7 @@
     \listoffigures
 \endgroup
 
-% change the format of table captions
+% change the format of table numeration
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \begingroup
     \newpage
@@ -161,6 +161,9 @@
     \hypersetup{linkcolor = black}
     \listoftables
 \endgroup
+
+% change the format of equation numeration
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
 % space between paragraphs
 \setlength{\parskip}{\baselineskip}
