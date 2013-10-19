@@ -15,17 +15,22 @@ Hay muchos tipos de imágenes digitales, en esta tesis nos enfocaremos en las
 mamografías. Las imágenes digitales están formadas por una unidad básica
 llamada \textit{pixel}. Una computadora representa una imagen como un arreglo
 bidimensional de píxeles, cada posición de ese arreglo almacena valores
-numéricos. 
+numéricos. Con el fin de conocer la posición de un pixel las imágenes tienen un
+\textit{sistema de coordenadas}. A diferencia del sistema cartesiano, el origen
+está en la parte superior izquierda (Figura \ref{fig:coordinates}). 
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{coordinates.tex}
 \shorthandon{>} 
 
+% Improve explanation about light and discrete values 
 La \textit{adquisición de imágenes} es el proceso por el cual una escena se
-convierte en un arreglo de píxeles.
-
-La conversión de 
-ver la Ecuación \ref{eq:discretized}. % Light and discrete values 
+convierte en un arreglo de píxeles. El primer paso de este proceso se conoce
+como \textbf{muestreo} y consiste en la conversión de una distribución continua
+de luz a su representación discreta. El segundo paso es la
+\textit{cuantificación}, que consiste en la conversión a una escala de enteros.
+De acuerdo a lo anterior, una imagen también puede definirse como una función
+discreta como se muestra en la Ecuación \ref{eq:discretized}. 
 
 \begin{equation}
 \label{eq:discretized}
@@ -36,7 +41,7 @@ ver la Ecuación \ref{eq:discretized}. % Light and discrete values
                 f(2,1) & f(2,2) & \cdots & f(2,y) \\
                 \vdots & \vdots & \ddots & \vdots \\
                 f(x,1) & f(x,2) & \cdots & f(x,y) \\
-            \end{pmatrix},
+            \end{pmatrix}
     \end{split}
 \end{equation}
 
@@ -63,37 +68,39 @@ ver la Ecuación \ref{eq:discretized}. % Light and discrete values
 \end{table}
 
 En las imágenes \textit{a color} cada pixel generalmente tiene tres canales, es
-decir, almacena una tripleta de valores, las imágenes \textit{en escala de
-grises} en cambio tienen un sólo canal por pixel. El rango de valores que puede
-tomar cada pixel es conocido como \textit{bit de profundidad}. Cada pixel puede
-almacenar $2^k$ valores diferentes que son números enteros en el rango:
-$[0\dots2^k - 1]$ donde $0$ es representa el negro y $2^k$ el blanco. La Tabla
-\ref{table:grayscales} sumariza información sobre las imágenes en escala de
-grises y en la Figura \ref{grayscales} podemos ver la misma imagen con
-diferentes niveles de grises.
+decir, cada pixel almacena una tripleta de valores, las imágenes \textit{en
+escala de grises} en cambio tienen un sólo canal por pixel. El rango de valores
+que puede tomar cada pixel es conocido como \textit{bit de profundidad}. Cada
+pixel puede almacenar $2^k$ valores diferentes que son números enteros en el
+rango: $[0\dots2^k - 1]$ donde $0$ es representa el color negro y $2^k$ el color
+blanco el blanco. La Tabla \ref{table:grayscales} sumariza información sobre
+las imágenes en escala de grises y en la Figura \ref{grayscales} podemos ver la
+misma imagen con diferentes niveles de grises.
 
 \begin{figure}[h]
     \centering
 
-    \subfloat[256 niveles de grises]{\includegraphics[height=40mm]{images/lenna256.jpg}}
-    \subfloat[128 niveles de grises]{\includegraphics[height=40mm]{images/lenna128.jpg}}
-    \subfloat[64 niveles de grises]{\includegraphics[height=40mm]{images/lenna64.jpg}}
-    \subfloat[32 niveles de grises]{\includegraphics[height=40mm]{images/lenna32.jpg}}
+    \subfloat[150 dpi]{\includegraphics[height=40mm]{images/dpi150.jpg}}
+    \subfloat[125 dpi]{\includegraphics[height=40mm]{images/dpi125.jpg}}
+    \subfloat[100 dpi]{\includegraphics[height=40mm]{images/dpi100.jpg}}
+    \subfloat[75 dpi]{\includegraphics[height=40mm]{images/dpi75.jpg}}
 
     \bigskip
 
-    \subfloat[16 niveles de grises]{\includegraphics[height=40mm]{images/lenna16.jpg}}
-    \subfloat[8 niveles de grises]{\includegraphics[height=40mm]{images/lenna8.jpg}}
-    \subfloat[4 niveles de grises]{\includegraphics[height=40mm]{images/lenna4.jpg}}
-    \subfloat[2 niveles de grises]{\includegraphics[height=40mm]{images/lenna2.jpg}}
+    \subfloat[50 dpi]{\includegraphics[height=40mm]{images/dpi50.jpg}}
+    \subfloat[25 dpi]{\includegraphics[height=40mm]{images/dpi25.jpg}}
+    \subfloat[10 dpi]{\includegraphics[height=40mm]{images/dpi10.jpg}}
+    \subfloat[5 dpi]{\includegraphics[height=40mm]{images/dpi5.jpg}}
 
-  \caption{Diferentes escalas de grises. Imagen de Lenna obtenida de
-  \textit{The USC-SIPI Image Database}}
+  \caption{La imagen de Lenna obtenida de \textit{The USC-SIPI Image Database} vista con distintos distintos valores dpi}
   
   \label{grayscales}
 \end{figure}
 
-La \textit{resolución} de una imagen es otro término que hay que definir. En la
+Otros término básico para entender una imagen es la \textit{resolución}, la
+resolución de una imagen especifica las dimensiones espaciales de la imagen en
+el mundo real y es dada por el número de elementos de la imagen por medida; por
+ejemlo, \textit{puntos por pixel}, (dpi, por sus siglas en inglés). En la
 Figura \ref{resolution} podemos ver la misma imagen con diferente resolución.
 
 \begin{figure}[h]
@@ -154,18 +161,6 @@ por la \textbf{medicina nuclear} se valen del uso de isótopos radioactivos. Por
   \label{medicalimages}
 \end{figure}
 
-\section{Técnicas de procesamiento de imágenes}
-
-El \textit{procesamiento de imágenes} es el conjunto de técnicas y algoritmos
-utilizados para mejorar la calidad de las imágenes digitales, al ojo humano y
-también para extraer valores numéricos.
-
-Los \textit{histogramas} son distribuciones de frecuencia; el histograma de una
-imagen describe la frecuencia y la intensidad de valores que ocurren en una
-imagen \cite{burger2008digital}. Está demostrado que la ecualización de
-histogramas es un método efectivo para mejorar la calidad de las imágenes
-médicas.
-
 \subsection{Mamografías}
 
 El \textit{cáncer de mama} es un padecimiento en el que se desarrollan células
@@ -174,6 +169,27 @@ tumor de 1 cm ha realizado alrededor de treinta duplicaciones antes de alcanzar
 este tamaño, lo que implica que el cáncer de mama tiene, como mínimo, unos
 siete años de evolución. Tomando en cuenta lo anterior se entiende la
 importancia de la detección prematura de esta enfermedad \cite{mxcancer}.
+
+Cada estudio mamográfico tiene cuatro imágenes. Figura \ref{fig:views}.
+
+\begin{figure}[h]
+    \centering
+
+    \subfloat[Craniocaudal derecha]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hspace{1cm}
+    \subfloat[Craniocaudal izquierda]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+
+    \bigskip
+
+    \subfloat[Mediolateral oblicua]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \hspace{1cm}
+    \subfloat[Mediolateral oblicua]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+
+  \caption{Cuatro vistas en un estudio mamográfico}
+  
+  \label{fig:views}
+\end{figure}
+
 
 %Las mamografías son exámenes radiográficos diseñados para detectar el cáncer de
 %mamá \cite{bushberg2011essential}.
@@ -191,6 +207,33 @@ receptor que captura ...
 %images of each breast, in the medio lateral oblique and craniocaudal views,
 %are acquired. 
 Los estudios mamográficos más recientes son conocidos como 
+
+\subsection{Estándar DICOM}
+
+DICOM (Digital Imaging and Communication in Medicine) es el estándar en las
+imágenes médicas, fue desarrollado por la ACR (American College of Radiology)
+en conjunto con NEMA (National Electrical Manufacturers Association)
+\cite{acrnema, pianykh2011digital}.  
+
+Mencionar DICOMDIR aquí.
+
+\subsection{Estructura de un archivo DICOM}
+
+Los archivos DICOM son más que un formato ... Mencionar las etiquetas.
+
+
+
+\section{Técnicas de procesamiento de imágenes}
+
+El \textit{procesamiento de imágenes} es el conjunto de técnicas y algoritmos
+utilizados para mejorar la calidad de las imágenes digitales, al ojo humano y
+también para extraer valores numéricos.
+
+Los \textit{histogramas} son distribuciones de frecuencia; el histograma de una
+imagen describe la frecuencia y la intensidad de valores que ocurren en una
+imagen \cite{burger2008digital}. Está demostrado que la ecualización de
+histogramas es un método efectivo para mejorar la calidad de las imágenes
+médicas.
 
 \subsection{Lesiones comunes}
 
@@ -228,20 +271,6 @@ interpretaciones. Las categorías de evaluación son:
         \item Categoría 6: Proven malignancy.
     \end{enumerate}
 \end{enumerate}
-
-\section{DICOM}
-
-DICOM (Digital Imaging and Communication in Medicine) es el estándar en las
-imágenes médicas, fue desarrollado por la ACR (American College of Radiology)
-en conjunto con NEMA (National Electrical Manufacturers Association)
-\cite{acrnema, pianykh2011digital}.  
-
-Mencionar DICOMDIR aquí.
-
-\subsection{Estructura de un archivo DICOM}
-
-Los archivos DICOM son más que un formato ... Mencionar las etiquetas.
-
 
 \subsection{Sistemas CAD}
 
