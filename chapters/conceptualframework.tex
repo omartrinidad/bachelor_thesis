@@ -9,7 +9,7 @@ conceptos básicos sobre las imágenes digitales, su procesamiento y su utilidad
 en la lucha contra el cáncer de mama. También se abordan ideas expuestas en
 trabajos similares.
 
-\section{Breve introdución a las imágenes digitales}
+\section{Breve introducción a las imágenes digitales}
 
 Hay muchos tipos de imágenes digitales, en esta tesis nos enfocaremos en las
 mamografías. Las imágenes digitales están formadas por una unidad básica
@@ -31,6 +31,8 @@ de luz a su representación discreta. El segundo paso es la
 \textit{cuantificación}, que consiste en la conversión a una escala de enteros.
 De acuerdo a lo anterior, una imagen también puede definirse como una función
 discreta como se muestra en la Ecuación \ref{eq:discretized}. 
+
+% nota al pie sobre matlab o poner otra ecuación
 
 \begin{equation}
 \label{eq:discretized}
@@ -92,7 +94,8 @@ misma imagen con diferentes niveles de grises.
     \subfloat[10 dpi]{\includegraphics[height=40mm]{images/dpi10.jpg}}
     \subfloat[5 dpi]{\includegraphics[height=40mm]{images/dpi5.jpg}}
 
-  \caption{La imagen de Lenna obtenida de \textit{The USC-SIPI Image Database} vista con distintos distintos valores dpi}
+  \caption{La imagen de Lenna obtenida de \textit{The USC-SIPI Image Database}
+  vista con distintos distintos valores dpi}
   
   \label{grayscales}
 \end{figure}
@@ -124,7 +127,40 @@ Figura \ref{resolution} podemos ver la misma imagen con diferente resolución.
   \label{resolution}
 \end{figure}
 
-\subsection{Imágenes médicas}
+\section{Introducción al procesamiento de imágenes}
+
+El \textit{procesamiento de imágenes} es el conjunto de técnicas y algoritmos
+utilizados con un propósito doble: mejorar la apariencia visual de las imágenes
+al observador humano y preparar las imágenes para la medición de sus
+estructuras y características.
+
+La modificación de \textit{histogramas} es un recurso muy utilizado para evaluar
+
+Un histograma es una distribución de frecuencia, el histograma de una imagen
+describe la frecuencia y la intensidad de valores que ocurren en una imagen
+\cite{burger2008digital}. Está demostrado que la ecualización de histogramas es
+un método efectivo para mejorar la calidad de las imágenes médicas.
+
+\begin{figure}[h]
+    \centering
+
+    \subfloat[Bajo contraste\label{hist:a}]{\includegraphics[height=40mm]{images/rightskewed.jpg}}
+    \subfloat[Contraste normal\label{hist:b}]{\includegraphics[height=40mm]{images/mandril.jpg}}
+    \subfloat[Alto contraste\label{hist:c}]{\includegraphics[height=40mm]{images/leftskewed.jpg}}
+
+    \bigskip
+
+    \subfloat[Histograma de \protect\subref{hist:a}]{\includegraphics[height=40mm]{images/histogram-right.jpg}}
+    \subfloat[Histograma de \protect\subref{hist:b}]{\includegraphics[height=40mm]{images/histogram-mandril.jpg}}
+    \subfloat[Histograma de \protect\subref{hist:c}]{\includegraphics[height=40mm]{images/histogram-left.jpg}}
+
+  \caption{La misma imagen con diferentes contrastes y su respectivo histograma. En \protect\subref{hist:a} se visualiza la imagen con un bajo contraste.
+  Imagen del Mandril obtenida de \textit{The USC-SIPI Image Database}}
+  
+  \label{fig:histograms}
+\end{figure}
+
+\section{Imágenes médicas}
 
 % cross-sectional -> cortes transversales
 Uno de los usos más importantes de las imágenes digitales recae en la medicina,
@@ -221,19 +257,6 @@ Mencionar DICOMDIR aquí.
 
 Los archivos DICOM son más que un formato ... Mencionar las etiquetas.
 
-
-
-\section{Técnicas de procesamiento de imágenes}
-
-El \textit{procesamiento de imágenes} es el conjunto de técnicas y algoritmos
-utilizados para mejorar la calidad de las imágenes digitales, al ojo humano y
-también para extraer valores numéricos.
-
-Los \textit{histogramas} son distribuciones de frecuencia; el histograma de una
-imagen describe la frecuencia y la intensidad de valores que ocurren en una
-imagen \cite{burger2008digital}. Está demostrado que la ecualización de
-histogramas es un método efectivo para mejorar la calidad de las imágenes
-médicas.
 
 \subsection{Lesiones comunes}
 
