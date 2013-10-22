@@ -82,12 +82,11 @@ misma imagen con diferentes niveles de grises.
 \begin{figure}[h]
     \centering
 
-    \subfloat[150 dpi]{\includegraphics[height=40mm]{images/dpi150.jpg}}
-    \subfloat[125 dpi]{\includegraphics[height=40mm]{images/dpi125.jpg}}
-    \subfloat[100 dpi]{\includegraphics[height=40mm]{images/dpi100.jpg}}
-    \subfloat[75 dpi]{\includegraphics[height=40mm]{images/dpi75.jpg}}
-
-    \bigskip
+    %\subfloat[150 dpi]{\includegraphics[height=40mm]{images/dpi150.jpg}}
+    %\subfloat[125 dpi]{\includegraphics[height=40mm]{images/dpi125.jpg}}
+    %\subfloat[100 dpi]{\includegraphics[height=40mm]{images/dpi100.jpg}}
+    %\subfloat[75 dpi]{\includegraphics[height=40mm]{images/dpi75.jpg}}
+    %\bigskip
 
     \subfloat[50 dpi]{\includegraphics[height=40mm]{images/dpi50.jpg}}
     \subfloat[25 dpi]{\includegraphics[height=40mm]{images/dpi25.jpg}}
@@ -108,14 +107,11 @@ Figura \ref{resolution} podemos ver la misma imagen con diferente resolución.
 
 \begin{figure}[h]
     \centering
-
-    \subfloat[256 niveles de grises]{\includegraphics[height=40mm]{images/lenna256.jpg}}
-    \subfloat[128 niveles de grises]{\includegraphics[height=40mm]{images/lenna128.jpg}}
-    \subfloat[64 niveles de grises]{\includegraphics[height=40mm]{images/lenna64.jpg}}
-    \subfloat[32 niveles de grises]{\includegraphics[height=40mm]{images/lenna32.jpg}}
-
-    \bigskip
-
+    %\subfloat[256 niveles de grises]{\includegraphics[height=40mm]{images/lenna256.jpg}}
+    %\subfloat[128 niveles de grises]{\includegraphics[height=40mm]{images/lenna128.jpg}}
+    %\subfloat[64 niveles de grises]{\includegraphics[height=40mm]{images/lenna64.jpg}}
+    %\subfloat[32 niveles de grises]{\includegraphics[height=40mm]{images/lenna32.jpg}}
+    %\bigskip
     \subfloat[16 niveles de grises]{\includegraphics[height=40mm]{images/lenna16.jpg}}
     \subfloat[8 niveles de grises]{\includegraphics[height=40mm]{images/lenna8.jpg}}
     \subfloat[4 niveles de grises]{\includegraphics[height=40mm]{images/lenna4.jpg}}
@@ -169,9 +165,10 @@ existe una gran variedad de imágenes médicas. Podemos mencionar las
 alguna parte del cuerpo, son generadas con rayos X. Las \textbf{resonancias
 magnéticas} son generadas a partir de la propiedades magnéticas de un tejido.
 La teoría sobre la cual descansa la generación de imágenes de este tipos está
-ligada a la teoría especial de la relatividad y la mecánica cuántica. Los
-\textbf{ultrasonidos} son generados a partir de ondas acústicas, su uso no es
-exclusivo de la medicina, también son usados en la sismología, el estudio de
+ligada a la teoría especial de la relatividad y la mecánica cuántica.
+
+Los \textbf{ultrasonidos} son generados a partir de ondas acústicas, su uso no
+es exclusivo de la medicina, también son usados en la sismología, el estudio de
 grietas microscópicas o en el estudio del fondo del mar. Las imágenes generadas
 por la \textbf{medicina nuclear} se valen del uso de isótopos radioactivos. Por
 último tenemos las \textbf{radiografías} (las mamografías son radiografías)
@@ -186,16 +183,10 @@ por la \textbf{medicina nuclear} se valen del uso de isótopos radioactivos. Por
     \hspace{1cm}
     \subfloat[Ultrasonido]{\includegraphics[height=40mm]{images/computed-tomography.png}}
 
-    \bigskip
-
-    \subfloat[Medicina nuclear]{\includegraphics[height=40mm]{images/computed-tomography.png}}
-    \hspace{1cm}
-    \subfloat[Radiografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
-
-  \caption[Imágenes médicas]{Diferentes imágenes médicas obtenidas de \textit{The Cancer Imaging Archive}}
+  \caption[Algunos tipos de imágenes médicas]{Diferentes imágenes médicas
+  obtenidas de \textit{The Cancer Imaging Archive}}
   
-  \label{medicalimages}
-\end{figure}
+  \label{medicalimages} \end{figure}
 
 \subsection{Mamografías}
 
@@ -206,29 +197,38 @@ este tamaño, lo que implica que el cáncer de mama tiene, como mínimo, unos
 siete años de evolución. Tomando en cuenta lo anterior se entiende la
 importancia de la detección prematura de esta enfermedad \cite{mxcancer}.
 
-Cada estudio mamográfico tiene cuatro imágenes. Figura \ref{fig:views}.
+Cada estudio mamográfico tiene dos proyecciones o vistas por cada mama. La
+proyección craniocaudal derecha (R-CC) e izquierda (L-CC) y la proyección
+mediolateral oblicua derecha (R-MLO) e izquierda (L-MLO). Estas cuatro
+proyecciones se pueden ver en la Figura \ref{fig:views}. Las proyecciones CC se
+obtienen de arriba para abajo y las proyecciones MLO de afuera para adentro.
 
 \begin{figure}[h]
     \centering
 
-    \subfloat[Craniocaudal derecha]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[RCC]{\includegraphics[height=45mm]{images/views/rcc.jpg}}
     \hspace{1cm}
-    \subfloat[Craniocaudal izquierda]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[LCC]{\includegraphics[height=45mm]{images/views/lcc.jpg}}
 
     \bigskip
 
-    \subfloat[Mediolateral oblicua]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[RMLO]{\includegraphics[height=45mm]{images/views/rmlo.jpg}}
     \hspace{1cm}
-    \subfloat[Mediolateral oblicua]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[LMLO]{\includegraphics[height=45mm]{images/views/lmlo.jpg}}
 
-  \caption{Cuatro vistas en un estudio mamográfico}
+  \caption{Cuatro proyecciones en un estudio mamográfico}
   
   \label{fig:views}
 \end{figure}
 
-
-%Las mamografías son exámenes radiográficos diseñados para detectar el cáncer de
-%mamá \cite{bushberg2011essential}.
+Actualmente se utilizan dos tipos de mamografías: las analógicas, mejor
+identificadas como \textit{placas} y las digitales\footnote{Las mamografías
+analógicas son conocidas como \textit{Screen-Film Mammography} (SFM) y las
+digitales como \textit{Full-Field Digital Mammography} (FFDM), el nombre de los
+equipos utilizados para generar estas imágenes es homónimo.}. Las tradicionales
+mamografías analógicas están reemplazando por las mamografías digitales. El uso
+de estas últimas representa una mejora en el proceso de adquisición de la
+imagen, su almacenamiento y visualización \cite{pisano2000current}. 
 
 \subsection{Proceso de formación de una mamografía}
 
@@ -237,25 +237,23 @@ constituida por tejidos similares entre sí y porque las lesiones buscadas por
 el radiólogo que indicarían la presencia de un tumor son pequeñas o similares
 al tejido normal \cite{mxcancer}. Las mamografías son imágenes obtenidas al
 exponer la mama a una dosis leve de rayos X. Los mastógrafos disponen de un
-receptor que captura ...
-
-%In screening mammography, as practiced in USA, (also in Mexico), two x-ray
-%images of each breast, in the medio lateral oblique and craniocaudal views,
-%are acquired. 
-Los estudios mamográficos más recientes son conocidos como 
+receptor que captura.
 
 \subsection{Estándar DICOM}
 
-DICOM (Digital Imaging and Communication in Medicine) es el estándar en las
-imágenes médicas, fue desarrollado por la ACR (American College of Radiology)
-en conjunto con NEMA (National Electrical Manufacturers Association)
-\cite{acrnema, pianykh2011digital}.  
+DICOM\footnote{Digital Imaging and COmmunication in Medicine} es el estándar en
+las imágenes médicas digitales, fue desarrollado por el Colegio Americano de
+Radiología (ACR\footnote{American College of Radiology}, por sus siglas en
+inglés) en conjunto con la Asociación Nacional de Fabricantes Eléctricos
+(NEMA\footnote{National Electrical Manufacturers Association}, por sus siglas
+en inglés) \cite{national1996digital}. DICOM opera la adquisición de la imagen,
+su transferencia, almacenamiento y visualización \cite{pianykh2011digital}.  
 
-Mencionar DICOMDIR aquí.
+Los dispositivos como los discos compactos organizan su contenido. DICOMDIR
+almacena la información acerca de los archivos DICOM en un determinado.
 
-\subsection{Estructura de un archivo DICOM}
-
-Los archivos DICOM son más que un formato ... Mencionar las etiquetas.
+% \subsection{Estructura de un archivo DICOM}
+% Mencionar las etiquetas, metainformación, una tabla con 'algunas' etiquetas
 
 
 \subsection{Lesiones comunes}
