@@ -249,31 +249,40 @@ inglés) en conjunto con la Asociación Nacional de Fabricantes Eléctricos
 en inglés) \cite{national1996digital}. DICOM opera la adquisición de la imagen,
 su transferencia, almacenamiento y visualización \cite{pianykh2011digital}.  
 
-Los dispositivos como los discos compactos organizan su contenido. DICOMDIR
-almacena la información acerca de los archivos DICOM en un determinado.
+Los dispositivos extraíbles como los discos compactos organizan su contenido a
+través de un archivo llamado DICOMDIR que almacena la información acerca de los
+archivos DICOM en un determinado. DICOMDIR juega el rol de una pequeña base de
+datos de archivos DICOM o un índice de archivos DICOM, colocado en la raíz de
+un dispositivo extraíble. DICOMDIR organiza todos los datos del directorio en 
+cuatro niveles: Paciente, Estudio, Serie e Imagen.
 
-% \subsection{Estructura de un archivo DICOM}
-% Mencionar las etiquetas, metainformación, una tabla con 'algunas' etiquetas
+Los archivos DICOM también contienen metainformación organizada en forma de
+etiquetas, en la Tabla \ref{dicom:tags} podemos ver algunas de las etiquetas
+principales de un archivo DICOM. 
 
+\begin{table}
+  \caption[Etiquetas DICOM]{Algunas etiquetas DICOM} 
+  \label{dicom:tags}
+\begin{center}
+{\small
+    \begin{tabular}{c|c}
+    \hline
+    {\bf Etiqueta} & 
+    {\bf Descripción} \\
+    \hline
+    (0000, 0000) & Imágenes binarias: documentos, fax \\
+    (0000, 0000) & Imágenes binarias: documentos, fax \\
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
 
-\subsection{Lesiones comunes}
+\subsection{BIRADS}
 
-%Mammographic features characteristic of breast cancer are masses, particularly
-%ones with irregular or “spiculated” margins; clusters of microcalcifications
-%(tiny deposits of calcium); and architectural distortions of breast structures. 
-
-Una \textit{masa} es una estructura tridimensional usualmente visible en dos
-proyecciones ortogonales. Las {asimetrías} --
-
-\textit{Calcificaciones} y \textit{microcalcificaciones}, que son depósitos de calcio.
-
-\textit{Distorsión de la arquitectura}, 
-
-\subsection{BI-RADS}
-
-BI-RADS (Breast Imaging Reporting and Data System Atlas)
+BIRADS\footnote{Breast Imaging Reporting and Data System Atlas}
 \cite{reston2003birads} provee la terminología básica y un sistema de
-clasificación para los estudios mamográficas. Fue creado por la ACR para
+clasificación para los estudios mamográficas. Fue creado por el ACR para
 estandarizar los reportes de los radiólogos y reducir la confusión en las
 interpretaciones. Las categorías de evaluación son:
 
@@ -292,6 +301,19 @@ interpretaciones. Las categorías de evaluación son:
         \item Categoría 6: Proven malignancy.
     \end{enumerate}
 \end{enumerate}
+
+Entre las lesiones descritas en la cuarta edición de BIRADS tenemos las
+\textit{masas}, las \textit{asimetrías}, las \textit{asimetrías focales}, las
+\textit{asimetrías globales}, las \textit{calcificaciones} y las
+\textit{microcalcificaciones}.
+
+Una \textit{masa} es una estructura tridimensional usualmente visible en dos
+proyecciones ortogonales. Las \textit{asimetrías} son ..
+
+\textit{Calcificaciones} y \textit{microcalcificaciones}, que son depósitos de
+calcio.
+
+\textit{Distorsión de la arquitectura}, 
 
 \subsection{Sistemas CAD}
 
