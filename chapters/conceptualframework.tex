@@ -318,14 +318,27 @@ la cuarta edición de BIRADS tenemos las \textit{masas}, las
 
 Una masa es una estructura tridimensional usualmente visible en dos
 proyecciones ortogonales. Las calcificaciones y microcalcificaciones son
-depósitos de calcio. Estas últimas tres son lesiones que no son masas.
+depósitos de calcio. Las asimetrías y la distorsión de la arquitectura no son
+masas.
 
-\subsection{Sistemas CAD}
+\subsection{Sistemas CAD y preprocesamiento}
 
-Un sistema CAD (Computer Aided Diagnosis) puede mejorar el desempeño de los
-radiólogos en la predicción del cáncer de mama.
+Un sistema CAD\textit{Computer-Aided Diagnosis} puede mejorar el desempeño de
+los radiólogos en la predicción del cáncer de mama. Varios sistemas de este
+tipo han sido desarrollados por la comunidad científica, para la detección de
+masas \cite{bellotti2006completely} o clusters de microcalcificaciones
+\cite{yu2000cad}. Sin embargo, sigue siendo un problema abierto, sobre todo con 
+la aparición de bases de datos de mamografías digitales.
 
-\subsection{Preprocesamiento}
+La mayoría de los sistemas CAD actuales fueron entrenados con imágenes
+digitalizadas. 
+
+Las etapas para la construcción de un sistema CAD generalmente son:
+
+\shorthandoff{>} % hack to combine tikZ and Spanish
+    \input{cadflowchart.tex}
+\shorthandon{>} 
+
 El preprocesamiento es la etapa previa al procesamiento de imágenes \textit{per
 se}, el principal objetivo de esta etapa es mejorar la calidad de la imagen
 para que quede lista para su posterior procesamiento \cite{ponraj2011survey}
