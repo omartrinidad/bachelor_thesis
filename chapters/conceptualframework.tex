@@ -247,18 +247,17 @@ Radiología (ACR\footnote{American College of Radiology}, por sus siglas en
 inglés) en conjunto con la Asociación Nacional de Fabricantes Eléctricos
 (NEMA\footnote{National Electrical Manufacturers Association}, por sus siglas
 en inglés) \cite{national1996digital}. DICOM opera la adquisición de la imagen,
-su transferencia, almacenamiento y visualización \cite{pianykh2011digital}.  
+su transferencia, almacenamiento y visualización. 
 
 Los dispositivos extraíbles como los discos compactos organizan su contenido a
-través de un archivo llamado DICOMDIR que almacena la información acerca de los
-archivos DICOM en un determinado. DICOMDIR juega el rol de una pequeña base de
+través de un archivo llamado DICOMDIR que juega el rol de una pequeña base de
 datos de archivos DICOM o un índice de archivos DICOM, colocado en la raíz de
 un dispositivo extraíble. DICOMDIR organiza todos los datos del directorio en 
-cuatro niveles: Paciente, Estudio, Serie e Imagen.
+cuatro niveles: Paciente, Estudio, Serie e Imagen \cite{pianykh2011digital}.  
 
-Los archivos DICOM también contienen metainformación organizada en forma de
-etiquetas, en la Tabla \ref{dicom:tags} podemos ver algunas de las etiquetas
-principales de un archivo DICOM. 
+Los archivos DICOM contienen metainformación organizada en forma de etiquetas,
+en la Tabla \ref{dicom:tags} podemos ver algunas de las etiquetas principales
+de un archivo DICOM. 
 
 \begin{table}
   \caption[Etiquetas DICOM]{Algunas etiquetas DICOM} 
@@ -280,40 +279,46 @@ principales de un archivo DICOM.
 
 \subsection{BIRADS}
 
-BIRADS\footnote{Breast Imaging Reporting and Data System Atlas}
-\cite{reston2003birads} provee la terminología básica y un sistema de
-clasificación para los estudios mamográficas. Fue creado por el ACR para
-estandarizar los reportes de los radiólogos y reducir la confusión en las
-interpretaciones. Las categorías de evaluación son:
+Como ya se mencionó antes, el diagnóstico de las mastografías lo llevan a cabo
+radiólogos, sin embargo, el tratamiento está a cargo de médicos especializados.
+Para evitar confusiones que puedan influir en el tratamiento el ACR desarrolló
+un léxico estandarizado llamado BIRADS\footnote{Breast Imaging Reporting and
+Data System Atlas} \cite{reston2003birads}, que provee la terminología básica
+y un sistema de clasificación para los estudios mamográficos. En la Tabla
+\ref{birads} podemos ver un resumen de las categorías de evaluación.
 
-\begin{enumerate}[a)]
-    \item Categoría incompleta
-    \begin{enumerate}[i.]
-        \item Categoría 0: Necesita evaluación adicional y/o más mamografías para comparar.
-    \end{enumerate}
-    \item Mammographic assessment complete:
-    \begin{enumerate}[i.]
-        \item Categoría 1: Negativo.
-        \item Categoría 2: Hallazgo(s) benigno(s).
-        \item Categoría 3: Hallazgo(s) benignos(s) probable(s).
-        \item Categoría 4: Anormalidades sospechosas.
-        \item Categoría 5: Highly suggestive of malignancy.         
-        \item Categoría 6: Proven malignancy.
-    \end{enumerate}
-\end{enumerate}
+\begin{table}
+  \caption[Categorías de evaluación BIRADS]{Categorías de evaluación BIRADS}
+  \label{birads}
+\begin{center}
+{\small
+    \begin{tabular}{c|c}
+    \hline
+    {\bf Categoría} & 
+    {\bf Descripción} \\
+    \hline
+    0 & Necesita evalucación adicional y/o más mamografías para comparar\\
+    1 & Negativo\\
+    2 & Hallazgo(s) benigno(s)\\
+    3 & Hallazgo(s) benigno(s) probable(s). Se sugiere un seguimiento corto\\
+    4 & Anormalidades sospechosas. Biopsia debe ser considerada \\
+    5 & Altamente sugestivo de malignidad. Acciones apropiadas se deben tomar\\
+    6 & Malignidad probada\\
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
 
-Entre las lesiones descritas en la cuarta edición de BIRADS tenemos las
-\textit{masas}, las \textit{asimetrías}, las \textit{asimetrías focales}, las
-\textit{asimetrías globales}, las \textit{calcificaciones} y las
-\textit{microcalcificaciones}.
+BIRADS también clasifica los tipos de lesiones, entre las lesiones descritas en
+la cuarta edición de BIRADS tenemos las \textit{masas}, las
+\textit{calcificaciones}, las \textit{microcalcificaciones}, las
+\textit{asimetrías focales}, las \textit{asimetrías globales} y la
+\textit{distorsión de la arquitectura}. 
 
-Una \textit{masa} es una estructura tridimensional usualmente visible en dos
-proyecciones ortogonales. Las \textit{asimetrías} son ..
-
-\textit{Calcificaciones} y \textit{microcalcificaciones}, que son depósitos de
-calcio.
-
-\textit{Distorsión de la arquitectura}, 
+Una masa es una estructura tridimensional usualmente visible en dos
+proyecciones ortogonales. Las calcificaciones y microcalcificaciones son
+depósitos de calcio. Estas últimas tres son lesiones que no son masas.
 
 \subsection{Sistemas CAD}
 
