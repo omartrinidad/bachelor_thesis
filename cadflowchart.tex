@@ -50,15 +50,13 @@
 % Use join to connect a node to the previous one a
 
 \node [proc, fill=brown!30, ultra thick] (p1) {Preprocesamiento};
-\node [proc, fill=blue!30, join] (p2) {Segmentación};
+\node [proc, fill=blue!30, join] (p2) {Selección de regiones de interés};
 \node [proc, fill=green!30, join] (p3) {Extracción de características};
-\node [proc, fill=red!30, join] (p4) {Selección de características};
-\node [proc, fill=purple!30, join] (p5) {Clasificación};
-
+\node [proc, fill=purple!30, join] (p4) {Aprendizaje supervisado};
 }
 \end{tikzpicture}
 \end{center}
   \caption[Etapas para la construcción de un sistema CAD]
   {Etapas para la construcción de un sistema CAD \cite{bozek2009survey}} 
-  \label{cadflowchart} 
+  \label{fig:cadflowchart} 
 \end{figure}

@@ -323,45 +323,28 @@ masas.
 
 \subsection{Sistemas CAD y preprocesamiento}
 
-Un sistema CAD\footnote{Computer-Aided Diagnosis} puede mejorar el desempeño de
-los radiólogos en la predicción del cáncer de mama. Varios sistemas de este
-tipo han sido desarrollados por la comunidad científica, para la detección de
-masas \cite{bellotti2006completely} o clusters de microcalcificaciones
-\cite{yu2000cad}. Sin embargo, sigue siendo un problema abierto, sobre todo con
-la aparición de bases de datos de mamografías digitales. 
+Un sistema CAD puede mejorar el desempeño de los radiólogos en la predicción
+del cáncer de mama. Varios sistemas de este tipo han sido desarrollados por la
+comunidad científica, para la detección de masas \cite{bellotti2006completely}
+o clusters de microcalcificaciones \cite{yu2000cad}. Sin embargo, sigue siendo
+un problema abierto, sobre todo con la aparición de bases de datos de
+mamografías digitales. 
 
-Las etapas para la construcción de un sistema CAD generalmente son:
+Las etapas pueden variar, pero la construcción de un sistema CAD generalmente
+son: preprocesamiento, selección de regiones de interés (ROI\footnote{Regions of
+Interest}), extracción de características y algún procedimiento de aprendizaje
+supervisado, ver la Figura \ref{fig:cadflowchart}.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{cadflowchart.tex}
 \shorthandon{>} 
 
-El preprocesamiento es la etapa previa al procesamiento de imágenes \textit{per
-se}, el principal objetivo de esta etapa es mejorar la calidad de la imagen
-para que quede lista para su posterior procesamiento \cite{ponraj2011survey}
-que muchas veces son algoritmos para un sistema CAD (Computer Aided Diagnosis).
-El preprocesamiento también se utiliza para mejorar la visibilidad del
+En este trabajo se aborda la primera etapa en la construcción de un sistema
+CAD. El \textbf{preprocesamiento} es la etapa previa al procesamiento de
+imágenes \textit{per se}, el principal objetivo de esta etapa es mejorar la
+calidad de la imagen para que quede lista para su posterior procesamiento
+\cite{ponraj2011survey}, también se utiliza para mejorar la visibilidad del
 observador \cite{rahmati2010new}. 
-
-\subsubsection{Preprocesamiento de mamografías}
-El preprocesamiento de mamografías es especial porque no es como los otros tipos
-de preprocesamiento, hay preprocesamiento específico para mamogramas.
-
-\section{Ruido}
-
-\subsection{Ruido en mamografías}
-
-\cite{hashimoto2008practical}
-Noise in digital mammographies (Practical digital mammography by Beverly
-Hashimoto) De acuerdo a Hachimoto en las imágenes mamográficas tenemos cuatro
-tipos de ruido:
-
-\begin{enumerate}
-    \item Ruido cuántico.
-    \item fixed electronic
-    \item señales secundarías
-    \item quanta secundario indirecto
-\end{enumerate}
 
 \section{Trabajos relacionados}
 % You organize this section by idea, and not by author or by publication
@@ -499,15 +482,25 @@ fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
 de FCLAHE.
 
 % =========[ denoising ]===========
+De acuerdo a Hashimoto \cite{hashimoto2008practical} en las imágenes
+mamográficas tenemos cuatro tipos de ruido:
+
+\begin{enumerate}
+    \item Ruido cuántico.
+    \item fixed electronic
+    \item señales secundarías
+    \item quanta secundario indirecto
+\end{enumerate}
 
 Dos Santos \cite{romualdopre}, \cite{dos2009mammography} propone un método para
-reducir el ruido quantum/Poisson, el ruido con más presencia en imágenes mamográficas.
-Utiliza la transformada de \textit{Anscombe} en conjunto con el filtro de
-Wiener para reducir el ruido, además del filtro Inverso del Dominio de la
-Frecuencia para mejorar las imágenes. Dado que el ruido cuántico puede ser
-descrito por la distribución de Poisson se utiliza la transformada de Anscombe
-para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
-el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD. 
+reducir el ruido quantum/Poisson, el ruido con más presencia en imágenes
+mamográficas. Utiliza la transformada de \textit{Anscombe} en conjunto con el
+filtro de Wiener para reducir el ruido, además del filtro Inverso del Dominio
+de la Frecuencia para mejorar las imágenes. Dado que el ruido cuántico puede
+ser descrito por la distribución de Poisson se utiliza la transformada de
+Anscombe para convertir este tipo de ruido en ruido aditivo que es eliminado
+utilizando el filtrado Wiener. Su método fue evaluado utilizando un sistema
+CAD. 
 
 Naveed \cite{naveed2012quantum} propone un método de remoción de ruido dividido
 en dos módulos, detección y filtrado de ruido. La detección se lleva a cabo
