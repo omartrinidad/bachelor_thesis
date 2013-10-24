@@ -321,19 +321,21 @@ proyecciones ortogonales. Las calcificaciones y microcalcificaciones son
 depósitos de calcio. Las asimetrías y la distorsión de la arquitectura no son
 masas.
 
-\subsection{Sistemas CAD y preprocesamiento}
+\subsection{Sistemas CAD}
 
 Un sistema CAD puede mejorar el desempeño de los radiólogos en la predicción
 del cáncer de mama. Varios sistemas de este tipo han sido desarrollados por la
 comunidad científica, para la detección de masas \cite{bellotti2006completely}
 o clusters de microcalcificaciones \cite{yu2000cad}. Sin embargo, sigue siendo
 un problema abierto, sobre todo con la aparición de bases de datos de
-mamografías digitales. 
+mamografías digitales.
+
+\cite{bozek2009survey}
 
 Las etapas pueden variar, pero la construcción de un sistema CAD generalmente
-son: preprocesamiento, selección de regiones de interés (ROI\footnote{Regions of
-Interest}), extracción de características y algún procedimiento de aprendizaje
-supervisado, ver la Figura \ref{fig:cadflowchart}.
+son: preprocesamiento, selección de regiones de interés (ROI\footnote{Regions
+of Interest}), extracción de características y finalmente un algoritmo de
+aprendizaje supervisado, ver la Figura \ref{fig:cadflowchart}.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{cadflowchart.tex}
@@ -346,103 +348,13 @@ calidad de la imagen para que quede lista para su posterior procesamiento
 \cite{ponraj2011survey}, también se utiliza para mejorar la visibilidad del
 observador \cite{rahmati2010new}. 
 
-\section{Trabajos relacionados}
-% You organize this section by idea, and not by author or by publication
-
-% Other databases
-Existen múltiples bases de datos, públicas o privadas, utilizadas en estudios
-relacionados a la detección del cáncer de mama. Las características de ellas
-son diferentes. En la Tabla \ref{table:overviewdb} se muestran algunas de ellas.
-
-MIAS \cite{sucklingmini} aunque es el recurso más viejo, sigue siendo
-ampliamente utilizado. MIAS no tiene soporte actualmente. DDSM
-\cite{heath2000digital} es el recurso más utilizado. Es importante notar la
-presencia de dos recursos latinoamericanos, más específicamente, brasileños.
-
-IRMA (Image Retrieval in Medical Applications) is a extensive project
-\cite{doi:10.1117/12.770325} ...
-
-MIRaCLe (Mammography Image reading for Radiologists and Computers Learning
-Database) es un repositorio dinámico para el entrenamiento y evaluación de
-computadoras y radiólogos \cite{antoniou2009web}. MIRaCLe cuenta con un sistema
-web que provee dos servicios: \textit{Software de Clasificación y Evaluación},
-donde el usuario puede realizar consultas, visualizar y escoger diferentes
-imágenes para probar algoritmos CAD y el \textit{Evaluación de Radiólogos}, que
-provee funcionalidades para evaluar el desempeño de un radiólogo.
-
-MIDAS (Mammographic Image Database for Automated Analysis) es una base de datos
-con muestras tomadas entre la población femenina de Brasil
-\cite{fernandes2012midas}. De esta base de datos destaca la inclusión de
-secuencias de datos genómicas de los pacientes y su apertura a la colaboración
-externa, -brand new inovation-. MIDAS cuenta también con un sistema web.
-
-BancoWeb es una base de datos creada por LAPIMO (Laboratório de Análise e
-Processamento de Imagens Médicas e Odontológicas) \cite{matheus2011online}.
-
-INbreast: \cite{moreira2012inbreast}, es una base de datos , los autores
-sugieren características esenciales de una base de datos que conllevaría a la
-creación de sistemas CAD.
-
-Magic-5 \cite{bellotti2004magic} es la evolución de GPCalma (Grid Platform for
-Computer Assisted Library for MAmmography) \cite{lauria2006gpcalma}, una base
-de datos distribuida. 
-
-La Universidad de Calgary ha creado un banco de imágenes conocido como AMDI
-\cite{suri2006recent} cuya función principal es ser un atlas que ayude a los
-radiólogos a encontrar casos similares cuando emitir un diagnóstico se torna
-complicado. Pero también sirve como un sistema educativo
-\cite{guliato2009indiam}.
-
-% Otras bases de datos mencionadas en la literatura son Trueta, LLNL, Málaga, NDMA.
-
-\afterpage{
-    \clearpage
-\begin{landscape}
-%\begin{sidewaystable}
-\begin{table}[h]
-  \caption{Algunas bases de datos de mamografías digitales} 
-  \label{table:overviewdb}
-\begin{center}
-{\small
-    \rowcolors{1}{}{lightgray} 
-    \begin{tabular}
-    {c| >{\centering\arraybackslash}m{1in} | >{\centering\arraybackslash}m{1in}|c| 
-    >{\centering\arraybackslash}m{0.6in} | >{\centering\arraybackslash}m{0.6in} |c|c|c}
-    \hline
-
-    {\bf Nombre} & 
-    {\bf Número de casos} & 
-    {\bf Número de imágenes} & 
-    {\bf Proyecciones} & 
-    {\bf Tipo de archivo} & 
-    {\bf Lugar de origen} & 
-    {\bf Año} &
-    {\bf ACR} & 
-    {\bf BIRADS} \\
-    \hline
-    mini-MIAS & 161  & 322    & MLO       & PGM   & Reino Unido    & 1994 & yes & yes \\[4ex] 
-    DDSM      & 2620 & 10480  & MLO \& CC & LJPEG & Estados Unidos & 1999 & yes & yes \\[4ex] 
-    BancoWeb  & 320  & 1'400  & MLO \& CC & TIFF  & Brasil         & 1999 & yes & yes \\[4ex] 
-    INbreast  & 115  & 410    & MLO \& CC & DICOM & Portugal       & 2012 & yes & yes \\[4ex] 
-    MIDAS     & 100  & 600    & MLO       & DICOM & Brasil         & 2011 & yes & yes \\[4ex] 
-    IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\[4ex] 
-    MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\[4ex] 
-Magic-5 (GPCalma) & 967  & 3369  & MLO \& CC & DICOM & Italia      & 2002 & no  & yes \\[4ex] 
-    \hline
-    \end{tabular}
-}
-\end{center}
-\end{table}
-%\end{sidewaystable}
-\end{landscape}
-} % end of afterpage
-
+\section{Preprocesamiento de mamografías}
 % Preprocessing related works
-Una gran cantidad de trabajos de investigación se han desarrollado en el
-campo del preprocesamiento de imágenes mamográficas. En esta sección se revisan
-varios enfoques expuestos en la literatura existente, algunos de los cuales se
-rescataron en este trabajo para crear un método híbrido que combina las
-fortalezas de estos. 
+
+Una gran cantidad de trabajos de investigación se han desarrollado en el campo
+del preprocesamiento de imágenes mamográficas. En esta sección hacemos una
+revisión de varios enfoques, algunos de los cuales se rescataron para crear un
+método híbrido que combina las fortalezas de estos. 
 
 El preprocesamiento de mamogramas engloba algunas tareas también válidas en
 el preprocesamiento de otro tipo de imágenes médicas como remoción de ruido,
@@ -520,4 +432,94 @@ utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
 La reducción del área de trabajo es estudiada por \cite{holguinpre} y
 \cite{dehghani2011method}.
 
+\section{Bases de datos similares}
+% You organize this section by idea, and not by author or by publication
+
+% Other databases
+Existen múltiples bases de datos, públicas o privadas, utilizadas en estudios
+relacionados a la detección del cáncer de mama. Las características de ellas
+son diferentes. En la Tabla \ref{table:overviewdb} se muestran algunas de ellas.
+
+\afterpage{
+    \clearpage
+\begin{landscape}
+%\begin{sidewaystable}
+\begin{table}[h]
+  \caption{Algunas bases de datos de mamografías digitales} 
+  \label{table:overviewdb}
+\begin{center}
+{\small
+    \rowcolors{1}{}{lightgray} 
+    \begin{tabular}
+    {c| >{\centering\arraybackslash}m{1in} | >{\centering\arraybackslash}m{1in}|c| 
+    >{\centering\arraybackslash}m{0.6in} | >{\centering\arraybackslash}m{0.6in} |c|c|c}
+    \hline
+
+    {\bf Nombre} & 
+    {\bf Número de casos} & 
+    {\bf Número de imágenes} & 
+    {\bf Proyecciones} & 
+    {\bf Tipo de archivo} & 
+    {\bf Lugar de origen} & 
+    {\bf Año} &
+    {\bf ACR} & 
+    {\bf BIRADS} \\
+    \hline
+    mini-MIAS & 161  & 322    & MLO       & PGM   & Reino Unido    & 1994 & yes & yes \\[4ex] 
+    DDSM      & 2620 & 10480  & MLO \& CC & LJPEG & Estados Unidos & 1999 & yes & yes \\[4ex] 
+    BancoWeb  & 320  & 1'400  & MLO \& CC & TIFF  & Brasil         & 1999 & yes & yes \\[4ex] 
+    INbreast  & 115  & 410    & MLO \& CC & DICOM & Portugal       & 2012 & yes & yes \\[4ex] 
+    MIDAS     & 100  & 600    & MLO       & DICOM & Brasil         & 2011 & yes & yes \\[4ex] 
+    IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\[4ex] 
+    MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\[4ex] 
+Magic-5 (GPCalma) & 967  & 3369  & MLO \& CC & DICOM & Italia      & 2002 & no  & yes \\[4ex] 
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
+%\end{sidewaystable}
+\end{landscape}
+} % end of afterpage
+
+MIAS \cite{sucklingmini} aunque es el recurso más viejo, sigue siendo
+ampliamente utilizado. MIAS no tiene soporte actualmente. DDSM
+\cite{heath2000digital} es el recurso más utilizado. Es importante notar la
+presencia de dos recursos latinoamericanos, más específicamente, brasileños.
+
+IRMA (Image Retrieval in Medical Applications) is a extensive project
+\cite{doi:10.1117/12.770325} ...
+
+MIRaCLe (Mammography Image reading for Radiologists and Computers Learning
+Database) es un repositorio dinámico para el entrenamiento y evaluación de
+computadoras y radiólogos \cite{antoniou2009web}. MIRaCLe cuenta con un sistema
+web que provee dos servicios: \textit{Software de Clasificación y Evaluación},
+donde el usuario puede realizar consultas, visualizar y escoger diferentes
+imágenes para probar algoritmos CAD y el \textit{Evaluación de Radiólogos}, que
+provee funcionalidades para evaluar el desempeño de un radiólogo.
+
+MIDAS (Mammographic Image Database for Automated Analysis) es una base de datos
+con muestras tomadas entre la población femenina de Brasil
+\cite{fernandes2012midas}. De esta base de datos destaca la inclusión de
+secuencias de datos genómicas de los pacientes y su apertura a la colaboración
+externa, -brand new inovation-. MIDAS cuenta también con un sistema web.
+
+BancoWeb es una base de datos creada por LAPIMO (Laboratório de Análise e
+Processamento de Imagens Médicas e Odontológicas) \cite{matheus2011online}.
+
+INbreast: \cite{moreira2012inbreast}, es una base de datos , los autores
+sugieren características esenciales de una base de datos que conllevaría a la
+creación de sistemas CAD.
+
+Magic-5 \cite{bellotti2004magic} es la evolución de GPCalma (Grid Platform for
+Computer Assisted Library for MAmmography) \cite{lauria2006gpcalma}, una base
+de datos distribuida. 
+
+La Universidad de Calgary ha creado un banco de imágenes conocido como AMDI
+\cite{suri2006recent} cuya función principal es ser un atlas que ayude a los
+radiólogos a encontrar casos similares cuando emitir un diagnóstico se torna
+complicado. Pero también sirve como un sistema educativo
+\cite{guliato2009indiam}.
+
+% Otras bases de datos mencionadas en la literatura son Trueta, LLNL, Málaga, NDMA.
 
