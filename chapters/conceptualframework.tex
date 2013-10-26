@@ -332,9 +332,9 @@ mamografías digitales.
 
 \cite{bozek2009survey}
 
-Las etapas pueden variar, pero la construcción de un sistema CAD generalmente
-son: preprocesamiento, selección de regiones de interés (ROI\footnote{Regions
-of Interest}), extracción de características y finalmente un algoritmo de
+Las etapas para la construcción de un sistema CAD generalmente son:
+preprocesamiento, selección de regiones de interés (ROI\footnote{Regions of
+Interest}), extracción de características y finalmente un algoritmo de
 aprendizaje supervisado, ver la Figura \ref{fig:cadflowchart}.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
@@ -351,68 +351,45 @@ observador \cite{rahmati2010new}.
 \section{Preprocesamiento de mamografías}
 % Preprocessing related works
 
-Una gran cantidad de trabajos de investigación se han desarrollado en el campo
-del preprocesamiento de imágenes mamográficas. En esta sección hacemos una
-revisión de varios enfoques, algunos de los cuales se rescataron para crear un
-método híbrido que combina las fortalezas de estos. 
+Varios trabajos de investigación se han desarrollado sobre el preprocesamiento
+de mamografías. En esta sección hacemos una revisión de varios enfoques,
+algunos de los cuales se rescataron para crear un método híbrido que combina
+las fortalezas de estos. 
 
 El preprocesamiento de mamogramas engloba algunas tareas también válidas en
-el preprocesamiento de otro tipo de imágenes médicas como remoción de ruido,
-mejora de contraste o reducción del área de trabajo, no obstante, también
-existe el \textit{preprocesamiento orientado a mamografías} que comprende
-tareas como orientación de la dirección de la mama, la supresión del músculo
-pectoral o la detección del pezón.
+otro tipo de imágenes como reducción del área de trabajo, remoción de ruido o
+mejora de contraste, no obstante, también existe el \textit{preprocesamiento
+orientado a mamografías} que comprende tareas como orientación de la dirección
+de la mama, la supresión del músculo pectoral o la detección del pezón.
 
-%\subsection{Remoción del músculo pectoral}
+% ========== [ reduce work area ] ==========
+La \textit{reducción del área de trabajo} es una tarea sencilla cuyo propósito
+es reducir la imagen al objeto de interés con el fin de aminorar el tiempo de
+ejecución de otros métodos subsiguientes y también mejorar su eficiencia. Este
+procedimiento es expuesto por \cite{holguinpre} y \cite{dehghani2011method}.
 
-El trabajo de Maitra utiliza un método híbrido -mixto- de tres fases
-\cite{maitra2012technique}. La fase inicial es la mejora de contraste con el
-algoritmo CLAHE, después se aisla el músculo pectoral de la región de interés y
-finalmente se suprime utilizando el algoritmo \textit{seeding region growing}.
-El -enfoque- de Maitra es interesante, pues su método es orientado a
-mamografías. Su método pudo aislar el músculo pectoral en la mayoría de las
-imágenes de miniMIAS.
+% ========== [ denoising ] ==========
+En el proceso de adquisición de las imágenes es posible que obtengan algún tipo
+de contaminación, conocida como ruido. Los orígenes de ese ruido pueden ser
+errores de transmisión, sensores con mal funcionamiento, secciones de memoria
+defectuosas, entre otras cosas. En consecuencia, la \textit{remoción de ruido}
+es indispensable antes de analizar los datos de las imágenes
+\cite{motwani2004survey}.
 
-Akram también propone la remoción del músculo pectoral además de etiquetas y
-artefactos \cite{akram2013preprocessing}. Su propuesta utiliza el método de
-contorno activo. 
+En las imágenes mamográficas existen cuatro tipos de ruido: cuántico (también
+conocido como ruido Poisson, ya que puede ser descrito por esta distribución),
+electrónico fijo, señales secundarias y quanta secundaria indirecto.
+\cite{hashimoto2008practical}.  es el ruido que más presencia tiene en imágenes
+mamográficas. Romualdo \cite{romualdopre, dos2009mammography} propone un método
+para su reducción.
 
-Por su parte Mirzaalian \cite{mirzaalian2007pre} plantea un algoritmo para la
-extracción del contorno de la mama y otro para la extracción del músculo
-pectoral. Para extraer el contorno de la mama utiliza en conjunto la
-ecualización de histogramas, una técnica de -convolución- con una máscara, que
-sirve como un filtro de paso bajo, binarización y -labeling-, 
+Utiliza la transformada de \textit{Anscombe} en conjunto con el filtro de
+Wiener para reducir el ruido, además del filtro Inverso del Dominio de la
+Frecuencia para mejorar las imágenes. 
 
-Otros trabajos como el de Rahmati \cite{rahmati2010new} concentran su atención en
-mejorar una sola tarea. Este trabajo propone una versión mejorada de CLAHE:
-FCLAHE. Su método trabaja las desventajas de CLAHE, que mejora el -frente- y el
--fondo- linealmente, de tal manera que el resultado es una imagen con alto
-contraste al -frente- y en el -fondo-. La mejora del fondo puede conducir a que
-los radiólogos identifiquen -falsos positivos-. Para probar la eficiencia del
-algoritmo propuesto ejecutan un algoritmo de segmentación sobre imágenes que
-fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
-de FCLAHE.
-
-% =========[ denoising ]===========
-De acuerdo a Hashimoto \cite{hashimoto2008practical} en las imágenes
-mamográficas tenemos cuatro tipos de ruido:
-
-\begin{enumerate}
-    \item Ruido cuántico.
-    \item fixed electronic
-    \item señales secundarías
-    \item quanta secundario indirecto
-\end{enumerate}
-
-Dos Santos \cite{romualdopre}, \cite{dos2009mammography} propone un método para
-reducir el ruido quantum/Poisson, el ruido con más presencia en imágenes
-mamográficas. Utiliza la transformada de \textit{Anscombe} en conjunto con el
-filtro de Wiener para reducir el ruido, además del filtro Inverso del Dominio
-de la Frecuencia para mejorar las imágenes. Dado que el ruido cuántico puede
-ser descrito por la distribución de Poisson se utiliza la transformada de
-Anscombe para convertir este tipo de ruido en ruido aditivo que es eliminado
-utilizando el filtrado Wiener. Su método fue evaluado utilizando un sistema
-CAD. 
+se utiliza la transformada de Anscombe
+para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
+el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD. 
 
 Naveed \cite{naveed2012quantum} propone un método de remoción de ruido dividido
 en dos módulos, detección y filtrado de ruido. La detección se lleva a cabo
@@ -423,14 +400,53 @@ estudio propone la eliminación del ruido impulsivo y cuántico. Se evalúa el
 método comparando la precisión de algoritmos de \textit{clasificación} en
 presencia/ausencia de ruido.
 
+% ========== [ contrast enhancement ]  ==========
+Otros trabajos como el de Rahmati \cite{rahmati2010new} concentran su atención en
+mejorar una sola tarea. Este trabajo propone una versión mejorada de CLAHE:
+FCLAHE. Su método trabaja las desventajas de CLAHE, que mejora el -frente- y el
+-fondo- linealmente, de tal manera que el resultado es una imagen con alto
+contraste al -frente- y en el -fondo-. La mejora del fondo puede conducir a que
+los radiólogos identifiquen -falsos positivos-. Para probar la eficiencia del
+algoritmo propuesto ejecutan un algoritmo de segmentación sobre imágenes que
+fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
+de FCLAHE.
+
+% ----------- [ removal of pectoral muscle]  -----------
+La \textit{remoción del músculo pectoral} en imágenes con proyección MLO es
+otra tarea de preprocesamiento orientado a mamogramas. Maitra propone un método
+de tres fases, la fase inicial es la mejora de contraste con el algoritmo
+CLAHE, después se aisla el músculo pectoral de la región de interés y
+finalmente se suprime utilizando el algoritmo \textit{seeding region growing}.
+Su método pudo aislar el músculo pectoral en la mayoría de las imágenes de
+miniMIAS, ver Figura \ref{fig:muscle}.
+
+\begin{figure}[h]
+    \centering
+    \subfloat[\label{muscle:a}]{\includegraphics[height=45mm]{images/muscle/originalmuscle.jpg}}
+    \hspace{1cm}
+    \subfloat[\label{muscle:b}]{\includegraphics[height=45mm]{images/muscle/muscleremotion.jpg}}
+    \hspace{1cm}
+    \subfloat[\label{muscle:c}]{\includegraphics[height=45mm]{images/muscle/closeupmuscle.jpg}}
+  \caption[Remoción del músculo pectoral]
+  {Remoción del músculo pectoral. En \protect\subref{muscle:a} se aprecia la 
+  imagen original, \protect\subref{muscle:b} muestra la remoción del músculo y 
+  \protect\subref{muscle:c} es un acercamiento}
+  \label{fig:muscle}
+\end{figure}
+
+Akram también propone la remoción del músculo pectoral además de etiquetas y
+artefactos \cite{akram2013preprocessing}. Su propuesta utiliza el método de
+contorno activo. Por su parte Mirzaalian plantea un algoritmo para la
+extracción del contorno de la mama y otro para la extracción del músculo
+pectoral \cite{mirzaalian2007pre}. Para extraer el contorno de la mama utiliza
+en conjunto la ecualización de histogramas, una técnica de convolución con una
+máscara, que sirve como un filtro de paso bajo, binarización y etiquetado.
+
 % =========[ surveys ]===========
 
 Ponraj y Pisano hacen estudios extensivos del estado del arte del algoritmos
 utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
 \cite{pisano2000image}.
-
-La reducción del área de trabajo es estudiada por \cite{holguinpre} y
-\cite{dehghani2011method}.
 
 \section{Bases de datos similares}
 % You organize this section by idea, and not by author or by publication
