@@ -376,37 +376,57 @@ defectuosas, entre otras cosas. En consecuencia, la \textit{remoción de ruido}
 es indispensable antes de analizar los datos de las imágenes
 \cite{motwani2004survey}.
 
-En las imágenes mamográficas existen cuatro tipos de ruido: cuántico (también
-conocido como ruido Poisson, ya que puede ser descrito por esta distribución),
-electrónico fijo, señales secundarias y quanta secundaria indirecto.
-\cite{hashimoto2008practical}.  es el ruido que más presencia tiene en imágenes
-mamográficas. Romualdo \cite{romualdopre, dos2009mammography} propone un método
-para su reducción.
+En las imágenes mamográficas existen cuatro tipos de ruido: cuántico,
+electrónico fijo, señales secundarias y \textit{quanta} secundario
+\cite{hashimoto2008practical}. El ruido cuántico es predominante en imágenes
+mamográficas, se genera debido a los rayos X con fotones de baja intensidad.
+Este tipo de ruido puede ser modelado por la distribución de Poisson. El ruido
+electrónico puede ser modelado como ruido gaussiano o aditivo, como se puede
+ver en la Ecuación \ref{eq:gaussian}:
 
-Utiliza la transformada de \textit{Anscombe} en conjunto con el filtro de
-Wiener para reducir el ruido, además del filtro Inverso del Dominio de la
-Frecuencia para mejorar las imágenes. 
+\begin{equation}
+\label{eq:gaussian}
+            g = u + n,
+\end{equation}
 
-se utiliza la transformada de Anscombe
-para convertir este tipo de ruido en ruido aditivo que es eliminado utilizando
+\noindent donde $u$ es la imagen mamográfica contaminada con ruido cuántico,
+$n$ es el ruido gaussiano incorporado a la imagen mamográfica $g$.
+
+Dos Santos propone un método de dos pasos para reducir el ruido cuántico
+\cite{dos2009pre, dos2009mammography}, utilizando la transformada de Anscombe
+para convertir el ruido cuántico en ruido aditivo que es eliminado utilizando
 el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD. 
 
-Naveed \cite{naveed2012quantum} propone un método de remoción de ruido dividido
-en dos módulos, detección y filtrado de ruido. La detección se lleva a cabo
-utilizando redes neuronales y para la remoción del ruido se utilizan tres
+Naveed propone un método similar al anterior que en primera instancia detecta
+el ruido y luego lo filtra \cite{naveed2012quantum}. La detección se lleva a
+cabo utilizando redes neuronales y para la remoción del ruido se utilizan tres
 filtros, que son \textit{non local mean} (NLM), el filtro adaptativo de Wiener
-y el frost filter based methos. La remoción busca preservar los detalles. Este
-estudio propone la eliminación del ruido impulsivo y cuántico. Se evalúa el
-método comparando la precisión de algoritmos de \textit{clasificación} en
-presencia/ausencia de ruido.
+y un método basado en el filtro Frost. La remoción busca preservar los
+detalles. Este estudio propone la eliminación del ruido impulsivo y cuántico.
+Se evalúa el método comparando la precisión de algoritmos de
+\textit{clasificación} en presencia y ausencia de ruido.
 
 % ========== [ contrast enhancement ]  ==========
-Otros trabajos como el de Rahmati \cite{rahmati2010new} concentran su atención en
-mejorar una sola tarea. Este trabajo propone una versión mejorada de CLAHE:
-FCLAHE. Su método trabaja las desventajas de CLAHE, que mejora el -frente- y el
--fondo- linealmente, de tal manera que el resultado es una imagen con alto
-contraste al -frente- y en el -fondo-. La mejora del fondo puede conducir a que
-los radiólogos identifiquen -falsos positivos-. Para probar la eficiencia del
+Otra tarea común en el preprocesamiento de mamografías es el \textit{realce o
+mejora de contraste}. Una técnica muy socorrida para mejorar el contraste en
+las imágenes digitales es la Ecualización Histogramas\footnote{Este término es
+equivalente a Ecualización Global de Histogramas (EGH)} (EH), técnica utilizada
+para redistribuir los niveles de grises en una imagen y como resultado un
+ajuste de contraste, en otras palabras, con esta técnica las regiones con menos
+contraste obtienen más contraste y aquellas regiones con alto contraste pierden
+contraste. 
+
+La distribución de los valores no es uniforme en las imágenes médicas. Esta es
+la razón por la Ecualización Local de Histogramas (ELH) es más adecuada para
+las imágenes médicas. En las imágenes médicas mejorar el contraste en pequeñas
+regiones es más importante que mejorar el contraste de forma global
+\cite{mohan2013modified}.
+
+Rahmati propone una versión mejorada de CLAHE: FCLAHE \cite{rahmati2010new}. Su
+método trabaja las desventajas de CLAHE, que mejora el -frente- y el -fondo-
+linealmente, de tal manera que el resultado es una imagen con alto contraste al
+-frente- y en el -fondo-. La mejora del fondo puede conducir a que los
+radiólogos identifiquen -falsos positivos-. Para probar la eficiencia del
 algoritmo propuesto ejecutan un algoritmo de segmentación sobre imágenes que
 fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
 de FCLAHE.
