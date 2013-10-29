@@ -409,18 +409,31 @@ Se evalúa el método comparando la precisión de algoritmos de
 % ========== [ contrast enhancement ]  ==========
 Otra tarea común en el preprocesamiento de mamografías es el \textit{realce o
 mejora de contraste}. Una técnica muy socorrida para mejorar el contraste en
-las imágenes digitales es la Ecualización Histogramas\footnote{Este término es
-equivalente a Ecualización Global de Histogramas (EGH)} (EH), técnica utilizada
-para redistribuir los niveles de grises en una imagen y como resultado un
+las imágenes digitales es la Ecualización de Histogramas\footnote{Este término es
+equivalente a Ecualización Global de Histogramas (EGH)} (EH), que se utiliza
+para redistribuir los niveles de grises en una imagen y como resultado hacer un
 ajuste de contraste, en otras palabras, con esta técnica las regiones con menos
 contraste obtienen más contraste y aquellas regiones con alto contraste pierden
 contraste. 
 
-La distribución de los valores no es uniforme en las imágenes médicas. Esta es
-la razón por la Ecualización Local de Histogramas (ELH) es más adecuada para
-las imágenes médicas. En las imágenes médicas mejorar el contraste en pequeñas
-regiones es más importante que mejorar el contraste de forma global
-\cite{mohan2013modified}.
+En las imágenes médicas la distribución de los niveles de grises no es
+uniforme. Esta es la razón por la que el enfoque de Ecualización Local de
+Histogramas (LHE\footnote{Local Histogram Equalization}) es más adecuado en
+este tipo de imágenes. En las imágenes médicas mejorar el contraste en
+pequeñas regiones es más importante que mejorar el contraste de forma global
+\cite{mohan2013modified}. 
+
+% paragraph about AHE, disadvantages, method, etc.
+La Ecualización Adaptativa de Histogramas (AHE\footnote{Adaptive Histogram
+Equalization}) es una mejora de HE. AHE tiene algunas desventajas, lentitud y
+mejora de ruido, por lo que muchas variantes de AHE han sido propuestas
+\cite{pizer1987adaptive}. La variante más destacada es la técnica llamada
+Ecualización Adaptativa de Histogramas con Contraste Limitado
+(CLAHE\footnote{Contrast-Limited Adaptive Histogram Equalization}
+\cite{pisano1998contrast}. CLAHE ha sido ampliamente utilizado para modificar
+el contraste de mamografías \cite{pisano1998contrast, maitra2012technique}.
+
+%\cite{zuiderveld1994contrast} 
 
 Rahmati propone una versión mejorada de CLAHE: FCLAHE \cite{rahmati2010new}. Su
 método trabaja las desventajas de CLAHE, que mejora el -frente- y el -fondo-
