@@ -330,8 +330,6 @@ o clusters de microcalcificaciones \cite{yu2000cad}. Sin embargo, sigue siendo
 un problema abierto, sobre todo con la aparición de bases de datos de
 mamografías digitales.
 
-\cite{bozek2009survey}
-
 Las etapas para la construcción de un sistema CAD generalmente son:
 preprocesamiento, selección de regiones de interés (ROI\footnote{Regions of
 Interest}), extracción de características y finalmente un algoritmo de
@@ -350,11 +348,11 @@ observador \cite{rahmati2010new}.
 
 \section{Preprocesamiento de mamografías}
 % Preprocessing related works
+% You organize this section by idea, and not by author or by publication
 
 Varios trabajos de investigación se han desarrollado sobre el preprocesamiento
 de mamografías. En esta sección hacemos una revisión de varios enfoques,
-algunos de los cuales se rescataron para crear un método híbrido que combina
-las fortalezas de estos. 
+algunos de los cuales se rescataron en este trabajo para crear un método híbrido.
 
 El preprocesamiento de mamogramas engloba algunas tareas también válidas en
 otro tipo de imágenes como reducción del área de trabajo, remoción de ruido o
@@ -389,62 +387,51 @@ ver en la Ecuación \ref{eq:gaussian}:
             g = u + n,
 \end{equation}
 
-\noindent donde $u$ es la imagen mamográfica contaminada con ruido cuántico,
+\noindent donde $u$ es la imagen mamográfica contaminada con ruido cuántico y
 $n$ es el ruido gaussiano incorporado a la imagen mamográfica $g$.
 
-Dos Santos propone un método de dos pasos para reducir el ruido cuántico
-\cite{dos2009pre, dos2009mammography}, utilizando la transformada de Anscombe
-para convertir el ruido cuántico en ruido aditivo que es eliminado utilizando
-el filtrado Wiener. Su método fue evaluado utilizando un sistema CAD. 
+Dos Santos \cite{dos2009mammography} propone un método de dos etapas para
+reducir el ruido cuántico, utilizando la Transformada de \textit{Anscombe} para
+transformar el ruido cuántico en ruido aditivo que es eliminado utilizando el
+filtrado Wiener. Su método fue evaluado utilizando un sistema CAD. 
 
 Naveed propone un método similar al anterior que en primera instancia detecta
 el ruido y luego lo filtra \cite{naveed2012quantum}. La detección se lleva a
 cabo utilizando redes neuronales y para la remoción del ruido se utilizan tres
-filtros, que son \textit{non local mean} (NLM), el filtro adaptativo de Wiener
-y un método basado en el filtro Frost. La remoción busca preservar los
+filtros, que son \textit{non local mean} (NLM), el filtrado adaptativo de Wiener
+y un método basado en el filtro \textit{Frost}. La remoción busca preservar los
 detalles. Este estudio propone la eliminación del ruido impulsivo y cuántico.
 Se evalúa el método comparando la precisión de algoritmos de
 \textit{clasificación} en presencia y ausencia de ruido.
 
 % ========== [ contrast enhancement ]  ==========
 Otra tarea común en el preprocesamiento de mamografías es el \textit{realce o
-mejora de contraste}. Una técnica muy socorrida para mejorar el contraste en
-las imágenes digitales es la Ecualización de Histogramas\footnote{Este término es
-equivalente a Ecualización Global de Histogramas (EGH)} (EH), que se utiliza
-para redistribuir los niveles de grises en una imagen y como resultado hacer un
-ajuste de contraste, en otras palabras, con esta técnica las regiones con menos
-contraste obtienen más contraste y aquellas regiones con alto contraste pierden
-contraste. 
+mejora de contraste}. La Ecualización de Histogramas (HE\footnote{Histogram
+Equalization}) es una técnica muy socorrida para mejorar el contraste en las
+imágenes digitales, se utiliza para redistribuir los niveles de grises en una
+imagen, lo que da como resultado un ajuste de contraste.
 
-En las imágenes médicas la distribución de los niveles de grises no es
-uniforme. Esta es la razón por la que el enfoque de Ecualización Local de
-Histogramas (LHE\footnote{Local Histogram Equalization}) es más adecuado en
-este tipo de imágenes. En las imágenes médicas mejorar el contraste en
-pequeñas regiones es más importante que mejorar el contraste de forma global
-\cite{mohan2013modified}. 
-
-% paragraph about AHE, disadvantages, method, etc.
+En las imágenes mamográficas mejorar el contraste de regiones pequeñas es más
+importante que mejorar el contraste de forma global \cite{mohan2013modified}.
 La Ecualización Adaptativa de Histogramas (AHE\footnote{Adaptive Histogram
-Equalization}) es una mejora de HE. AHE tiene algunas desventajas, lentitud y
-mejora de ruido, por lo que muchas variantes de AHE han sido propuestas
-\cite{pizer1987adaptive}. La variante más destacada es la técnica llamada
-Ecualización Adaptativa de Histogramas con Contraste Limitado
-(CLAHE\footnote{Contrast-Limited Adaptive Histogram Equalization}
-\cite{pisano1998contrast}. CLAHE ha sido ampliamente utilizado para modificar
-el contraste de mamografías \cite{pisano1998contrast, maitra2012technique}.
+Equalization}) a diferencia de HE calcula el histograma de varias regiones de
+la imagen (\textit{histogramas locales}).
 
-%\cite{zuiderveld1994contrast} 
+AHE tiene algunas desventajas, lentitud y mejora de ruido, por lo que muchas
+variantes de AHE han sido propuestas \cite{pizer1987adaptive}. La variante más
+destacada es la técnica llamada Ecualización Adaptativa de Histogramas con
+Contraste Limitado (CLAHE\footnote{Contrast-Limited Adaptive Histogram
+Equalization} \cite{zuiderveld1994contrast}. CLAHE ha sido ampliamente
+utilizado para modificar el contraste de mamografías \cite{pisano1998contrast,
+maitra2012technique}.
 
-Rahmati propone una versión mejorada de CLAHE: FCLAHE \cite{rahmati2010new}. Su
-método trabaja las desventajas de CLAHE, que mejora el -frente- y el -fondo-
-linealmente, de tal manera que el resultado es una imagen con alto contraste al
--frente- y en el -fondo-. La mejora del fondo puede conducir a que los
-radiólogos identifiquen -falsos positivos-. Para probar la eficiencia del
-algoritmo propuesto ejecutan un algoritmo de segmentación sobre imágenes que
-fueron pasadas sobre CLAHE y sobre FCLAHE, obteniendo una mejora en el accuracy
-de FCLAHE.
+Rahmati \cite{rahmati2010new} y Mohan \cite{mohan2013modified} proponen mejoras
+a CLAHE. Según Rahmati CLAHE mejora linealmente el frente y el fondo de la
+imagen, o sea, se incrementa la visibilidad de las masas pero simultáneamente
+se crean intensidades engañosas en el fondo, lo que puede conducir a la
+detección de falsos positivos.
 
-% ----------- [ removal of pectoral muscle]  -----------
+% ========== [ removal of pectoral muscle] ==========
 La \textit{remoción del músculo pectoral} en imágenes con proyección MLO es
 otra tarea de preprocesamiento orientado a mamogramas. Maitra propone un método
 de tres fases, la fase inicial es la mejora de contraste con el algoritmo
@@ -477,17 +464,17 @@ máscara, que sirve como un filtro de paso bajo, binarización y etiquetado.
 
 % =========[ surveys ]===========
 
-Ponraj y Pisano hacen estudios extensivos del estado del arte del algoritmos
-utilizados para modificar imágenes mamográficas \cite{ponraj2011survey},
-\cite{pisano2000image}.
+Ponraj \cite{ponraj2011survey} y Pisano \cite{pisano2000image} hacen estudios
+extensivos varios algoritmos utilizados para modificar imágenes mamográficas.
 
 \section{Bases de datos similares}
-% You organize this section by idea, and not by author or by publication
 
 % Other databases
-Existen múltiples bases de datos, públicas o privadas, utilizadas en estudios
-relacionados a la detección del cáncer de mama. Las características de ellas
-son diferentes. En la Tabla \ref{table:overviewdb} se muestran algunas de ellas.
+Existen múltiples bases de datos\footnote{El contexto en el que se utiliza el
+término base de datos en este trabajo en la mayoría de los casos no se refiere
+a bases de datos relacionales.} de mamografias, públicas o privadas, utilizadas
+en estudios relacionados a la detección del cáncer de mama. En la Tabla
+\ref{table:overviewdb} se resumen las características de varias bases de datos.
 
 \afterpage{
     \clearpage
@@ -531,10 +518,11 @@ Magic-5 (GPCalma) & 967  & 3369  & MLO \& CC & DICOM & Italia      & 2002 & no  
 \end{landscape}
 } % end of afterpage
 
-MIAS \cite{sucklingmini} aunque es el recurso más viejo, sigue siendo
-ampliamente utilizado. MIAS no tiene soporte actualmente. DDSM
-\cite{heath2000digital} es el recurso más utilizado. Es importante notar la
-presencia de dos recursos latinoamericanos, más específicamente, brasileños.
+Aunque es el recurso más viejo y no tiene soporte actualmente mini-MIAS\footnote{The Mammographic Image
+Analysis Society Digital Mammogram Database} sigue siendo \cite{sucklingmini} 
+
+DDSM\footnote{The Digital Database for Screening Mammography}
+\cite{heath2000digital} es el recurso más utilizado. 
 
 IRMA (Image Retrieval in Medical Applications) is a extensive project
 \cite{doi:10.1117/12.770325} ...
