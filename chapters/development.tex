@@ -1,17 +1,14 @@
 \chapter{Desarrollo}
 \label{desarrollo}
 
-En este capítulo se presenta el método empleado para preprocesar los mamogramas
-digitales.
-
-\shorthandoff{>} % hack to combine tikZ and Spanish
-    \input{flowchart.tex}
-\shorthandon{>} 
+En este capítulo se detalla el proceso de recolección de las mamografías y se
+presenta el método de preprocesamiento propuesto.
 
 \section{Etapa de recolección}
-Las mamografías originalmente almacenadas en discos compactos, fueron extraídas
-y ... , removimos los datos privados de las imágenes, los únicos campos son los
-que se muestran en la \ref{table:dicomtags} 
+
+Las mastografías fueron recolectadas en el Hospital de Alta Especialidad Juan
+Graham Casasús. Los casos originalmente son almacenadas en discos compactos y
+organizados con un archivo DICOMDIR. 
 
 \begin{table}[h]
   \caption{Etiquetas DICOM que permanecen en la imagen} 
@@ -34,11 +31,20 @@ que se muestran en la \ref{table:dicomtags}
 \end{center}
 \end{table}
 
-%Las tareas de \textit{scripting} se llevaron a cabo con el lenguaje de
-%programación Python y la libreria PyDICOM.
+Para extraer las imágenes y organizarlas, se utilizó un \textit{script}
+programado con el lenguaje de programación \texttt{Python} y la librería
+\texttt{PyDICOM}. Se removieron los datos privados de los pacientes y los datos
+que permanecen en las imágenes se pueden ver en la Tabla \ref{table:dicomtags}.
 
 \section{Método}
-Se eligió un método híbrido
+
+Cada mamograma recolectado fue procesado con un método híbrido de cinco etapas.
+En la Figura \ref{fig:flowchart} se presenta un diagrama de flujo con las
+etapas del método híbrido.
+
+\shorthandoff{>} % hack to combine tikZ and Spanish
+    \input{flowchart.tex}
+\shorthandon{>} 
 
 \subsection{Reducción del área de trabajo}
 
@@ -46,6 +52,24 @@ La primera etapa del método consiste en eliminar la región oscura que cubre
 gran parte de la imagen para acelerar el tiempo de ejecución de los
 procedimientos posteriores. El enfoque es similar al expuesto por Dehghani y
 Holguín \cite{dehghani2011method, holguinpre}.
+
+% thresholding
+Aplicamos un método de tres fases para lograr la reducción: binarización,
+eliminación de objetos y corte automático. En la Figura \ref{reduction} se
+muestra 
+
+\begin{figure}[h]
+    \centering
+
+    \subfloat[150 dpi]{\includegraphics[height=35mm]{images/dpi150.jpg}}
+    \subfloat[125 dpi]{\includegraphics[height=35mm]{images/dpi125.jpg}}
+    \subfloat[25 dpi]{\includegraphics[height=35mm]{images/dpi25.jpg}}
+    \subfloat[50 dpi]{\includegraphics[height=35mm]{images/dpi50.jpg}}
+
+  \caption[Reducción del área de trabajo]
+  {Reducción del área de trabajo. En esta}
+  \label{reduction}
+\end{figure}
 
 \subsection{Conversión de bits}
 
