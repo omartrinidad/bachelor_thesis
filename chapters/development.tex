@@ -11,20 +11,22 @@ Graham Casasús. Los casos originalmente son almacenadas en discos compactos y
 organizados con un archivo DICOMDIR. 
 
 \begin{table}[h]
-  \caption{Etiquetas DICOM que permanecen en la imagen} 
+  \caption[Etiquetas DICOM]{Etiquetas DICOM que permanecen en la imagen} 
   \label{table:dicomtags}
 \begin{center}
-{\small
+{\scriptsize
     \begin{tabular}{c|c}
     \hline
 
     {\bf Etiquetas} & 
     {\bf Descripción} \\
     \hline
-           (0000, 0001) & Bits alojados \\
-           (0000, 0001) & Bits alojados \\
-           (0000, 0001) & Bits alojados \\
-           (0000, 0001) & Bits alojados \\
+        (7fe0, 0010) & Datos de pixel\\
+        (0028, 0103) & Representación de píxeles \\
+        (0028, 0010) & Filas \\
+        (0028, 0011) & Columnas \\
+        (0028, 0100) & Bits alojados \\
+        (0028, 0101) & Bits almacenados \\
     \hline
     \end{tabular}
 }
@@ -33,7 +35,7 @@ organizados con un archivo DICOMDIR.
 
 Para extraer las imágenes y organizarlas, se utilizó un \textit{script}
 programado con el lenguaje de programación \texttt{Python} y la librería
-\texttt{PyDICOM}. Se removieron los datos privados de los pacientes y los datos
+\texttt{PyDICOM}. Se removieron las etiquetas que almacenan los datos privados de los pacientes y los etiquetas
 que permanecen en las imágenes se pueden ver en la Tabla \ref{table:dicomtags}.
 
 \section{Método}
@@ -54,27 +56,73 @@ procedimientos posteriores. El enfoque es similar al expuesto por Dehghani y
 Holguín \cite{dehghani2011method, holguinpre}.
 
 % thresholding
-Aplicamos un método de tres fases para lograr la reducción: binarización,
+Aplicamos un método de tres fases para lograr la reducción: umbralización,
 eliminación de objetos y corte automático. En la Figura \ref{reduction} se
-muestra 
+muestra cada una de estas fases. 
+
+La primera fase es la \textit{umbralización}, cuyo propósito es separar el
+objeto de interés del fondo. Para lograr este cometido, inicialmente la imagen
+es convertida de simple precisión a doble precisión, lo que nos permite obtener
+mejores resultados en el proceso de binarización. Después, se calcula el valor
+\textit{umbral} de la imagen con la función \texttt{graytresh} de Matlab, esta
+función implementa el método de Otsu \cite{otsumethod}. El valor umbral que se
+obtiene como resultado es usado para clasificar los pixeles como 0 ó 1. El
+tercer paso es la binarización, que es ejecutada utilizando una función la
+función \texttt{im2bw} de Matlab. El resultado se muestra en la Figura
+\ref{red:b}.
 
 \begin{figure}[h]
     \centering
 
-    \subfloat[150 dpi]{\includegraphics[height=35mm]{images/dpi150.jpg}}
-    \subfloat[125 dpi]{\includegraphics[height=35mm]{images/dpi125.jpg}}
-    \subfloat[25 dpi]{\includegraphics[height=35mm]{images/dpi25.jpg}}
-    \subfloat[50 dpi]{\includegraphics[height=35mm]{images/dpi50.jpg}}
+    \subfloat[\label{red:a}]{\includegraphics[height=35mm]{images/dpi150.jpg}}
+    \subfloat[\label{red:b}]{\includegraphics[height=35mm]{images/dpi125.jpg}}
+    \subfloat[\label{red:c}]{\includegraphics[height=35mm]{images/dpi25.jpg}}
+    \subfloat[\label{red:d}]{\includegraphics[height=35mm]{images/dpi50.jpg}}
 
   \caption[Reducción del área de trabajo]
   {Reducción del área de trabajo. En esta}
   \label{reduction}
 \end{figure}
 
+La segunda fase es \textit{eliminación de objetos} que consiste en remover
+todos los objetos de la imagen a excepción del área de interés. Por ejemplo, en
+la Figura \ref{red:b} podemos ver una etiqueta en la esquina superior derecha
+que fue removida en la Figura \ref{red:c}. Lo que realmente hacemos es remover
+todos los objetos con menos de 10'000 píxeles, ya que consideramos que un seno
+jamás será menor de 10'000 píxeles. Este procedimiento es ejecutado utilizando
+la función Matlab llamada \texttt{bwareaopen}.
+
+Finalmente, la fase de corte automático se divide en dos pasos. El primero es
+determinar la localización del borde de la imagen, lo que es logrado con la
+función de Matlab llamada \texttt{bwboundaries}. Esta función encuentra los
+bordes de un objeto utilizando el algoritmo Moore-Neighbor modificado por el
+criterio de paro de Jacob \cite{gonzalez2009digital}. Los bordes son utilizados
+para determinar los puntos extremos de cada seno (ver \ref{red:d}). El segundo
+paso es hacer el corte usando estos puntos extremos (ver \ref{red:d}). % red:e
+
 \subsection{Conversión de bits}
 
-Las mamografías que se obtuvieron son de 12 bits. Sin embargo al visualizarlas
-se obtiene una imagen opaca, esto es porque ...
+Como ya se mencionó antes, las imágenes están en el formato DICOM. El formato
+DICOM representa las imágenes con 4'096 niveles de grises, esto es 12 bits de
+profundidad. Matlab representa estas imágenes utilizando 16 bits de
+profundidad, o sea, 65'536 niveles de grises \cite{mustra2008efficient}. Cuando
+una imagen de 12 bits es visualizada con un visor de 16 bits, esta luce oscura,
+ver Figura X. Para mostrar la imagen correctamente esta necesita ser convertida
+a una imagen de 16 bits. Se aplicó la Ecuación \ref{eq:bitconv} a cada pixel en
+la imagen para realizar la conversión.
+
+\begin{equation}
+\label{eq:bitconv}
+    \begin{split}
+            \ell &= \frac{2^{n}}{2^{m}} \\
+            c_{x,y} &= i_{x, y} \times \ell,
+    \end{split}
+\end{equation}
+
+\noindent donde $\ell$ es un valor escalar, $n$ es el número de bits de la imagen
+objetivo, $m$ es el número de bits en la imagen original. La vieja matriz es
+representada con $i$ y la nueva con $c$. El par $x$ y $y$ representan la
+posición de los píxeles en cada matriz.
 
 \subsection{Eliminación de ruido}
 Se elimina el ruido.
