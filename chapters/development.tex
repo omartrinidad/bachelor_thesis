@@ -153,12 +153,21 @@ algunas lesiones milimétricas como las microcalcificaciones. Versiones
 mejoradas del filtro de la mediana han sido desarrolladas para corregir estas
 deficiencias.
 
+\shorthandoff{>} % hack to combine tikZ and Spanish
+    \input{adaptivemf.tex}
+\shorthandon{>} 
+
 Utilizamos el Filtro Adaptativo de la Mediana (AMF\footnote{Adaptive Median
 Filter}) tal como es implementado por González~\cite{gonzalez2009digital}. La
 idea principal de AMF es remover los \textit{píxeles ruidosos}, que son
 aquellos rodeados por píxeles vecinos con valores muy diferentes. Tan pronto
 como AMF detecta un pixel ruidoso lo reemplaza por el valor de la mediana de
 los píxeles vecinos.
+
+El algoritmo usa una ventana $w$ con un tamaño de $3\times3$ que recorre toda
+la imagen. En cada ubicación, el valor mínimo $Zmin$, el valor máximo $Zmax$ y
+la mediana $Zmed$ son calculados. $Zxy$ es el centro de $w$. $Smax$ es el tamaño
+máximo que $w$ puede alcanzar.
 
 % pseudocode
 % ref this code
@@ -189,11 +198,6 @@ los píxeles vecinos.
 \end{algorithmic}
 \end{algorithm}
 
-El algoritmo usa una ventana $w$ con un tamaño de $3\times3$ que recorre toda
-la imagen. En cada ubicación, el valor mínimo $Zmin$, el valor máximo $Zmax$ y
-la mediana $Zmed$ son calculados. $Zxy$ es el centro de $w$. $Smax$ es el tamaño
-máximo que $w$ puede alcanzar.
-
 AMF trabaja en dos niveles, nivel A y nivel B. En el nivel A (línea 2) se
 identifica $Zmed$ como impulso cuando la condición es falsa. En este caso, el
 tamaño de $w$ incrementa (línea 5) y el nivel A es repetido mientras $w$ es
@@ -214,8 +218,28 @@ efectividad probada del algoritmo CLAHE, como se discutió en el capítulo
 anterior, utilizamos la función llamada \texttt{adaptivehisteq} de Matlab IPT
 que implementa CLAHE. Los parámetros de esta función son modificados con ayuda
 de los radiólogos. La configuración final es aplicada a un área específica de
-la imagen. En la Figura \ref{contrast} se muestra un ejemplo de la mejora de
+la imagen. En la Figura \ref{img:clahe} se muestra un ejemplo de la mejora de
 contraste utilizando CLAHE.
+
+% show lesion images
+\begin{figure}[h!]
+  \begin{center}
+    \subfloat[\label{contr:a}]{\includegraphics[height=35mm]{images/contrast/before-clahe}}
+    \hspace{12pt}
+    \subfloat[\label{contr:b}]{\includegraphics[height=35mm]{images/contrast/before-clahe-hist}}
+    \\
+    \subfloat[\label{contr:c}]{\includegraphics[height=35mm]{images/contrast/after-clahe}}
+    \hspace{12pt}
+    \subfloat[\label{contr:d}]{\includegraphics[height=35mm]{images/contrast/after-clahe-hist}}
+  \end{center} 
+
+  \caption{Close-up of a mammogram. \protect\subref{contr:a} Original lesion area,
+  \protect\subref{contr:b} histogram of \protect\subref{contr:a}, \protect\subref{contr:c} same lesion
+  area after CLAHE has been applied to it, \protect\subref{contr:d} histogram of
+  \protect\subref{contr:c}.} 
+
+  \label{img:clahe} 
+\end{figure}
 
 \subsection{Compresión}
 \label{compression}
@@ -290,7 +314,7 @@ result of this function.
   \label{img:shrinking-two} 
 \end{figure}
 
-he shape of the histogram shown in Fig. \ref{comp:b} is quite similar
+The shape of the histogram shown in Fig. \ref{comp:b} is quite similar
 to the histogram of the resultant image shown in Fig. \ref{comp:g}. Peaks look
 the same, which indicates that the concentration of gray levels remains
 unchanged.
@@ -301,7 +325,6 @@ This step aims at improving brightness of the image obtained from pixel depth
 conversion. Afterwards, image conversion from 16 to 8 bits using an efficient
 coefficient takes place. Medical information carried by the image should be
 maintained. This final step is useful like a normalization process. 
-
 
 \definecolor{bg}{rgb}{0.9,0.9,0.9}
 \begin{minted}[linenos=true, 

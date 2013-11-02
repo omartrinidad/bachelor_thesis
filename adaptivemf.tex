@@ -1,0 +1,79 @@
+\begin{figure}[h]
+\centering
+
+\subfloat[Pixel ruidoso\label{fig:noisypixel}]{
+    \begin{tikzpicture}
+        \draw[xstep=0.80cm, ystep=0.80, color=blue] (0,0) grid (4,4);
+        \matrix[matrix of nodes,
+        inner sep=0pt,
+        anchor=south west,
+        ampersand replacement=\&,
+        nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
+        ]{
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        };
+    \end{tikzpicture}
+}
+\hspace{12pt}
+\subfloat[Pixel ruidoso 2\label{fig:neighborhood}]{
+    \begin{tikzpicture} 
+        \draw[xstep=0.80cm, ystep=0.80, color=red] (0,0) grid (4,4);
+        \matrix[matrix of nodes,
+        inner sep=0pt,
+        anchor=south west,
+        ampersand replacement=\&,
+        nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
+        ]{
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        };
+    \end{tikzpicture}
+}
+
+% space
+\subfloat[Pixel ruidoso\label{fig:noisypixel}]{
+    \begin{tikzpicture}
+        \draw[xstep=0.80cm, ystep=0.80, color=green] (0,0) grid (4,4);
+        \matrix[matrix of nodes,
+        inner sep=0pt,
+        anchor=south west,
+        ampersand replacement=\&,
+        nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
+        ]{
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        };
+    \end{tikzpicture}
+}
+\hspace{12pt}
+\subfloat[Pixel ruidoso 2\label{fig:neighborhood}]{
+    \begin{tikzpicture} 
+        \draw[xstep=0.80cm, ystep=0.80, color=brown] (0,0) grid (4,4);
+        \matrix[matrix of nodes,
+        inner sep=0pt,
+        anchor=south west,
+        ampersand replacement=\&,
+        nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
+        ]{
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        100 \& 234 \& 678          \& 777 \& 890 \\
+        };
+    \end{tikzpicture}
+}
+\caption[Matrix]{Matrix}
+\label{fig:amf} 
+\end{figure}
+

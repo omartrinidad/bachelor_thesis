@@ -7,11 +7,12 @@
     \documentclass[10pt, letter, twoside]{report}
 \fi 
 
-\usepackage[table]{xcolor}
+\usepackage[table]{xcolor} %before tikz
     \definecolor{lightgray}{gray}{0.9}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes, arrows, chains, positioning, calc}
+    \usetikzlibrary{shapes, arrows, chains, positioning, calc, matrix}
+
 \usepackage[noend]{algpseudocode}
 \usepackage{afterpage}
 \usepackage{pdflscape} % horizontal pages
