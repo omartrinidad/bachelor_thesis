@@ -248,15 +248,15 @@ Como complemento en la fase final de nuestro método implementamos un algoritmo
 de compresión cuyo principio es el \textit{encogimiento del histograma}. La
 técnica utilizada fue introducida por AbuBaker en~\cite{abubaker2006mammogram}
 y~\cite{abubaker2007efficient}. Esta técnica tiene como objetivo comprimir una
-imagen con la menor pérdida de calidad.
+imagen con la menor pérdida de calidad. El método aplicado tiene tres pasos:
+procedimiento de reducción de la imagen, conversión de píxeles, y mejoramiento
+de la imagen. A continuación se describen estos pasos:
 
-El método aplicado tiene tres pasos: reducción de la imagen, conversión de
-píxeles, y mejoramiento de la imagen. A continuación se describen estos pasos:
+\subsubsection{Procedimiento de reducción de la imagen} 
 
-\subsubsection{Image shrinking procedure.} 
+Lo primero que hacemos es obtener el histograma de la imagen.
 
-The histogram of image obtained either from image denoising or contrast
-enhancement is created. For example, Fig.~\ref{comp:a} is the image obtained
+For example, Fig.~\ref{comp:a} is the image obtained
 from image denoising. Fig.~\ref{comp:b} is the histogram of image in
 Fig.~\ref{comp:a}. Unused grey levels (or gaps) in Fig.~\ref{comp:b} are
 eliminated. As a result, a right-skewed histogram is obtained, shown in
