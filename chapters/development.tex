@@ -34,15 +34,18 @@ organizados con un archivo DICOMDIR.
 \end{table}
 
 Para extraer las imágenes y organizarlas, se utilizó un \textit{script}
-programado con el lenguaje de programación \texttt{Python} y la librería
-\texttt{PyDICOM}. Se removieron las etiquetas que almacenan los datos privados de los pacientes y los etiquetas
-que permanecen en las imágenes se pueden ver en la Tabla \ref{table:dicomtags}.
+programado con el lenguaje de programación Python~\cite{python} y la librería
+PyDICOM~\cite{pydicom}. Se removieron las etiquetas que almacenan los datos
+privados de los pacientes y los etiquetas que permanecen en las imágenes se
+pueden ver en la Tabla \ref{table:dicomtags}.
 
-\section{Método}
+\section{Método propuesto}
 
 Cada mamograma recolectado fue procesado con un método híbrido de cinco etapas.
 En la Figura \ref{fig:flowchart} se presenta un diagrama de flujo con las
-etapas del método híbrido.
+etapas del método híbrido. Utilizamos el lenguaje de programación
+Matlab~\cite{matlab} más la utilidad de procesamiento de imágenes Image
+Processing Toolbox~\cite{ipt}.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{flowchart.tex}
@@ -69,25 +72,29 @@ función implementa el método de Otsu \cite{otsumethod}. El valor umbral que se
 obtiene como resultado es usado para clasificar los pixeles como 0 ó 1. El
 tercer paso es la binarización, que es ejecutada utilizando una función la
 función \texttt{im2bw} de Matlab. El resultado se muestra en la Figura
-\ref{red:b}.
+\ref{area:b}.
 
 \begin{figure}[h]
     \centering
 
-    \subfloat[\label{red:a}]{\includegraphics[height=35mm]{images/dpi150.jpg}}
-    \subfloat[\label{red:b}]{\includegraphics[height=35mm]{images/dpi125.jpg}}
-    \subfloat[\label{red:c}]{\includegraphics[height=35mm]{images/dpi25.jpg}}
-    \subfloat[\label{red:d}]{\includegraphics[height=35mm]{images/dpi50.jpg}}
+    \subfloat[Imagen original\label{area:a}]{\includegraphics[height=35mm]{images/area/original.jpg}}
+    \subfloat[Binarización\label{area:b}]{\includegraphics[height=35mm]{images/area/whiteandblack.jpg}}
+    \subfloat[No etiquetas\label{area:c}]{\includegraphics[height=35mm]{images/area/deleteobj.jpg}}
+
+    \bigskip
+    
+    \subfloat[Dibujo de bordes\label{area:d}]{\includegraphics[height=35mm]{images/area/bordering.jpg}}
+    \subfloat[Imagen reducida\label{area:e}]{\includegraphics[height=35mm]{images/area/reduced.jpg}}
 
   \caption[Reducción del área de trabajo]
-  {Reducción del área de trabajo. En esta}
+  {Reducción del área de trabajo.}
   \label{reduction}
 \end{figure}
 
 La segunda fase es \textit{eliminación de objetos} que consiste en remover
 todos los objetos de la imagen a excepción del área de interés. Por ejemplo, en
-la Figura \ref{red:b} podemos ver una etiqueta en la esquina superior derecha
-que fue removida en la Figura \ref{red:c}. Lo que realmente hacemos es remover
+la Figura \ref{area:b} podemos ver una etiqueta en la esquina superior derecha
+que fue removida en la Figura \ref{area:c}. Lo que realmente hacemos es remover
 todos los objetos con menos de 10'000 píxeles, ya que consideramos que un seno
 jamás será menor de 10'000 píxeles. Este procedimiento es ejecutado utilizando
 la función Matlab llamada \texttt{bwareaopen}.
@@ -97,8 +104,8 @@ determinar la localización del borde de la imagen, lo que es logrado con la
 función de Matlab llamada \texttt{bwboundaries}. Esta función encuentra los
 bordes de un objeto utilizando el algoritmo Moore-Neighbor modificado por el
 criterio de paro de Jacob \cite{gonzalez2009digital}. Los bordes son utilizados
-para determinar los puntos extremos de cada seno (ver \ref{red:d}). El segundo
-paso es hacer el corte usando estos puntos extremos (ver \ref{red:d}). % red:e
+para determinar los puntos extremos de cada seno (ver \ref{area:d}). El segundo
+paso es hacer el corte usando estos puntos extremos (ver \ref{area:e}). 
 
 \subsection{Conversión de bits}
 
@@ -107,9 +114,9 @@ DICOM representa las imágenes con 4'096 niveles de grises, esto es 12 bits de
 profundidad. Matlab representa estas imágenes utilizando 16 bits de
 profundidad, o sea, 65'536 niveles de grises \cite{mustra2008efficient}. Cuando
 una imagen de 12 bits es visualizada con un visor de 16 bits, esta luce oscura,
-ver Figura X. Para mostrar la imagen correctamente esta necesita ser convertida
-a una imagen de 16 bits. Se aplicó la Ecuación \ref{eq:bitconv} a cada pixel en
-la imagen para realizar la conversión.
+ver Figura \ref{bits}. Para mostrar la imagen correctamente esta necesita ser
+convertida a una imagen de 16 bits. Se aplicó la Ecuación \ref{eq:bitconv} a
+cada pixel en la imagen para realizar la conversión.
 
 \begin{equation}
 \label{eq:bitconv}
@@ -124,107 +131,177 @@ objetivo, $m$ es el número de bits en la imagen original. La vieja matriz es
 representada con $i$ y la nueva con $c$. El par $x$ y $y$ representan la
 posición de los píxeles en cada matriz.
 
+% case number 16, rcc
+\begin{figure}[h]
+    \centering
+
+    \subfloat[12 bits\label{bits:a}]{\includegraphics[height=55mm]{images/bits/12bits.jpg}}
+    \subfloat[16 bits\label{bits:b}]{\includegraphics[height=55mm]{images/bits/16bits.jpg}}
+
+  \caption[Conversión de bits]
+  {Conversion de bits}
+  \label{bits}
+\end{figure}
+
 \subsection{Eliminación de ruido}
-Se elimina el ruido.
+
+En este trabajo nos enfocamos en remover el ruido impulsivo (también llamado
+ruido sal y pimienta) debido a que es un procedimiento relativamente simple. El
+filtro de la mediana es muy común para remover el ruido impulsivo, sin embargo,
+también \textit{suaviza} la imagen de tal forma que se pierde información sobre
+algunas lesiones milimétricas como las microcalcificaciones. Versiones
+mejoradas del filtro de la mediana han sido desarrolladas para corregir estas
+deficiencias.
+
+Utilizamos el Filtro Adaptativo de la Mediana (AMF\footnote{Adaptive Median
+Filter}) tal como es implementado por González~\cite{gonzalez2009digital}. La
+idea principal de AMF es remover los \textit{píxeles ruidosos}, que son
+aquellos rodeados por píxeles vecinos con valores muy diferentes. Tan pronto
+como AMF detecta un pixel ruidoso lo reemplaza por el valor de la mediana de
+los píxeles vecinos.
+
+% pseudocode
+% ref this code
+\algrenewcommand{\alglinenumber}[1]{\footnotesize\textbf{\ttfamily#1}} 
+% avoid two points in the numbering and add ttfamily font
+\algrenewcommand\algorithmicif{\ttfamily\textbf{{if}}}
+\begin{algorithm}
+\caption{AMF implementado por \cite{gonzalez2009digital}}
+\begin{algorithmic}[1]
+% initialize variables ?
+\State Level A:
+\If {$Zmin < Zmed < Zmax$}
+        \State go to Level B
+\Else
+    \State increase the window size % or w = w + 2
+    \If {$w \leq S_{max}$}
+       \State repeat Level A 
+    \Else
+        \State output is $Zmed$
+    \EndIf
+\EndIf
+\State Level B:
+\If {$Zmin < Zxy < Zmax$}
+    \State output is $Zxy$
+\Else
+    \State output is $Zmed$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+El algoritmo usa una ventana $w$ con un tamaño de $3\times3$ que recorre toda
+la imagen. En cada ubicación, el valor mínimo $Zmin$, el valor máximo $Zmax$ y
+la mediana $Zmed$ son calculados. $Zxy$ es el centro de $w$. $Smax$ es el tamaño
+máximo que $w$ puede alcanzar.
+
+AMF trabaja en dos niveles, nivel A y nivel B. En el nivel A (línea 2) se
+identifica $Zmed$ como impulso cuando la condición es falsa. En este caso, el
+tamaño de $w$ incrementa (línea 5) y el nivel A es repetido mientras $w$ es
+menor o igual a su tamaño máximo $Smax$ (línea 6); de otra forma, el pixel
+central toma el valor de $Zmed$ que es la mediana de los píxeles en la ventana
+$w$ (línea 9).
+
+Si la condición en la línea 2 es verdadera se descarta $Zmed$ como impulso y el
+algoritmo continua en el nivel B. En el nivel B, cuando la condición en la
+línea 11 es verdadera, entonces $Zxy$ no es un impulso, en ese caso no hay
+ningún cambio (línea 12); de otra forma, el pixel cantral toma el valor de
+$Zmed$.
 
 \subsection{Mejora del contraste}
-Se mejora el contraste.
 
-\subsection{Compresión} \label{compression}
+Para mejorar el contraste aplicamos la ecualización de histogramas. Debido a la
+efectividad probada del algoritmo CLAHE, como se discutió en el capítulo
+anterior, utilizamos la función llamada \texttt{adaptivehisteq} de Matlab IPT
+que implementa CLAHE. Los parámetros de esta función son modificados con ayuda
+de los radiólogos. La configuración final es aplicada a un área específica de
+la imagen. En la Figura \ref{contrast} se muestra un ejemplo de la mejora de
+contraste utilizando CLAHE.
 
-%This is the final phase in our method. It deals with image compression. A
-%compressed image takes less time for transmission, processing, and less storage
-%capacity. We applied a technique introduced by AbuBaker
-%\cite{abubaker2006mammogram}  abubaker2007efficient}. It aims at compressing an
-%image with minimal loss of quality. 
-%
-%%We introduced small changes to the original method, making the bit conversion
-%%with the algorithm proposed for the enhancement and applying after that a
-%%normalization step.
-%
-%The applied method consists of three steps: image shrinking procedure, pixel
-%depth conversion, and image enhancement. Description of each step follows. 
-%
-%\subsubsection{Image shrinking procedure.} 
-%Here, we will find the maximum shrinking level of the image. It takes three
-%substeps:
-%
-%\begin{enumerate}[a)]
-%    \item Obtain the image histogram (see Fig. \ref{comp:a} and \ref{comp:b}). %% DESCRIBIR QUE SE HIZO AQUI
-%    \item Modify the histogram by deleting the unused gray levels (gaps) in the
-%    histogram. The result will be a right-skewed histogram, as shown in Fig.
-%    \ref{comp:c}.  
-%    \item Generate an image based on the new histogram. The new image will be
-%    quite dark due to the gray levels being located in the dark side section, Fig. \ref{comp:d}.
-%\end{enumerate}
-%
-%\begin{figure}[h]
-%  \begin{center}
-%    \hspace{\fill}
-%    \subfloat[\label{comp:a}]{\includegraphics[height=30mm]{images/original-mammogram-16bits}}
-%    \hfill
-%    \subfloat[\label{comp:b}]{\includegraphics[height=30mm]{images/original-image-histogram}}
-%    \hfill
-%    \subfloat[\label{comp:c}]{\includegraphics[height=30mm]{images/shrunk-histogram}}
-%    \hfill
-%    \subfloat[\label{comp:d}]{\includegraphics[height=30mm]{images/dark-mammogram}}
-%    \hspace{\fill}
-%  \end{center}
-%
-%  \caption{Shrinking procedure. \subref{comp:a} original mammogram,
-%  \subref{comp:b} histogram of \subref{comp:a}, \subref{comp:c} histogram shown
-%  in \subref{comp:b} after being shrunk, and \subref{comp:d} is the dark image
-%  generated from the shrunk histogram.} 
-%  
-%  \label{img:shrinking-one} \end{figure}
-%
-%%\begin{verbatim}
-%
-%%\end{verbatim}
-%
-%\subsubsection{Pixel depth conversion.} 
-%In this step the goal is to reduce the size of the image. Three substeps are
-%involved:
-%
-%\begin{enumerate}[a)] %% NECESITAMOS AGREGAR DESCRIPCION DE CADA UNO DE ESTOS SUBSTEPS
-%    \item Extract the histogram of the shrunk image.
-%    \item Find the maximum shrinking level for the image.
-%    \item Reduce image from 16 to 8 bits. 
-%\end{enumerate}
-%
-%The shape of the original histogram shown in Fig. \ref{comp:b} is quite similar
-%to the histogram of the resultant image shown in Fig. \ref{comp:g}. Peaks look
-%the same, which indicates that the concentration of gray levels remains
-%unchanged.
-%
-%\begin{figure}[h]
-%  \begin{center}
-%    \hspace{\fill}
-%    \subfloat[\label{comp:e}]{\includegraphics[height=30mm]{images/dark-mammogram-histogram}}
-%    \hfill
-%    \subfloat[\label{comp:f}]{\includegraphics[height=30mm]{images/compressed-mammogram-8bits}}
-%    \hfill
-%    \subfloat[\label{comp:g}]{\includegraphics[height=30mm]{images/compressed-mammogram-histogram}}
-%    \hspace{\fill}
-%  \end{center}
-%
-%  \caption{(a) shows histogram generated from the dark mammogram, (b) is the 8 
-%  bits mammogram, and (c) is the histogram of 8-bit image, which is similar to 
-%  the original mammogram.} 
-%  
-%  \label{img:shrinking-two}
-%\end{figure}
-%
-%\subsubsection{Enhancing pixel depth conversion.}
-%This step aims at improving brightness of the image obtained from pixel depth
-%conversion.  Afterwards, image conversion from 16 to 8 bits using an efficient
-%coefficient takes place.  Medical information carried by the image should be
-%maintained. %% AGREGAR REFERENCIA A UNA FIG., SI LA HAY
+\subsection{Compresión}
+\label{compression}
 
-% change the words in this paragrap
+Como complemento en la fase final de nuestro método implementamos un algoritmo
+de compresión cuyo principio es el \textit{encogimiento del histograma}. La
+técnica utilizada fue introducida por AbuBaker en~\cite{abubaker2006mammogram}
+y~\cite{abubaker2007efficient}. Esta técnica tiene como objetivo comprimir una
+imagen con la menor pérdida de calidad.
 
-%This final step is useful like a normalization process. Below is presented the 
-%Matlab code used:
+El método aplicado tiene tres pasos: reducción de la imagen, conversión de
+píxeles, y mejoramiento de la imagen. A continuación se describen estos pasos:
+
+\subsubsection{Image shrinking procedure.} 
+
+The histogram of image obtained either from image denoising or contrast
+enhancement is created. For example, Fig.~\ref{comp:a} is the image obtained
+from image denoising. Fig.~\ref{comp:b} is the histogram of image in
+Fig.~\ref{comp:a}. Unused grey levels (or gaps) in Fig.~\ref{comp:b} are
+eliminated. As a result, a right-skewed histogram is obtained, shown in
+Fig.~\ref{comp:c}. A new image is generated from Fig.~\ref{comp:c}, which will
+be quite dark due to the gray levels being located in the dark side section
+(see Fig.~\ref{comp:d}).
+
+\begin{figure}[h]
+  \begin{center}
+    \subfloat[\label{comp:a}]{\includegraphics[height=30mm]{images/compress/original-mammogram-16bits}}
+    \hspace{12pt}
+    \subfloat[\label{comp:b}]{\includegraphics[height=30mm]{images/compress/original-image-histogram}}
+    \hspace{12pt}
+    \subfloat[\label{comp:c}]{\includegraphics[height=30mm]{images/compress/shrunk-histogram}}
+    \hspace{12pt}
+    \subfloat[\label{comp:d}]{\includegraphics[height=30mm]{images/compress/dark-mammogram}}
+  \end{center}
+
+  \caption{Shrinking procedure. \protect\subref{comp:a} original mammogram,
+  \protect\subref{comp:b} histogram of \protect\subref{comp:a},
+  \protect\subref{comp:c} histogram shown in \protect\subref{comp:b} after
+  being shrunk, and \protect\subref{comp:d} is the dark image generated from
+  the shrunk histogram.} 
+  
+  \label{img:shrinking-one} 
+\end{figure}
+
+\subsubsection{Pixel depth conversion.} 
+
+In this step the goal is to reduce the size of the image. Three substeps are
+involved. We extract the histogram (shown in Fig. \ref{comp:e}) of the shrunk
+image, which will be similar to image shown in Fig. \ref{comp:c}. Then, the
+maximum shrinking level for the image is found based on histogram in Fig.
+\ref{comp:e} by computing the percentage of used gray levels (non-zero values)
+in the array representing the histogram. This percentage is input to the Matlab
+function \texttt{imadjust} from the Image Processing Toolbox. This function
+adjusts the intensity values in the image. A new 8-bit image is returned as
+result of this function. 
+
+\begin{figure}[h]
+  \begin{center}
+    \subfloat[\label{comp:e}]{\includegraphics[height=30mm]{images/compress/dark-mammogram-histogram}}
+    \hspace{12pt}
+    \subfloat[\label{comp:f}]{\includegraphics[height=30mm]{images/compress/compressed-mammogram-8bits}}
+    \hspace{12pt}
+    \subfloat[\label{comp:g}]{\includegraphics[height=30mm]{images/compress/compressed-mammogram-histogram}}
+  \end{center}
+
+  \caption{\protect\subref{comp:e} histogram generated from the dark mammogram
+  shown in Fig. \protect\ref{comp:d}, \protect\subref{comp:f}  8-bit mammogram
+  obtained from \protect\subref{comp:e}, \protect\subref{comp:g} histogram of
+  image \protect\subref{comp:f}, which is similar to histogram shown in Fig.
+  \ref{comp:b}}. 
+  
+  \label{img:shrinking-two} 
+\end{figure}
+
+he shape of the histogram shown in Fig. \ref{comp:b} is quite similar
+to the histogram of the resultant image shown in Fig. \ref{comp:g}. Peaks look
+the same, which indicates that the concentration of gray levels remains
+unchanged.
+
+\subsubsection{Enhancing pixel depth conversion.}
+
+This step aims at improving brightness of the image obtained from pixel depth
+conversion. Afterwards, image conversion from 16 to 8 bits using an efficient
+coefficient takes place. Medical information carried by the image should be
+maintained. This final step is useful like a normalization process. 
+
 
 \definecolor{bg}{rgb}{0.9,0.9,0.9}
 \begin{minted}[linenos=true, 
