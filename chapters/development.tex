@@ -233,7 +233,7 @@ contraste utilizando CLAHE.
     \subfloat[\label{contr:d}]{\includegraphics[height=35mm]{images/contrast/after-clahe-hist}}
   \end{center} 
 
-  \caption{Close-up of a mammogram. \protect\subref{contr:a} Original lesion area,
+  \caption[Ecualización de histogramas]{Close-up of a mammogram. \protect\subref{contr:a} Original lesion area,
   \protect\subref{contr:b} histogram of \protect\subref{contr:a}, \protect\subref{contr:c} same lesion
   area after CLAHE has been applied to it, \protect\subref{contr:d} histogram of
   \protect\subref{contr:c}.} 
@@ -275,7 +275,7 @@ be quite dark due to the gray levels being located in the dark side section
     \subfloat[\label{comp:d}]{\includegraphics[height=30mm]{images/compress/dark-mammogram}}
   \end{center}
 
-  \caption{Shrinking procedure. \protect\subref{comp:a} original mammogram,
+  \caption[Método de encogimiento]{Shrinking procedure. \protect\subref{comp:a} original mammogram,
   \protect\subref{comp:b} histogram of \protect\subref{comp:a},
   \protect\subref{comp:c} histogram shown in \protect\subref{comp:b} after
   being shrunk, and \protect\subref{comp:d} is the dark image generated from
@@ -284,17 +284,17 @@ be quite dark due to the gray levels being located in the dark side section
   \label{img:shrinking-one} 
 \end{figure}
 
-\subsubsection{Pixel depth conversion.} 
+\subsubsection{Conversión de la profundidad de píxeles} 
 
-In this step the goal is to reduce the size of the image. Three substeps are
-involved. We extract the histogram (shown in Fig. \ref{comp:e}) of the shrunk
-image, which will be similar to image shown in Fig. \ref{comp:c}. Then, the
-maximum shrinking level for the image is found based on histogram in Fig.
-\ref{comp:e} by computing the percentage of used gray levels (non-zero values)
-in the array representing the histogram. This percentage is input to the Matlab
-function \texttt{imadjust} from the Image Processing Toolbox. This function
-adjusts the intensity values in the image. A new 8-bit image is returned as
-result of this function. 
+En este paso la meta es reducir el tamaño de la imagen. Se necesitan tres
+subpasos. Extraemos el histograma (ver Figura \ref{comp:e}) de la imagen
+encogida, que es similar al que se muestra en Fig. \ref{comp:c}. Después, el
+nivel máximo de encogimiento de la imagen es encontrado utilizando el
+histograma en la Figura \ref{comp:e} calculando el porcentaje de niveles de
+grises usados (valores diferentes a cero) en el array que representa el
+histograma. Este porcentaje es la entrada de la función de Matlab IPT
+\texttt{imadjust}. Esta función ajusta la intensidad de valores en una imagen.
+Una nueva imagen de 8 bits se obtiene como resultado de esta función.
 
 \begin{figure}[h]
   \begin{center}
@@ -305,19 +305,20 @@ result of this function.
     \subfloat[\label{comp:g}]{\includegraphics[height=30mm]{images/compress/compressed-mammogram-histogram}}
   \end{center}
 
-  \caption{\protect\subref{comp:e} histogram generated from the dark mammogram
-  shown in Fig. \protect\ref{comp:d}, \protect\subref{comp:f}  8-bit mammogram
-  obtained from \protect\subref{comp:e}, \protect\subref{comp:g} histogram of
-  image \protect\subref{comp:f}, which is similar to histogram shown in Fig.
+  \caption[Compresión de la mamografía]
+  {\protect\subref{comp:e} es el histograma generado a partir de la mamografía
+  oscura mostrada en la Fig. \protect\ref{comp:d}, \protect\subref{comp:f} es
+  el histograma de 8 bits obtenido de \protect\subref{comp:e},
+  \protect\subref{comp:g} es el histograma de la imagen
+  \protect\subref{comp:f}, que es similar al histograma que se muestra en
   \ref{comp:b}}. 
   
   \label{img:shrinking-two} 
 \end{figure}
 
-The shape of the histogram shown in Fig. \ref{comp:b} is quite similar
-to the histogram of the resultant image shown in Fig. \ref{comp:g}. Peaks look
-the same, which indicates that the concentration of gray levels remains
-unchanged.
+El histograma mostrado en la Figura \ref{comp:b} es muy similar al histograma
+de la imagen resultante mostrado en la Fig. \ref{comp:g}. Los picos son los
+mismos lo que indica que la concentración de niveles de grises permanece igual.
 
 \subsubsection{Enhancing pixel depth conversion.}
 
