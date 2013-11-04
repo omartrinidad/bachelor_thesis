@@ -81,6 +81,10 @@
     {\thesubsubsection}
     {1em}{}
 
+    % less space before subsubsection titles
+    % {before}{above}{after}
+    \titlespacing*{\subsubsection}{0pt}{0pt}{5pt}
+
 % change the format of table of contents --> titletoc
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand\thesection{\arabic{chapter}.\arabic{section}}

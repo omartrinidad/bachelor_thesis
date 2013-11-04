@@ -245,16 +245,16 @@ contraste utilizando CLAHE.
 \label{compression}
 
 Como complemento en la fase final de nuestro método implementamos un algoritmo
-de compresión cuyo principio es el \textit{encogimiento del histograma}. La
-técnica utilizada fue introducida por AbuBaker en~\cite{abubaker2006mammogram,
-abubaker2007efficient}. Esta técnica tiene como objetivo comprimir una imagen
+de compresión cuyo principio radica en el \textit{encogimiento del histograma}.
+La técnica utilizada fue introducida por AbuBaker~\cite{abubaker2006mammogram,
+abubaker2007efficient}. El objetivo de esta técnica es comprimir una imagen
 con la menor pérdida de calidad. El método aplicado tiene tres pasos:
-procedimiento de reducción de la imagen, conversión de píxeles, y mejoramiento
-de la imagen. A continuación se describen estos pasos:
+encogimiento de la imagen, conversión de la profundidad de píxeles, y
+mejoramiento de la imagen. A continuación se describen estos pasos:
 
 \subsubsection{Encogimiento de la imagen.} 
 
-La Figura~\ref{comp:a} es la imagen obtenida de la fase anterior y su
+La Figura~\ref{comp:a} es la imagen obtenida en la fase anterior y su
 histograma correspondiente se puede ver en la Figura~\ref{comp:b}. De este
 histograma eliminamos los niveles de grises no utilizados (o lagunas). Como
 resultado obtenemos un histograma inclinado a la derecha, que se puede ver en
@@ -270,16 +270,17 @@ en la región derecha.
 
     \bigskip
 
-    \subfloat[\label{comp:c}]{\includegraphics[height=40mm]{images/compress/shrunk-histogram}}
-    \hspace{12pt}
     \subfloat[\label{comp:b}]{\includegraphics[height=40mm]{images/compress/original-image-histogram}}
+    \hspace{12pt}
+    \subfloat[\label{comp:c}]{\includegraphics[height=40mm]{images/compress/shrunk-histogram}}
   \end{center}
 
-  \caption[Método de encogimiento]{Método de encogimiento. En \protect\subref{comp:a} se visualiza la imagen de entrada,
+  \caption[Método de encogimiento]{Método de encogimiento. En
+  \protect\subref{comp:a} se visualiza la imagen de entrada,
   \protect\subref{comp:b} es el histograma de \protect\subref{comp:a},
-  \protect\subref{comp:c} histogram shown in \protect\subref{comp:b} after
-  being shrunk, and \protect\subref{comp:d} is the dark image generated from
-  the shrunk histogram.} 
+  \protect\subref{comp:c} es el histograma  mostrado en \protect\subref{comp:b}
+  después de ser encogido y \protect\subref{comp:d} es la imagen oscura
+  generada a partir del histograma encogido.}
   
   \label{img:shrinking-one} 
 \end{figure}
