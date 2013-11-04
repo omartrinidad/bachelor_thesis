@@ -246,37 +246,37 @@ contraste utilizando CLAHE.
 
 Como complemento en la fase final de nuestro método implementamos un algoritmo
 de compresión cuyo principio es el \textit{encogimiento del histograma}. La
-técnica utilizada fue introducida por AbuBaker en~\cite{abubaker2006mammogram}
-y~\cite{abubaker2007efficient}. Esta técnica tiene como objetivo comprimir una
-imagen con la menor pérdida de calidad. El método aplicado tiene tres pasos:
+técnica utilizada fue introducida por AbuBaker en~\cite{abubaker2006mammogram,
+abubaker2007efficient}. Esta técnica tiene como objetivo comprimir una imagen
+con la menor pérdida de calidad. El método aplicado tiene tres pasos:
 procedimiento de reducción de la imagen, conversión de píxeles, y mejoramiento
 de la imagen. A continuación se describen estos pasos:
 
-\subsubsection{Procedimiento de reducción de la imagen} 
+\subsubsection{Encogimiento de la imagen.} 
 
-Lo primero que hacemos es obtener el histograma de la imagen.
-
-For example, Fig.~\ref{comp:a} is the image obtained
-from image denoising. Fig.~\ref{comp:b} is the histogram of image in
-Fig.~\ref{comp:a}. Unused grey levels (or gaps) in Fig.~\ref{comp:b} are
-eliminated. As a result, a right-skewed histogram is obtained, shown in
-Fig.~\ref{comp:c}. A new image is generated from Fig.~\ref{comp:c}, which will
-be quite dark due to the gray levels being located in the dark side section
-(see Fig.~\ref{comp:d}).
+La Figura~\ref{comp:a} es la imagen obtenida de la fase anterior y su
+histograma correspondiente se puede ver en la Figura~\ref{comp:b}. De este
+histograma eliminamos los niveles de grises no utilizados (o lagunas). Como
+resultado obtenemos un histograma inclinado a la derecha, que se puede ver en
+la Figura~\ref{comp:c}. A partir de este histograma se genera una nueva imagen
+que luce muy oscura (ver Figura~\ref{comp:d}) pues los niveles de grises están
+en la región derecha.
 
 \begin{figure}[h]
   \begin{center}
-    \subfloat[\label{comp:a}]{\includegraphics[height=30mm]{images/compress/original-mammogram-16bits}}
+    \subfloat[\label{comp:a}]{\includegraphics[height=40mm]{images/compress/original-mammogram-16bits}}
     \hspace{12pt}
-    \subfloat[\label{comp:b}]{\includegraphics[height=30mm]{images/compress/original-image-histogram}}
+    \subfloat[\label{comp:d}]{\includegraphics[height=40mm]{images/compress/dark-mammogram}}
+
+    \bigskip
+
+    \subfloat[\label{comp:c}]{\includegraphics[height=40mm]{images/compress/shrunk-histogram}}
     \hspace{12pt}
-    \subfloat[\label{comp:c}]{\includegraphics[height=30mm]{images/compress/shrunk-histogram}}
-    \hspace{12pt}
-    \subfloat[\label{comp:d}]{\includegraphics[height=30mm]{images/compress/dark-mammogram}}
+    \subfloat[\label{comp:b}]{\includegraphics[height=40mm]{images/compress/original-image-histogram}}
   \end{center}
 
-  \caption[Método de encogimiento]{Shrinking procedure. \protect\subref{comp:a} original mammogram,
-  \protect\subref{comp:b} histogram of \protect\subref{comp:a},
+  \caption[Método de encogimiento]{Método de encogimiento. En \protect\subref{comp:a} se visualiza la imagen de entrada,
+  \protect\subref{comp:b} es el histograma de \protect\subref{comp:a},
   \protect\subref{comp:c} histogram shown in \protect\subref{comp:b} after
   being shrunk, and \protect\subref{comp:d} is the dark image generated from
   the shrunk histogram.} 
@@ -308,7 +308,7 @@ Una nueva imagen de 8 bits se obtiene como resultado de esta función.
   \caption[Compresión de la mamografía]
   {\protect\subref{comp:e} es el histograma generado a partir de la mamografía
   oscura mostrada en la Fig. \protect\ref{comp:d}, \protect\subref{comp:f} es
-  el histograma de 8 bits obtenido de \protect\subref{comp:e},
+  la imagen de 8 bits generada a partir de \protect\subref{comp:e},
   \protect\subref{comp:g} es el histograma de la imagen
   \protect\subref{comp:f}, que es similar al histograma que se muestra en
   \ref{comp:b}}. 
@@ -320,20 +320,23 @@ El histograma mostrado en la Figura \ref{comp:b} es muy similar al histograma
 de la imagen resultante mostrado en la Fig. \ref{comp:g}. Los picos son los
 mismos lo que indica que la concentración de niveles de grises permanece igual.
 
-\subsubsection{Enhancing pixel depth conversion.}
+\subsubsection{Mejora de la imagen}
 
-This step aims at improving brightness of the image obtained from pixel depth
-conversion. Afterwards, image conversion from 16 to 8 bits using an efficient
-coefficient takes place. Medical information carried by the image should be
-maintained. This final step is useful like a normalization process. 
+El objetivo de este paso es mejorar la calidad de la imagen que se obtuvo en el 
+paso anterior. 
+
+Afterwards, image conversion from 16 to 8 bits using an efficient
+coefficient takes place.
+
+La información médica de la imagen se debe mantener. Este paso es útil como un
+proceso de normalización.
 
 \definecolor{bg}{rgb}{0.9,0.9,0.9}
 \begin{minted}[linenos=true, 
                %fontfamily=fi4, 
                fontseries=ubx,
                bgcolor=bg, frame=lines]{matlab}
-% Get the size of the image
-% Based on Abubaker code
+
 [height width] = size(image);
 imageCopy = repmat(uint8(0), height, width);
 divider = 0.0;
@@ -352,8 +355,5 @@ for h=1:1:height
     end
 end
 \end{minted}
-
-%Recordar escribir que en las primeras pruebas sólo se mejoró  la visualización
-%del tejido graso y no del tejido mamario.
 
 
