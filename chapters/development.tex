@@ -211,7 +211,7 @@ línea 11 es verdadera, entonces $Zxy$ no es un impulso, en ese caso no hay
 ningún cambio (línea 12); de otra forma, el pixel cantral toma el valor de
 $Zmed$.
 
-\subsection{Mejora del contraste}
+\subsection{Mejora de contraste}
 
 Para mejorar el contraste aplicamos la ecualización de histogramas. Debido a la
 efectividad probada del algoritmo CLAHE, como se discutió en el capítulo
@@ -233,9 +233,10 @@ contraste utilizando CLAHE.
     \subfloat[\label{contr:d}]{\includegraphics[height=35mm]{images/contrast/after-clahe-hist}}
   \end{center} 
 
-  \caption[Ecualización de histogramas]{Close-up of a mammogram. \protect\subref{contr:a} Original lesion area,
-  \protect\subref{contr:b} histogram of \protect\subref{contr:a}, \protect\subref{contr:c} same lesion
-  area after CLAHE has been applied to it, \protect\subref{contr:d} histogram of
+  \caption[Técnica CLAHE]{Técnica CLAHE. En \protect\subref{contr:a} se observa
+  en detalle una lesión, \protect\subref{contr:b} es el histograma de
+  \protect\subref{contr:a}, \protect\subref{contr:c} es la lesión después de
+  aplicar la técnica CLAHE, \protect\subref{contr:d} es el histograma de
   \protect\subref{contr:c}.} 
 
   \label{img:clahe} 
@@ -249,7 +250,7 @@ de compresión cuyo principio radica en el \textit{encogimiento del histograma}.
 La técnica utilizada fue introducida por AbuBaker~\cite{abubaker2006mammogram,
 abubaker2007efficient}. El objetivo de esta técnica es comprimir una imagen
 con la menor pérdida de calidad. El método aplicado tiene tres pasos:
-encogimiento de la imagen, conversión de la profundidad de píxeles, y
+encogimiento de la imagen, conversión de la profundidad de píxeles y
 mejoramiento de la imagen. A continuación se describen estos pasos:
 
 \subsubsection{Encogimiento de la imagen.} 
@@ -259,8 +260,8 @@ histograma correspondiente se puede ver en la Figura~\ref{comp:b}. De este
 histograma eliminamos los niveles de grises no utilizados (o lagunas). Como
 resultado obtenemos un histograma inclinado a la derecha, que se puede ver en
 la Figura~\ref{comp:c}. A partir de este histograma se genera una nueva imagen
-que luce muy oscura (ver Figura~\ref{comp:d}) pues los niveles de grises están
-en la región derecha.
+que luce muy oscura (ver Figura~\ref{comp:d}) debido a la naturaleza del
+histograma del que se obtiene.
 
 \begin{figure}[h]
   \begin{center}
@@ -276,85 +277,76 @@ en la región derecha.
   \end{center}
 
   \caption[Método de encogimiento]{Método de encogimiento. En
-  \protect\subref{comp:a} se visualiza la imagen de entrada,
-  \protect\subref{comp:b} es el histograma de \protect\subref{comp:a},
-  \protect\subref{comp:c} es el histograma  mostrado en \protect\subref{comp:b}
-  después de ser encogido y \protect\subref{comp:d} es la imagen oscura
-  generada a partir del histograma encogido.}
+  \protect\subref{comp:a} se visualiza la imagen de entrada, su histograma es
+  \protect\subref{comp:b}, \protect\subref{comp:c} es el histograma  mostrado
+  en \protect\subref{comp:b} después de ser encogido y \protect\subref{comp:d}
+  es la imagen oscura generada a partir del histograma encogido.}
   
-  \label{img:shrinking-one} 
+  \label{img:shrinking-one}
 \end{figure}
 
-\subsubsection{Conversión de la profundidad de píxeles} 
+\subsubsection{Conversión de la profundidad de píxeles.} 
 
 En este paso la meta es reducir el tamaño de la imagen. Se necesitan tres
-subpasos. Extraemos el histograma (ver Figura \ref{comp:e}) de la imagen
-encogida, que es similar al que se muestra en Fig. \ref{comp:c}. Después, el
-nivel máximo de encogimiento de la imagen es encontrado utilizando el
-histograma en la Figura \ref{comp:e} calculando el porcentaje de niveles de
-grises usados (valores diferentes a cero) en el array que representa el
-histograma. Este porcentaje es la entrada de la función de Matlab IPT
-\texttt{imadjust}. Esta función ajusta la intensidad de valores en una imagen.
-Una nueva imagen de 8 bits se obtiene como resultado de esta función.
+subpasos. Extraemos el histograma de la imagen encogida (ver
+Figura~\ref{comp:e}), que es similar al que se muestra en la
+Figura~\ref{comp:c}. Después, calculamos \textit{nivel máximo de encogimiento}
+de la imagen, haciendo uso del arreglo numérico que representa el histograma de
+la Figura~\ref{comp:e}. Computamos el porcentaje de valores diferentes a ceros
+(niveles de grises utilizados) en dicho arreglo. 
+
+El valor obtenido es la entrada de la función de Matlab IPT \texttt{imadjust}.
+Esta función ajusta la intensidad de valores en una imagen. Una nueva imagen de
+8 bits de profundidad se obtiene como resultado de esta función (ver
+Figura~\ref{comp:f}). El histograma de la imagen original (ver
+Figura~\ref{comp:b}) es muy similar al histograma de la imagen final (ver
+Figura~\ref{comp:g}). Los picos son los mismos lo que indica que la
+concentración de niveles de grises permanece intacta.
 
 \begin{figure}[h]
   \begin{center}
-    \subfloat[\label{comp:e}]{\includegraphics[height=30mm]{images/compress/dark-mammogram-histogram}}
+    \subfloat[\label{comp:e}]{\includegraphics[height=40mm]{images/compress/dark-mammogram-histogram}}
     \hspace{12pt}
-    \subfloat[\label{comp:f}]{\includegraphics[height=30mm]{images/compress/compressed-mammogram-8bits}}
+    \subfloat[\label{comp:g}]{\includegraphics[height=40mm]{images/compress/compressed-mammogram-histogram}}
     \hspace{12pt}
-    \subfloat[\label{comp:g}]{\includegraphics[height=30mm]{images/compress/compressed-mammogram-histogram}}
+    \subfloat[\label{comp:f}]{\includegraphics[height=40mm]{images/compress/compressed-mammogram-8bits}}
   \end{center}
 
-  \caption[Compresión de la mamografía]
-  {\protect\subref{comp:e} es el histograma generado a partir de la mamografía
-  oscura mostrada en la Fig. \protect\ref{comp:d}, \protect\subref{comp:f} es
-  la imagen de 8 bits generada a partir de \protect\subref{comp:e},
-  \protect\subref{comp:g} es el histograma de la imagen
-  \protect\subref{comp:f}, que es similar al histograma que se muestra en
-  \ref{comp:b}}. 
+  \caption[Conversión de la profundidad de píxeles]
+  {Conversión de la profundidad de píxeles. En \protect\subref{comp:e} se
+  muestra el histograma generado a partir de la mamografía oscura mostrada en
+  \protect\ref{comp:d}, \protect\subref{comp:f} es la imagen de 8 bits
+  generada con la función \texttt{imadjust} y \protect\subref{comp:g} es su
+  histograma, que es similar al histograma que se muestra en \ref{comp:b}}. 
   
-  \label{img:shrinking-two} 
+  \label{img:shrinking-two}
 \end{figure}
 
-El histograma mostrado en la Figura \ref{comp:b} es muy similar al histograma
-de la imagen resultante mostrado en la Fig. \ref{comp:g}. Los picos son los
-mismos lo que indica que la concentración de niveles de grises permanece igual.
+\subsubsection{Mejoramiento de la imagen.}
 
-\subsubsection{Mejora de la imagen}
+Finalmente, ejecutamos un proceso de normalización. El objetivo de este paso es
+mejorar la calidad de la imagen que se obtuvo en el paso anterior.
 
-El objetivo de este paso es mejorar la calidad de la imagen que se obtuvo en el 
-paso anterior. 
-
-Afterwards, image conversion from 16 to 8 bits using an efficient
-coefficient takes place.
-
-La información médica de la imagen se debe mantener. Este paso es útil como un
-proceso de normalización.
-
-\definecolor{bg}{rgb}{0.9,0.9,0.9}
-\begin{minted}[linenos=true, 
-               %fontfamily=fi4, 
-               fontseries=ubx,
-               bgcolor=bg, frame=lines]{matlab}
-
-[height width] = size(image);
-imageCopy = repmat(uint8(0), height, width);
-divider = 0.0;
-maxLevel = double(usedGrayLevels);
-
-while 1
-    divider = divider + 0.01;
-    if maxLevel/divider <= 255
-        break;
-    end
-end
-fprintf('text');
-for h=1:1:height
-    for w=1:1:width
-       imageCopy(h, w) = image(h, w)/divider;
-    end
-end
-\end{minted}
-
-
+%\definecolor{bg}{rgb}{0.9,0.9,0.9}
+%\begin{minted}[linenos=true, 
+%               fontfamily=fi4, 
+%               fontseries=ubx,
+%               samepage=false,
+%               bgcolor=bg]{matlab}
+%
+%[height width] = size(image);
+%imageCopy = repmat(uint8(0), height, width);
+%divider = 0.0;
+%maxLevel = double(usedGrayLevels);
+%while 1
+%    divider = divider + 0.01;
+%    if maxLevel/divider <= 255
+%        break;
+%    end
+%end
+%for h=1:1:height
+%    for w=1:1:width
+%       imageCopy(h, w) = image(h, w)/divider;
+%    end
+%end
+%\end{minted}

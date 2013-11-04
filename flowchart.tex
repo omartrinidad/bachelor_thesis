@@ -36,7 +36,9 @@
   test/.style={base, diamond, aspect=2, text width=5em},
   term/.style={proc, rounded corners},
   % coord node style is used for placing corners of connecting lines
-  coord/.style={coordinate, on chain, on grid, node distance=6mm and 25mm},
+  coorda/.style={coordinate, on chain, on grid, node distance=6mm and 25mm},
+  coordb/.style={coordinate, on chain, on grid, node distance=6mm and 35mm},
+  coordc/.style={coordinate, on chain, on grid, node distance=6mm and 45mm},
   % nmark node style is used for coordinate debugging marks
   nmark/.style={draw, cyan, circle, font={\sffamily\bfseries}},
   % -------------------------------------------------
@@ -51,16 +53,16 @@
 % Use join to connect a node to the previous one a
 
 \node [term, it] (p0) {Start};
-\node [proc, fill=violet!30, join] (p1) {Reduction of work area};
-\node [test, join] (t1) {12 bits image?};
+\node [proc, fill=violet!30, join] (p1) {Reducción del área de trabajo};
+\node [test, fill=blue!30, join] (t1) {¿12 bpp?};
 % No join for exits from test nodes - connections have more complex
 % requirements
 % We continue until all the blocks are positioned
-\node [proc, fill=brown!30] (p2) {Conversion to 16 bits};
-\node [proc, fill=blue!30, join] (p3) {Adaptive Median Filter};
-\node [proc, fill=green!30, join] (p4) {Histogram Equalization};
-\node [proc, fill=red!30, join] (p5) {Image shrinking};
-\node [term, join, it]      {End};
+\node [proc, fill=brown!30] (p2) {Conversión a 16 bits};
+\node [proc, fill=red!30, join] (p3) {Filtro adaptativo de la mediana};
+\node [proc, fill=green!30, join] (p4) {Ecualización de histograma};
+\node [proc, fill=yellow!30, join] (p5) {Encogimiento de la imagen};
+\node [term, join, it] (p6) {End};
 % We position the next block explicitly as the first block in the
 % second column.  The chain 'comes along with us'. The distance
 % between columns has already been defined, so we don't need to
@@ -70,7 +72,9 @@
 % Now we place the coordinate nodes for the connectors with angles, or
 % with annotations. We also mark them for debugging.
 
-\node [coord, left=of t1]  (c1)  {}; %\cmark{1}   
+\node [coorda, left=of t1]  (c0)  {}; 
+\node [coorda, right=of p3]  (c1)  {}; \cmark{1}   
+\node [coordb, right=of p4]  (c2)  {}; \cmark{2}   
  
 % -------------------------------------------------
 % A couple of boxes have annotations
@@ -86,16 +90,22 @@
 % -------------------------------------------------
 % Finally, the twisty connectors. Again, we place the annotation
 % first, then draw the connector
-\path (t1.west) to node [near start, yshift=-1em] {$no$} (c1); 
-  \draw [->,blue] (t1.west) -- (c1) |- (p2);
+\path (t1.west) to node [near start, yshift=-3em, xshift=-1.3em] {$no$} (c0); 
+  \draw [*->, blue, xshift=-1.3em] (t1.west) -- (c0) |- (p3);
 
+\path (p3.east) to node [near start, yshift=1em] {} (c1); 
+  \draw [o->, blue, dotted, thick] (p3.east) -- (c1) |- (p5);
+
+\path (p4.east) to node [near start] {} (c2); 
+  \draw [o->, red, dotted, thick] (p4.east) -- (c2) |- (p6);
 % -------------------------------------------------
 
-    \draw[brown, thick] ($(p3.north west)+(-0.3,0.3)$)  rectangle ($(p5.south east)+(0.3,-0.3)$) 
-    node [right]{label};
+    %\draw[brown, thick] ($(p4.north west)+(-1.2, 0.3)$)  rectangle ($(p5.south east)+(1.2, -0.3)$) 
+    %node [right, xshift=1em, yshift=5em]{GUI};
 }
 \end{tikzpicture}
 \end{center}
-  \caption{Preprocessing method applied to each image in the collection} 
+  \caption[Método de preprocesamiento]
+  {Método de preprocesamiento. \textbf{1} nos indica que es posible ir del paso}
   \label{fig:flowchart} 
 \end{figure}
