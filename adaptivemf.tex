@@ -4,11 +4,11 @@
 \begin{figure}[h]
 \centering
 
-\subfloat[Pixel ruidoso\label{fig:noisypixel}]{
+\subfloat[Ni $Zmed$ ni $Zxy$ son ruido\label{fig:nochanges}]{
     \begin{tikzpicture}
 
     \tikzset{myfillcolor/.style = {draw, fill=#1}}%
-    \NewDocumentCommand{\fhighlight}{O{blue!40} m m}{%
+    \NewDocumentCommand{\fhighlight}{O{blue!25} m m}{%
         \draw[myfillcolor=#1] (#2.north west) rectangle (#3.south east);
     }
         \draw[xstep=0.80cm, ystep=0.80, color=blue] (0,0) grid (4,4);
@@ -19,24 +19,31 @@
         ampersand replacement=\&,
         nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
         ]{
-        159 \& 234 \& 210          \& 131 \& 120 \\
-        392 \& 100 \& 91           \& 120 \& 138 \\
-        205 \& 104 \& \textbf{107} \& 115 \& 233 \\
-        332 \& 94  \& 96           \& 117 \& 420 \\
-        39  \& 304 \& 349          \& 300 \& 130 \\
+        159 \& 234 \& 210         \& 131 \& 120 \\
+        392 \& 100 \& 91          \& 120 \& 138 \\
+        205 \& 104 \& \textbf{107}\& 115 \& 233 \\
+        332 \& 94  \& 96          \& 117 \& 420 \\
+        39  \& 304 \& 349         \& 300 \& 130 \\
         };
 
     \begin{pgfonlayer}{myback}
     \fhighlight{m-2-2}{m-4-4}
-    \fhighlight[green!30]{m-3-3}{m-3-3}
+    \fhighlight[green!40]{m-3-3}{m-3-3}
+    \fhighlight[red!40]{m-3-2}{m-3-2}
     \end{pgfonlayer}
 
     \end{tikzpicture}
 }
 \hspace{12pt}
-\subfloat[Pixel ruidoso 2\label{fig:neighborhood}]{
+\subfloat[$Zxy$ es ruido\label{fig:zxynoise}]{
     \begin{tikzpicture} 
-        \draw[xstep=0.80cm, ystep=0.80, color=red] (0,0) grid (4,4);
+
+    \tikzset{myfillcolor/.style = {draw, fill=#1}}%
+    \NewDocumentCommand{\fhighlight}{O{blue!25} m m}{%
+        \draw[myfillcolor=#1] (#2.north west) rectangle (#3.south east);
+    }
+
+        \draw[xstep=0.80cm, ystep=0.80, color=blue] (0,0) grid (4,4);
         \matrix[matrix of nodes,
         inner sep=0pt,
         anchor=south west,
@@ -44,19 +51,32 @@
         ampersand replacement=\&,
         nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
         ]{
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
+        159 \& 234 \& 210         \& 131 \& 120 \\
+        392 \& 99  \& 91          \& 135 \& 138 \\
+        205 \& 109 \& \textbf{82} \& 117 \& 233 \\
+        332 \& 90  \& 95          \& 149 \& 420 \\
+        39  \& 304 \& 349         \& 300 \& 130 \\
         };
+
+    \begin{pgfonlayer}{myback}
+    \fhighlight{m-2-2}{m-4-4}
+    \fhighlight[green!40]{m-3-3}{m-3-3}
+    \fhighlight[red!40]{m-2-2}{m-2-2}
+    \end{pgfonlayer}
+
     \end{tikzpicture}
 }
 
 % space
-\subfloat[Pixel ruidoso\label{fig:noisypixel}]{
+\subfloat[$Zmed$ es ruido\label{fig:zmednoise}]{
     \begin{tikzpicture}
-        \draw[xstep=0.80cm, ystep=0.80, color=green] (0,0) grid (4,4);
+
+    \tikzset{myfillcolor/.style = {draw, fill=#1}}%
+    \NewDocumentCommand{\fhighlight}{O{blue!25} m m}{%
+        \draw[myfillcolor=#1] (#2.north west) rectangle (#3.south east);
+    }
+
+        \draw[xstep=0.80cm, ystep=0.80, color=blue] (0,0) grid (4,4);
         \matrix[matrix of nodes,
         inner sep=0pt,
         anchor=south west,
@@ -64,18 +84,35 @@
         ampersand replacement=\&,
         nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
         ]{
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
+        159 \& 234 \& 110        \& 131 \& 120 \\
+        192 \& 230 \& 230        \& 135 \& 138 \\
+        105 \& 230 \& \textbf{3} \& 230 \& 233 \\
+        132 \& 90  \& 230        \& 149 \& 220 \\
+        139 \& 104 \& 149        \& 100 \& 130 \\
         };
+
+    \begin{pgfonlayer}{myback}
+    \fhighlight{m-2-2}{m-4-4}
+    \fhighlight[green!40]{m-3-3}{m-3-3}
+    \fhighlight[red!40]{m-2-2}{m-2-3}
+    \fhighlight[red!40]{m-3-2}{m-3-2}
+    \fhighlight[red!40]{m-3-2}{m-3-2}
+    \fhighlight[red!40]{m-4-3}{m-4-3}
+    \fhighlight[red!40]{m-3-4}{m-3-4}
+    \end{pgfonlayer}
+
     \end{tikzpicture}
 }
 \hspace{12pt}
-\subfloat[Pixel ruidoso 2\label{fig:neighborhood}]{
+\subfloat[Incrementa el tamaño de $w$\label{fig:repeat}]{
     \begin{tikzpicture} 
-        \draw[xstep=0.80cm, ystep=0.80, color=brown] (0,0) grid (4,4);
+
+    \tikzset{myfillcolor/.style = {draw, fill=#1}}%
+    \NewDocumentCommand{\fhighlight}{O{blue!25} m m}{%
+        \draw[myfillcolor=#1] (#2.north west) rectangle (#3.south east);
+    }
+
+        \draw[xstep=0.80cm, ystep=0.80, color=blue] (0,0) grid (4,4);
         \matrix[matrix of nodes,
         inner sep=0pt,
         anchor=south west,
@@ -83,15 +120,22 @@
         ampersand replacement=\&,
         nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
         ]{
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
+        159 \& 234 \& 110        \& 131 \& 120 \\
+        192 \& 230 \& 230        \& 135 \& 138 \\
+        105 \& 230 \& \textbf{3} \& 230 \& 233 \\
+        132 \& 90  \& 230        \& 149 \& 220 \\
+        139 \& 104 \& 149        \& 100 \& 130 \\
         };
+
+    \begin{pgfonlayer}{myback}
+    \fhighlight{m-1-1}{m-5-5}
+    \fhighlight[green!40]{m-3-3}{m-3-3}
+    \fhighlight[red!40]{m-5-1}{m-5-1}
+    \end{pgfonlayer}
+
     \end{tikzpicture}
 }
-\caption[Matrix]{Matrix}
+\caption[Funcionamiento del algoritmo AMF]{Funcionamiento del algoritmo AMF en diversos escenarios.}
 \label{fig:amf} 
 \end{figure}
 

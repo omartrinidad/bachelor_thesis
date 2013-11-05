@@ -211,9 +211,28 @@ $Zmed$.
     \input{adaptivemf.tex}
 \shorthandon{>} 
 
-En \ref{fig:neighborhood} el pixel central (107) funciona como pivote, en este ejemplo
-el tamaño de la ventana $w$ es 3, 
-suponiendo que el valor de $Smax$ es 5
+En la Figura~\ref{fig:amf} se ilustra el funcionamiento de AMF con diferentes
+escenarios. En~\ref{fig:nochanges} el tamaño de $w$ es 3 (color azul) y
+contiene los elementos \texttt{[100, 91, 120, 104, 107, 115, 94, 96, 117]}.
+$Zmin$ es 91, $Zmed$ es 104 (color rojo), $Zmax$ es 120 y $Zxy$ es 107 (color
+verde). Iniciamos en el nivel A, dado que $Zmed$ no es un impulso pasamos al
+nivel B. Dado que $Zxy$ tampoco es un impulso, no se hace cambio alguno.
+
+En~\ref{fig:zxynoise} el tamaño de $w$ es 3 (color azul) y contiene los
+elementos \texttt{[99, 91, 135, 109, 82, 117, 90, 95, 149]}. $Zmin$ es 82,
+$Zmed$ es 99 (color rojo), $Zmax$ es 149 y $Zxy$ es 82 (color verde). Iniciamos
+en el nivel A, dado que $Zmed$ no es un impulso pasamos al nivel B. Dado que
+$Zxy$ sí es un impulso, el valor de $Zxy$ se cambia por $Zmed$.
+
+En~\ref{fig:zmednoise} el tamaño de $w$ es 3 (color azul) y contiene los
+elementos \texttt{[230, 230, 135, 230, 3, 230, 90, 230, 149]}. $Zmin$ es 3,
+$Zmed$ es 230 (color rojo), $Zmax$ es 230 y $Zxy$ es 3 (color verde). Iniciamos
+en el nivel A, dado que $Zmed$ es un impulso se incrementa el tamaño de la
+ventana, en esta ocasión tomaremos en cuenta la variable $Smax$, suponiendo que
+su valor es 5, repetimos el nivel A. En~\ref{fig:repeat} el tamaño de $w$ ahora
+es 5, $Zmin$ es 3, $Zmed$ es 139, $Zmax$ es 234 y $Zxy$ es 3. Dado que $Zmed$
+no es un impulso pasamos al nivel B, $Zxy$ sí es un impulso, el valor de $Zxy$
+se cambia por $Zmed$.
 
 \subsection{Mejora de contraste}
 
