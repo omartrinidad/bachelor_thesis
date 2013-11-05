@@ -1,22 +1,36 @@
+\pgfdeclarelayer{myback}
+    \pgfsetlayers{myback,background,main}
+
 \begin{figure}[h]
 \centering
 
 \subfloat[Pixel ruidoso\label{fig:noisypixel}]{
     \begin{tikzpicture}
+
+    \tikzset{myfillcolor/.style = {draw, fill=#1}}%
+    \NewDocumentCommand{\fhighlight}{O{blue!40} m m}{%
+        \draw[myfillcolor=#1] (#2.north west) rectangle (#3.south east);
+    }
         \draw[xstep=0.80cm, ystep=0.80, color=blue] (0,0) grid (4,4);
-        \matrix[matrix of nodes,
+        \matrix (m) [matrix of nodes,
         inner sep=0pt,
         anchor=south west,
         font=\sffamily\small,
         ampersand replacement=\&,
         nodes={inner sep=0pt, text width=0.80cm, align=center, minimum height=0.80cm}
         ]{
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& \textbf{678} \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
-        100 \& 234 \& 678          \& 777 \& 890 \\
+        159 \& 234 \& 210          \& 131 \& 120 \\
+        392 \& 100 \& 91           \& 120 \& 138 \\
+        205 \& 104 \& \textbf{107} \& 115 \& 233 \\
+        332 \& 94  \& 96           \& 117 \& 420 \\
+        39  \& 304 \& 349          \& 300 \& 130 \\
         };
+
+    \begin{pgfonlayer}{myback}
+    \fhighlight{m-2-2}{m-4-4}
+    \fhighlight[green!30]{m-3-3}{m-3-3}
+    \end{pgfonlayer}
+
     \end{tikzpicture}
 }
 \hspace{12pt}

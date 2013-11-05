@@ -153,10 +153,6 @@ algunas lesiones milimétricas como las microcalcificaciones. Versiones
 mejoradas del filtro de la mediana han sido desarrolladas para corregir estas
 deficiencias.
 
-\shorthandoff{>} % hack to combine tikZ and Spanish
-    \input{adaptivemf.tex}
-\shorthandon{>} 
-
 Utilizamos el Filtro Adaptativo de la Mediana (AMF\footnote{Adaptive Median
 Filter}) tal como es implementado por González~\cite{gonzalez2009digital}. La
 idea principal de AMF es remover los \textit{píxeles ruidosos}, que son
@@ -210,6 +206,14 @@ algoritmo continua en el nivel B. En el nivel B, cuando la condición en la
 línea 11 es verdadera, entonces $Zxy$ no es un impulso, en ese caso no hay
 ningún cambio (línea 12); de otra forma, el pixel cantral toma el valor de
 $Zmed$.
+
+\shorthandoff{>} % hack to combine tikZ and Spanish
+    \input{adaptivemf.tex}
+\shorthandon{>} 
+
+En \ref{fig:neighborhood} el pixel central (107) funciona como pivote, en este ejemplo
+el tamaño de la ventana $w$ es 3, 
+suponiendo que el valor de $Smax$ es 5
 
 \subsection{Mejora de contraste}
 
