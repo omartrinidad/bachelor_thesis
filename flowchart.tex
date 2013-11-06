@@ -69,8 +69,8 @@
 % with annotations. We also mark them for debugging.
 
 \node [coorda, left=of t1]  (c0)  {}; 
-\node [coorda, right=of p3]  (c1)  {}; \cmark{1}   
-\node [coordb, right=of p3]  (c2)  {}; \cmark{2}   
+\node [coorda, right=of p3, yshift=-1.2em]  (c1)  {}; \cmark{1}   
+\node [coordb, right=of p3, yshift=-1.2em]  (c2)  {}; \cmark{2}   
 \node [coordc, right=of p4]  (c3)  {}; \cmark{3}   
  
 % -------------------------------------------------
@@ -91,14 +91,14 @@
   \draw [*->, blue, xshift=-1.3em] (t1.west) -- (c0) |- (p3);
 
 \path (p3.east) to node [near start, yshift=1em] {} (c1); 
-  \draw [o->, blue, dotted, thick] ([yshift=-1.2em]p3.east) -- ([yshift=-1.2em]c1) |- (p5);
+  \draw [o->, blue, dashed, thick] ([yshift=-1.2em]p3.east) -- ([yshift=-1.2em]c1) |- (p5);
 
 \path (p3.east) to node [near start] {} (c2); 
-  \draw [o->, red, dotted, thick] ([yshift=1.2em]p3.east) -- ([yshift=1.2em]c2) |- ([yshift=1.2em]p6);
+  \draw [o->, red, dashed, thick] ([yshift=1.2em]p3.east) -- ([yshift=1.2em]c2) |- ([yshift=1.2em]p6);
 
 \path (p4.east) to node [near start] {} (c3); 
-  \draw [o->, green, dotted, thick] (p4.east) -- (c3) |- ([yshift=-1.2em]p6);
-% -------------------------------------------------
+  \draw [o->, green!50!black, dashed, thick] (p4.east) -- (c3) |- ([yshift=-1.2em]p6);
+
 % -------------------------------------------------
 
     %\draw[brown, thick] ($(p4.north west)+(-1.2, 0.3)$)  rectangle ($(p5.south east)+(1.2, -0.3)$) 

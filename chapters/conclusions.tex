@@ -1,32 +1,45 @@
-\chapter{Conclusiones}
+\chapter{Conclusiones y trabajos futuros}
 \label{conclusiones}
 
-Encontramos que 
+En este trabajo se abordó la creación de una colección de mamografías digitales
+y el método de preprocesamiento que se les aplicó. Además como subproducto se
+creó una interfaz gráfica que permite a los médicos manipular niveles de
+contraste de la imagen. 
 
-\section{Trabajos futuros}
+Los resultados fueron positivos. % Write something better
 
-Es posible hacer uso de algoritmos más efectivos para la eliminación del ruido y
-la mejora del contraste. 
+\section{Problemas abiertos}
 
-Trabajos similares al nuestro \cite{heath2000digital} han construido cosas como
-un servicio web.
+Aunque CPDM es un recurso valioso, es necesario continuar el proceso de
+recolección y también enriquecer las fichas de información incluyendo en estas
+las coordenadas de las lesiones y también incluyendo la clasificación BIRADS en
+los casos que no la tienen. En el nuevo proceso de recolección habría que tomar
+en cuenta evitar la duplicación de los casos.
 
-El rango de aplicaciones médicas es amplio. El dataset está listo para usarse
-en etapas posteriores o ampliar la etapa de procesamiento.
+Tomando en cuenta que el sitio web actual está creado con archivos estáticos,
+es posible construir un sistema web más robusto que permita al usuario hacer
+consultas dinámicas. Es posible enriquecer el \textit{frontend} con un diseño
+responsivo y el \textit{backend} con la inclusión de un sistema manejador de
+base de datos. Por ejemplo, para DDSM, fue construido un \textit{servicio
+web}~\cite{rose2006web}. 
 
-Es posible crear un servicio web [referencia] que recupere las imágenes de
-forma efectiva (selección de casos), con una interfaz web responsiva.
-Previsualización. de estos casos.
+Aunque la construcción de un sistema CAD es la contribución más destacada
+derivada de una colección de este tipo, también se pueden generar sistemas de
+entrenamiento para radiólogos noveles~\cite{suri2006recent} o incluso atlas de
+lesiones mamográficas~\cite{antoniou2009web}.
 
-Rescaling. Pasar de una resolución a otra sin problemas.
+% additions to the method
+Es posible también abonar el método de preprocesamiento actual implementando
+algoritmos de preprocesamiento orientado a mamografías como la remoción del
+músculo pectoral en las imágenes con proyección MLO~\cite{raba2005breast}, la
+detección del pezón~\cite{mendez1996automatic} o la orientación de la dirección
+mama~\cite{masek2003automatic}.
 
-Preprocesamiento: eliminar el pectoral en las imágenes ¿cranio caudal?
-Hacer que las imágenes queden en una sola dirección.
+Como se mencionó en el capítulo~\ref{marco}, no se implementó un algoritmo para
+remover el ruido cuántico, por lo tanto es una tarea pendiente. Otra tarea
+pendiente es implementar y/o modificar la basta cantidad de métodos existentes
+sobre preprocesamiento de mamogramas, mejor aún, la colección es un recurso que
+da pie a la creación de nuevos algoritmos.
 
-Eliminar el ruido cuántico, algunos trabajos que hablan sobre eso son ... el de
-Santos y el de Elsevier
+% Rescaling. Pasar de una resolución a otra sin problemas.
 
-Remover el músculo pectoral en vistas MLO como parte del preprocesamiento.
-
-Proteger la privacidad de los pacientes eliminando el nombre, pero también evitar
-que se repitan los casos.
