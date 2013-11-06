@@ -48,7 +48,7 @@
 % Start by placing the nodes
 % Use join to connect a node to the previous one a
 
-\node [term, it] (p0) {Start};
+\node [term, it] (p0) {Inicio};
 \node [proc, fill=violet!30, join] (p1) {Reducción del área de trabajo};
 \node [test, fill=blue!30, join] (t1) {¿12 bpp?};
 % No join for exits from test nodes - connections have more complex
@@ -58,7 +58,7 @@
 \node [proc, fill=red!30, join] (p3) {Filtro adaptativo de la mediana};
 \node [proc, fill=green!30, join] (p4) {Ecualización de histograma};
 \node [proc, fill=yellow!30, join] (p5) {Encogimiento de la imagen};
-\node [term, join, it] (p6) {End};
+\node [term, join, it] (p6) {Fin};
 % We position the next block explicitly as the first block in the
 % second column.  The chain 'comes along with us'. The distance
 % between columns has already been defined, so we don't need to
@@ -70,7 +70,8 @@
 
 \node [coorda, left=of t1]  (c0)  {}; 
 \node [coorda, right=of p3]  (c1)  {}; \cmark{1}   
-\node [coordb, right=of p4]  (c2)  {}; \cmark{2}   
+\node [coordb, right=of p3]  (c2)  {}; \cmark{2}   
+\node [coordc, right=of p4]  (c3)  {}; \cmark{3}   
  
 % -------------------------------------------------
 % A couple of boxes have annotations
@@ -80,7 +81,7 @@
 % First, the straight north-south connections. In each case, we first
 % draw a path with a (consistently positioned) annotation node, then
 % we draw the arrow itself.
-\path (t1.south) to node [near start, xshift=1em] {$yes$} (p2);
+\path (t1.south) to node [near start, xshift=1em] {$s\acute{\imath}$} (p2);
   \draw [->,blue] (t1.south) -- (p2);
 
 % -------------------------------------------------
@@ -90,10 +91,14 @@
   \draw [*->, blue, xshift=-1.3em] (t1.west) -- (c0) |- (p3);
 
 \path (p3.east) to node [near start, yshift=1em] {} (c1); 
-  \draw [o->, blue, dotted, thick] (p3.east) -- (c1) |- (p5);
+  \draw [o->, blue, dotted, thick] ([yshift=-1.2em]p3.east) -- ([yshift=-1.2em]c1) |- (p5);
 
-\path (p4.east) to node [near start] {} (c2); 
-  \draw [o->, red, dotted, thick] (p4.east) -- (c2) |- (p6);
+\path (p3.east) to node [near start] {} (c2); 
+  \draw [o->, red, dotted, thick] ([yshift=1.2em]p3.east) -- ([yshift=1.2em]c2) |- ([yshift=1.2em]p6);
+
+\path (p4.east) to node [near start] {} (c3); 
+  \draw [o->, green, dotted, thick] (p4.east) -- (c3) |- ([yshift=-1.2em]p6);
+% -------------------------------------------------
 % -------------------------------------------------
 
     %\draw[brown, thick] ($(p4.north west)+(-1.2, 0.3)$)  rectangle ($(p5.south east)+(1.2, -0.3)$) 
@@ -102,6 +107,7 @@
 \end{tikzpicture}
 \end{center}
   \caption[Método de preprocesamiento]
-  {Método de preprocesamiento. \textbf{1} nos indica que es posible ir del paso}
+  {Método de preprocesamiento. \textbf{1}, \textbf{2} y \textbf{3} nos indican 
+  que se pueden obviar algunas fases del método.}
   \label{fig:flowchart} 
 \end{figure}
