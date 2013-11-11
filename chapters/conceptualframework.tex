@@ -28,13 +28,11 @@ está en la parte superior izquierda (Figura~\ref{fig:coordinates}).
 % Improve explanation about light and discrete values 
 La \textit{adquisición de imágenes} es el proceso por el cual una escena se
 convierte en un arreglo de píxeles. El primer paso de este proceso se conoce
-como \textbf{muestreo} y consiste en la conversión de una distribución continua
+como \textit{muestreo} y consiste en la conversión de una distribución continua
 de luz a su representación discreta. El segundo paso es la
 \textit{cuantificación}, que consiste en la conversión a una escala de enteros.
 De acuerdo a lo anterior, una imagen también puede definirse como una función
 discreta como se muestra en la Ecuación~\ref{eq:discretized}. 
-
-% nota al pie sobre matlab o poner otra ecuación
 
 \begin{equation}
 \label{eq:discretized}
@@ -76,7 +74,7 @@ decir, cada pixel almacena una tripleta de valores, las imágenes \textit{en
 escala de grises} en cambio tienen un sólo canal por pixel. El rango de valores
 que puede tomar cada pixel es conocido como \textit{bit de profundidad}. Cada
 pixel puede almacenar $2^k$ valores diferentes que son números enteros en el
-rango: $[0\dots2^k - 1]$ donde $0$ es representa el color negro y $2^k$ el color
+rango: $[0\dots2^k - 1]$ donde $0$ representa el color negro y $2^k$ el color
 blanco el blanco. La Tabla~\ref{table:grayscales} sumariza información sobre
 las imágenes en escala de grises y en la Figura~\ref{grayscales} podemos ver la
 misma imagen con diferentes niveles de grises.
@@ -95,17 +93,18 @@ misma imagen con diferentes niveles de grises.
     \subfloat[10 dpi]{\includegraphics[height=40mm]{images/dpi/dpi10.jpg}}
     \subfloat[5 dpi]{\includegraphics[height=40mm]{images/dpi/dpi5.jpg}}
 
-  \caption[resolución]{Imagen de Lenna obtenida de \textit{The USC-SIPI Image Database}
-  vista con distintos distintos valores dpi}
+  \caption[Niveles de grises]{Imagen de Lenna obtenida de \textit{The USC-SIPI Image Database}
+  vista con distintos distintos valores \textit{dpi}}
   
   \label{grayscales}
 \end{figure}
 
-Otros término básico para entender una imagen es la \textit{resolución}, la
-resolución de una imagen especifica las dimensiones espaciales de la imagen en
-el mundo real y es dada por el número de elementos de la imagen por medida; por
-ejemlo, \textit{puntos por pixel}, (dpi, por sus siglas en inglés). En la
-Figura~\ref{resolution} podemos ver la misma imagen con diferente resolución.
+Otros término básico para entender las imágenes digitales es la
+\textit{resolución}, que sirve para especificar las dimensiones espaciales de
+una imagen en el mundo real y es obtenida por el número de elementos de la
+imagen por medida; por ejemlo, \textit{puntos por pixel}, (dpi, por sus siglas
+en inglés). En la Figura~\ref{resolution} podemos ver la misma imagen con
+diferente resolución.
 
 \begin{figure}[h]
     \centering
@@ -119,7 +118,7 @@ Figura~\ref{resolution} podemos ver la misma imagen con diferente resolución.
     \subfloat[4 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna4.jpg}}
     \subfloat[2 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna2.jpg}}
 
-  \caption[Diferentes resoluciones]{Diferentes resoluciones. Imagen de Lenna obtenida de
+  \caption[Resolución]{Diferentes resoluciones. Imagen de Lenna obtenida de
   \textit{The USC-SIPI Image Database}}
   
   \label{resolution}
@@ -133,21 +132,27 @@ estructuras y características.
 Un \textit{histograma} es una distribución de frecuencia, el histograma de una
 imagen describe la frecuencia y la intensidad de valores de una imagen
 \cite{burger2008digital}. Los histogramas son herramientas valiosas para
-examinar el contraste de una imagen.
-
-En la Figura~\ref{fig:histograms} se puede ver
+examinar el contraste de una imagen. En la Figura~\ref{fig:histograms} se puede
+ver la misma imagen con diferente contraste, se puede constatar que el
+histograma está estrechamente relacionado con su contraste. La modificación de
+histogramas es una tarea básica en el procesamiento de imágenes.
 
 \begin{figure}[h]
     \centering
 
     \subfloat[Bajo contraste\label{hist:a}]{\includegraphics[height=40mm]{images/histo/rightskewed.jpg}}
     \subfloat[Contraste normal\label{hist:b}]{\includegraphics[height=40mm]{images/histo/mandril.jpg}}
+    \subfloat[Contraste modificado\label{hist:d}]{\includegraphics[height=40mm]{images/histo/completerange.jpg}}
     \subfloat[Alto contraste\label{hist:c}]{\includegraphics[height=40mm]{images/histo/leftskewed.jpg}}
 
     \bigskip
 
     \subfloat[Histograma de \protect\subref{hist:a}]{\includegraphics[height=40mm]{images/histo/histogram-right.jpg}}
     \subfloat[Histograma de \protect\subref{hist:b}]{\includegraphics[height=40mm]{images/histo/histogram-mandril.jpg}}
+
+    \bigskip
+
+    \subfloat[Histograma de \protect\subref{hist:d}]{\includegraphics[height=40mm]{images/histo/completerange-histo.jpg}}
     \subfloat[Histograma de \protect\subref{hist:c}]{\includegraphics[height=40mm]{images/histo/histogram-left.jpg}}
 
   \caption[Histogramas]{La misma imagen con diferentes contrastes y su
@@ -208,17 +213,21 @@ obtienen de arriba para abajo y las proyecciones MLO de afuera para adentro.
 \begin{figure}[h]
     \centering
 
-    \subfloat[RCC]{\includegraphics[height=45mm]{images/views/rcc.jpg}}
+    \subfloat[LCC\label{lcc}]{\includegraphics[height=35mm]{images/views/lcc.jpg}}
     \hspace{1cm}
-    \subfloat[LCC]{\includegraphics[height=45mm]{images/views/lcc.jpg}}
+    \subfloat[RCC\label{rcc}]{\includegraphics[height=35mm]{images/views/rcc.jpg}}
 
     \bigskip
 
-    \subfloat[RMLO]{\includegraphics[height=45mm]{images/views/rmlo.jpg}}
+    \subfloat[LMLO\label{lmlo}]{\includegraphics[height=35mm]{images/views/lmlo.jpg}}
     \hspace{1cm}
-    \subfloat[LMLO]{\includegraphics[height=45mm]{images/views/lmlo.jpg}}
+    \subfloat[RMLO\label{rmlo}]{\includegraphics[height=35mm]{images/views/rmlo.jpg}}
 
-  \caption{Cuatro proyecciones en un estudio mamográfico}
+  \caption[Proyecciones de un estudio mamográfico]{Proyecciones de un estudio
+  mamográfico. En \protect\subref{lcc} y \protect\subref{rcc} se aprecian las
+  proyecciones craneocaudal izquierda y derecha, en \protect\subref{lmlo} y
+  \protect\subref{rmlo} se aprecian las proyecciones mediolateral oblicua
+  izquierda y derecha.}
   
   \label{fig:views}
 \end{figure}
@@ -507,15 +516,15 @@ las características de varias bases de datos.
     {\bf Modo de adquisición} & 
     {\bf BIRADS} \\
     \hline
-    mini-MIAS & 161  & 322    & MLO       & PGM   & Reino Unido    & 1994 & yes & yes \\[4ex] 
-    DDSM      & 2620 & 10480  & MLO \& CC & LJPEG & Estados Unidos & 1999 & yes & yes \\[4ex] 
-    BancoWeb  & 320  & 1'400  & MLO \& CC & TIFF  & Brasil         & 1999 & yes & yes \\[4ex] 
-    INbreast  & 115  & 410    & MLO \& CC & DICOM & Portugal       & 2012 & yes & yes \\[4ex] 
-    MIDAS     & 100  & 600    & MLO       & DICOM & Brasil         & 2011 & yes & yes \\[4ex] 
-    IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\[4ex] 
-    MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\[4ex] 
-    GPCalma   & 967  & 3369   & MLO \& CC & DICOM & Italia         & 2002 & no  & yes \\[4ex] 
-    AMDI      & 967  & 3369   & MLO \& CC & DICOM & Italia         & 2002 & no  & yes \\[4ex] 
+    mini-MIAS & 161  & 322    & MLO       & PGM   & Reino Unido    & 1994 & yes & yes \\[3.1ex] 
+    DDSM      & 2620 & 10480  & MLO \& CC & LJPEG & Estados Unidos & 1999 & yes & yes \\[3.1ex] 
+    BancoWeb  & 320  & 1'400  & MLO \& CC & TIFF  & Brasil         & 1999 & yes & yes \\[3.1ex] 
+    INbreast  & 115  & 410    & MLO \& CC & DICOM & Portugal       & 2012 & yes & yes \\[3.1ex] 
+    MIDAS     & 100  & 600    & MLO       & DICOM & Brasil         & 2011 & yes & yes \\[3.1ex] 
+    IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\[3.1ex] 
+    MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\[3.1ex] 
+    GPCalma   & 967  & 3369   & MLO \& CC & DICOM & Italia         & 2002 & no  & yes \\[3.1ex] 
+    AMDI      & 967  & 3369   & MLO \& CC & DICOM & Italia         & 2002 & no  & yes \\[3.1ex] 
     \hline
     \end{tabular}
 }
