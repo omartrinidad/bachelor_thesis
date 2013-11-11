@@ -37,12 +37,12 @@ Para extraer las imágenes y organizarlas, se utilizó un \textit{script}
 programado con el lenguaje de programación Python~\cite{python} y la librería
 PyDICOM~\cite{pydicom}. Se removieron las etiquetas que almacenan los datos
 privados de los pacientes y los etiquetas que permanecen en las imágenes se
-pueden ver en la Tabla \ref{table:dicomtags}.
+pueden ver en la Tabla~\ref{table:dicomtags}.
 
 \section{Método propuesto}
 
 Cada mamograma recolectado fue procesado con un método híbrido de cinco etapas.
-En la Figura \ref{fig:flowchart} se presenta un diagrama de flujo con las
+En la Figura~\ref{fig:flowchart} se presenta un diagrama de flujo con las
 etapas del método híbrido. Utilizamos el lenguaje de programación
 Matlab~\cite{matlab} más la utilidad de procesamiento de imágenes Image
 Processing Toolbox~\cite{ipt}.
@@ -56,11 +56,11 @@ Processing Toolbox~\cite{ipt}.
 La primera etapa del método consiste en eliminar la región oscura que cubre
 gran parte de la imagen para acelerar el tiempo de ejecución de los
 procedimientos posteriores. El enfoque es similar al expuesto por Dehghani y
-Holguín \cite{dehghani2011method, holguinpre}.
+Holguín~\cite{dehghani2011method, holguinpre}.
 
 % thresholding
 Aplicamos un método de tres fases para lograr la reducción: umbralización,
-eliminación de objetos y corte automático. En la Figura \ref{reduction} se
+eliminación de objetos y corte automático. En la Figura~\ref{reduction} se
 muestra cada una de estas fases. 
 
 La primera fase es la \textit{umbralización}, cuyo propósito es separar el
@@ -68,7 +68,7 @@ objeto de interés del fondo. Para lograr este cometido, inicialmente la imagen
 es convertida de simple precisión a doble precisión, lo que nos permite obtener
 mejores resultados en el proceso de binarización. Después, se calcula el valor
 \textit{umbral} de la imagen con la función \texttt{graytresh} de Matlab, esta
-función implementa el método de Otsu \cite{otsumethod}. El valor umbral que se
+función implementa el método de Otsu~\cite{otsumethod}. El valor umbral que se
 obtiene como resultado es usado para clasificar los pixeles como 0 ó 1. El
 tercer paso es la binarización, que es ejecutada utilizando una función la
 función \texttt{im2bw} de Matlab. El resultado se muestra en la Figura
@@ -93,8 +93,8 @@ función \texttt{im2bw} de Matlab. El resultado se muestra en la Figura
 
 La segunda fase es \textit{eliminación de objetos} que consiste en remover
 todos los objetos de la imagen a excepción del área de interés. Por ejemplo, en
-la Figura \ref{area:b} podemos ver una etiqueta en la esquina superior derecha
-que fue removida en la Figura \ref{area:c}. Lo que realmente hacemos es remover
+la Figura~\ref{area:b} podemos ver una etiqueta en la esquina superior derecha
+que fue removida en la Figura~\ref{area:c}. Lo que realmente hacemos es remover
 todos los objetos con menos de 10'000 píxeles, ya que consideramos que un seno
 jamás será menor de 10'000 píxeles. Este procedimiento es ejecutado utilizando
 la función Matlab llamada \texttt{bwareaopen}.
@@ -103,19 +103,19 @@ Finalmente, la fase de corte automático se divide en dos pasos. El primero es
 determinar la localización del borde de la imagen, lo que es logrado con la
 función de Matlab llamada \texttt{bwboundaries}. Esta función encuentra los
 bordes de un objeto utilizando el algoritmo Moore-Neighbor modificado por el
-criterio de paro de Jacob \cite{gonzalez2009digital}. Los bordes son utilizados
-para determinar los puntos extremos de cada seno (ver \ref{area:d}). El segundo
-paso es hacer el corte usando estos puntos extremos (ver \ref{area:e}). 
+criterio de paro de Jacob~\cite{gonzalez2009digital}. Los bordes son utilizados
+para determinar los puntos extremos de cada seno (ver~\ref{area:d}). El segundo
+paso es hacer el corte usando estos puntos extremos (ver~\ref{area:e}). 
 
 \subsection{Conversión de bits}
 
 Como ya se mencionó antes, las imágenes están en el formato DICOM. El formato
 DICOM representa las imágenes con 4'096 niveles de grises, esto es 12 bits de
 profundidad. Matlab representa estas imágenes utilizando 16 bits de
-profundidad, o sea, 65'536 niveles de grises \cite{mustra2008efficient}. Cuando
+profundidad, o sea, 65'536 niveles de grises~\cite{mustra2008efficient}. Cuando
 una imagen de 12 bits es visualizada con un visor de 16 bits, esta luce oscura,
-ver Figura \ref{bits}. Para mostrar la imagen correctamente esta necesita ser
-convertida a una imagen de 16 bits. Se aplicó la Ecuación \ref{eq:bitconv} a
+ver Figura~\ref{bits}. Para mostrar la imagen correctamente esta necesita ser
+convertida a una imagen de 16 bits. Se aplicó la Ecuación~\ref{eq:bitconv} a
 cada pixel en la imagen para realizar la conversión.
 
 \begin{equation}
@@ -171,7 +171,7 @@ máximo que $w$ puede alcanzar.
 % avoid two points in the numbering and add ttfamily font
 \algrenewcommand\algorithmicif{\ttfamily\textbf{{if}}}
 \begin{algorithm}
-\caption{AMF implementado por \cite{gonzalez2009digital}}
+\caption{AMF implementado por~\cite{gonzalez2009digital}}
 \begin{algorithmic}[1]
 % initialize variables ?
 \State Level A:
@@ -241,7 +241,7 @@ efectividad probada del algoritmo CLAHE, como se discutió en el capítulo
 anterior, utilizamos la función llamada \texttt{adaptivehisteq} de Matlab IPT
 que implementa CLAHE. Los parámetros de esta función son modificados con ayuda
 de los radiólogos. La configuración final es aplicada a un área específica de
-la imagen. En la Figura \ref{img:clahe} se muestra un ejemplo de la mejora de
+la imagen. En la Figura~\ref{img:clahe} se muestra un ejemplo de la mejora de
 contraste utilizando CLAHE.
 
 % show lesion images
@@ -340,7 +340,7 @@ concentración de niveles de grises permanece intacta.
   muestra el histograma generado a partir de la mamografía oscura mostrada en
   \protect\ref{comp:d}, \protect\subref{comp:f} es la imagen de 8 bits
   generada con la función \texttt{imadjust} y \protect\subref{comp:g} es su
-  histograma, que es similar al histograma que se muestra en \ref{comp:b}}. 
+  histograma, que es similar al histograma que se muestra en~\ref{comp:b}}. 
   
   \label{img:shrinking-two}
 \end{figure}

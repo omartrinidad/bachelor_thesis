@@ -16,7 +16,7 @@ crudas y las preprocesadas.
 
 \section{Estructura de CPDM}
 
-La Figura \ref{fig:structure} nos muestra como están organizados los
+La Figura~\ref{fig:structure} nos muestra como están organizados los
 directorios de la colección. Cada estudio tiene una ficha que contiene datos
 del paciente como fecha de nacimiento, fecha del estudio, vista de la imagen,
 nombre del archivo y el reporte BIRADS. Cada caso es almacenado en una carpeta,
@@ -34,25 +34,16 @@ utilizando la opinión de los médicos.
 \shorthandon{>} 
 
 \section{Interfaz gráfica}
-
 %colormap bone
 
-We built a Graphical User Interface (GUI) system as suggested by  D'Angello
-\cite{d2007design}. This GUI allows for mammogram loading and manipulating. 
-
-Following a similar approach as D'Angello \cite{d2007design} as part of the
-project it was built a Graphical User Interface (GUI) system who helps the user
-to load the mammogram and manipulate it to modify the contrast, increase or
-reduce the view. The GUI was developed using Matlab GUIDE. 
-
-De manera similar a D'Angelo \cite{d2007design} se creo una GUI utilizando
-Matlab. Como subproducto de este trabajo se creó una interfaz gráfica de
-usuario para que los médicos pudiesen modificar los parámetros de la función
-CLAHE. Aunque Matlab ofrece un entorno wizard para crear interfaces, escogimos
-crear la interfaz a partir de cero debido a las flexibilidades.
+Como subproducto del proyecto, construimos una interfaz gráfica de usuario
+(GUI) siguiendo un enfoque similar a D'Angelo~\cite{d2007design}. Con la GUI
+los médicos pueden modificar los parámetros de la función CLAHE. Aunque Matlab
+ofrece el entorno GUIDE para crear interfaces escogimos crear la interfaz a
+partir de cero debido a las flexibilidades de este enfoque.
 
 La GUI desarrollada tiene un objeto \texttt{uipanel} a la izquierda y un
-objecto \texttt{axes} a la derecha (ver Fig. ~\ref{main:before}). El objeto
+objecto \texttt{axes} a la derecha (ver Figura~\ref{main:before}). El objeto
 \texttt{uipanel} contiene la vista previa de las imágenes, allí el usuario
 puede elegir cualquiera de las imágenes con un click y en el objeto
 \texttt{axes} se visualiza la elección del usuario. 
@@ -67,7 +58,7 @@ puede elegir cualquiera de las imágenes con un click y en el objeto
 
 Se agregó la opción de elegir uno o más archivos para que el usuario tenga la
 posibilidad de escoger las diferentes proyecciones en cada caso médico (ver
-Fig. ~\ref{fig:openfile}).
+Figura~\ref{fig:openfile}).
 
 \begin{figure}[h]
   \begin{center}
@@ -79,10 +70,10 @@ Fig. ~\ref{fig:openfile}).
 \end{figure}
 
 Se puede navegar en la imagen utilizando las teclas de movimiento o el juego de
-teclas \texttt{hjkl} como en los sistemas operativos Unix. En la Fig.
-\ref{main:after} se puede apreciar la vista previa de diferentes proyecciones
-de una mama en el objeto \texttt{uipanel} y el acercamiento a la imagen en el
-objeto \texttt{axes}.
+teclas \texttt{hjkl} como en los sistemas operativos Unix. En la
+Figura~\ref{main:after} se puede apreciar la vista previa de diferentes
+proyecciones de una mama en el objeto \texttt{uipanel} y el acercamiento a la
+imagen en el objeto \texttt{axes}.
 
 \begin{figure}[h]
   \begin{center}
@@ -103,7 +94,7 @@ ha eliminado el ruido. El usuario tiene la posibilidad de mejorar el contraste
 de la región visualizada en la sección derecha de la GUI. La interfaz cuenta
 con una opción que permite modificar los parámetros de la función que
 implementa el algoritmo CLAHE mencionado en la sección anterior (ver
-Fig.~\ref{options}). 
+Figura~\ref{options}). 
 
 Los parámetros modificables por el usuario son \texttt{Tiles by Column} y
 \texttt{Tyles by Row}, elementos que establecen el número de divisiones
@@ -124,11 +115,11 @@ Enhancement Limit}, que específica el valor límite de la mejora del contraste,
 
 \section{Retroalimentación médica}
 
-En las primeras pruebas sólo se mejoró  la visualización del tejido graso y no
-del tejido mamario.
+Con ayuda de médicos del Hospital Juan Graham Casasú se realizó una medición
+cualitativa de los resultados. Se realizaron alrededor de cinco visitas
+periódicas para obtener una retroalimentación de la mejora en la calidad de la
+imagen. La calidad de la imagen es casi similar a la que se obtiene al utilizar
+software comercial. Cabe destacar que en las primeras pruebas sólo se mejoró la
+visualización del tejido graso y no del tejido mamario.
 
-% consideraciones finales o enviar a conclusión
-
-El código fuente que se generó está disponible en línea bajo un controlador de
-versiones en el repositorio: \url{github.com/omartrinidad/mammograms}.
 

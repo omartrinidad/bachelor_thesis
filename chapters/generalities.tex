@@ -1,25 +1,32 @@
-\chapter{Generalidades}
+\chapter{Introducción}
 \label{generalidades}
-
 % restart the count with arabic numbers
 \pagenumbering{arabic} \setcounter{page}{1}
+
+El documento está organizado como sigue: en el presente
+Capítulo~\ref{generalidades} se da una revisión de las generalidades de nuestro
+proyecto, después se detallan algunos conceptos sobre imágenes digitales y
+también se hace una revisión de la literatura existente en el
+Capítulo~\ref{marco}. En el Capítulo~\ref{desarrollo} se presenta el método
+utilizado. En el Capítulo~\ref{resultados} se da cuenta de los resultados y
+finalmente en el Capítulo~\ref{conclusiones} se hace un recuento de lo que se
+hizo y se expone el trabajo futuro.
 
 \section{Antecedentes}
 
 El cáncer de mama es un grave problema de salud pública, de acuerdo con la
-Organización Mundial de la Salud en 2008 el cáncer de mama fue el tipo de
-cáncer más común entre las mujeres y el que más muertes provocó
-\cite{cancerreport}. De acuerdo con el INEGI las estadísticas son similares en
-México \cite{mxcancer, inegi}. La detección temprana de este padecimiento es la
-mejor forma de reducir el número de decesos, a su vez, el método más comúnmente
-empleado para ello es el estudio de mamografías\footnote{Los términos
-mamografía, mamograma y mastografía son equivalentes y serán utilizados a lo
-largo de este documento indistintamente.}. 
+Organización Mundial de la Salud en 2008 fue el tipo de cáncer más común entre
+las mujeres y el que más muertes provocó~\cite{cancerreport}. De acuerdo con el
+INEGI las estadísticas son similares en México~\cite{mxcancer, inegi}. La
+detección temprana de este padecimiento es la mejor forma de reducir el número
+de decesos, a su vez, el método más comúnmente empleado para ello es el estudio
+de mamografías\footnote{Los términos mamografía, mamograma y mastografía son
+equivalentes y serán utilizados a lo largo de este documento indistintamente.}. 
 
 % tarea repetitiva, mejorar los de 'tarea subjetiva'
 % peor aún --> even worse
 Las mamografías son exámenes radiográficos diseñados para detectar el cáncer de
-mama \cite{bushberg2011essential}. El estudio de mamogramas es una tarea a
+mama~\cite{bushberg2011essential}. El estudio de mamogramas es una tarea a
 cargo de radiólogos, no es una actividad trivial, factores como la fatiga o el
 uso de equipos de calidad no estándar influyen en la precisión del diagnóstico.
 Dado que es una tarea subjetiva hay un margen de error en la opinión de los
@@ -37,17 +44,17 @@ los sistemas de detección asistida por computadora y los sistemas de
 diagnóstico asistido por computadora algunos autores suelen abreviar los
 primeros como CADe y los últimos como CADi o CADx.} van más allá y su fin es
 emitir un juicio sobre las lesiones, clasificando a estas como malignas o
-benignas \cite{castellino2005computer}. 
+benignas~\cite{castellino2005computer}. 
 
 Los sistemas CAD fueron diseñados para ayudar a los radiólogos en la
 interpretación de imágenes médicas. Aunque la precisión de los sistemas CAD no
-es perfecta \cite{fenton2007influence} sirven como una segunda opinión para los
+es perfecta~\cite{fenton2007influence} sirven como una segunda opinión para los
 radiólogos. El desarrollo de los sistemas CAD ha sido vertiginoso desde los
-años 80's \cite{giger2008anniversary}.
+años 80's~\cite{giger2008anniversary}.
 
 % mandar lo de CPDM a pie de página ¿?
 La elaboración de sistemas de este tipo es una tarea compleja, el primer reto a
-sortear es obtener imágenes de prueba. El acceso a imágenes médicas aun con
+sortear es obtener imágenes de prueba. El acceso a imágenes médicas con
 propósitos de investigación es complicado debido a cuestiones de privacidad.
 Este trabajo aborda la construcción de una colección de mamogramas digitales
 preprocesados (y) de dominio público bautizada como \textit{Colección de
@@ -60,23 +67,51 @@ Graham Casasús.
 
 La concepción y creación de bases de datos\footnote{El contexto en el que se
 utiliza el término base de datos en este trabajo en la mayoría de los casos no
-se refiere a bases de datos relacionales.} de mamografías no es un tema nuevo
-\cite{nishikawa1998mammographic}. Nishiwaka plantea un enunciado interesante:
-\textit{En el futuro, las bases de datos estarán constituidas por mamogramas
-digitales; actualmente (1998) mamogramas digitalizados están siendo utlizados}.
-Lo que esta tesis aborda es la creación de una colección de mamogramas
-preprocesados.
+se refiere a bases de datos relacionales.} de mamografías no es un tema nuevo.
+Nishiwaka plantea un enunciado interesante: \textit{En el futuro, las bases de
+datos estarán constituidas por mamogramas digitales; actualmente (1998)
+mamogramas digitalizados están siendo
+utilizados}~\cite{nishikawa1998mammographic}. Las bases de datos mamográficas
+juegan un rol importante en el desarrollo de algoritmos relacionados a los
+sistemas CAD. 
 
-El desarrollo de sistemas CAD comprende varias etapas, la primera de ellas es
-el \textit{preprocesamiento}. Algunas técnicas de preprocesamiento fueron
-abordadas en este trabajo. El preprocesamiento es la etapa previa al
-procesamiento de imágenes \textit{per se}, de preparación
-\cite{ponraj2011survey}. 
+La concepción de una base de datos no es trivial, Moreira hace un recuento de
+las características que una base de datos debe
+tener~\cite{moreira2012compliance}. Las bases de datos deben cumplir ciertos
+requerimientos que son resumidos en la Tabla~\ref{features}. Por su parte Zheng
+establece que lo importante no es tener una gran cantidad de imágenes pero sí
+una gran variedad~\cite{zheng2010computer}.
 
-% duda: se pone esto o se pone qué no sé sabíamos que hacer y luego lo
-% descubrimos
+\begin{table}
+  \caption[Requerimientos de una base de datos mamográfica]{Requerimientos de una base de datos mamográfica} 
+  \label{features}
+\begin{center}
+{\small
+    \rowcolors{1}{}{lightgray} 
+    \begin{tabular}{c | >{\arraybackslash}m{3.5in}} 
+    \hline 
+    {\bf Requerimiento} & 
+    {\bf Descripción} \\ 
+    \hline
+    Selección de casos   & Lesiones de todo tipo y mamas con diferentes densidades\\
+    Validez              & Los diágnosticos deben ser estrictamente corroborados 
+                           y donde sea posible exámenes de biopsia deben ser aplicados\\
+    Información asociada & Historia clínica (edad, historial familiar, exámenes previos)\\
+    Organización         & División adecuada de las imágenes, por casos, por paquetes\\
+    Distribución         & Disponibilidad en internet\\
+    Escáner (placas)     & El aparato para digitalizar debe ser de calidad\\
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
 
-Las mamografías son imágenes no convencionales.
+El problema que nosotros abordamos es la creación de una nueva colección de
+mamogramas, cumpliendose la predicción de Nishikawa, la totalidad de los
+mamografías que recolectamos son digitales. Nuestro enfoque incluye además la
+peculiaridad de preprocesar cada ejemplar. El \textit{preprocesamiento} que es
+la etapa previa al procesamiento de imágenes \textit{per se}, de
+preparación~\cite{ponraj2011survey}. 
 
 \section{Objetivos}
 
@@ -88,9 +123,9 @@ preprocesadas.
 \subsection{Objetivos específicos}
 
 \begin{itemize}
-    \item Aplicar los algoritmos adecuados para preprocesar los mamogramas de
-    tal manera que mejore la apariencia visual de las mastografías, esto es, que
-    se resalten las lesiones al ojo humano.
+    % hablar sobre la literatura ¿?
+    \item Preprocesar los mamogramas para eliminar el ruido y mejorar el
+    contraste y también ejecutar otras tareas que resulten convenientes.
     \item Crear una ficha electrónica para cada caso que contenga datos
     relevantes como el diagnóstico médico.
 \end{itemize}
@@ -98,26 +133,22 @@ preprocesadas.
 \section{Justificación}
 
 Aunque ya existen varias bases de datos, ninguna de ellas es una colección
-mexicana y pocas de ellas son latinoamericanas. La mayoría de las bases de
-datos públicas que existen ofrecen mamografías tradicionales
+mexicana y pocas de ellas son latinoamericanas. Por otra parte, la mayoría de
+las bases de datos públicas que existen ofrecen mamografías tradicionales
 \textit{digitalizadas} con escáners, una colección con imágenes totalmente
-digitales supondría mejores resultados en la ejecución de algoritmos.
+digitales supondría mejores resultados a la hora de ejecutar los algoritmos.
 
-También se pueden usar las imágenes para enseñanza y entrenamiento de
-radiólogos noveles. El proyecto es útil para la comunidad científica dedicada
-al procesamiento y análisis de imágenes médicas, más específicamente de
-imágenes mamográficas, como ya se comentó queda abierta la posibilidad de
-desarrollar un sistema CAD, lo que representa una ventaja potencial para los
-radiólogos.
+La utilidad de una colección de mamografías radica, en el corto plazo, en ser
+un material para la comunidad científica dedicada al desarrollo de algoritmos
+cuya fin es la construcción de sistemas CAD. También, de manera potencial y en
+el largo plazo, en la disminución de muertes provocadas por el cáncer de mama.
+Otro uso común es explotar las imágenes para la enseñanza y entrenamiento
+de radiólogos principiantes.
 
 % mejorar la redacción de este párrafo
-Por otra parte, hay que señalar que la mayor parte de los sistemas CADs son
-comerciales y representan un gasto para los hospitales. México es un país en
-vías de desarrollo que adopta el papel de \textit{consumidor} de tecnología, la
+Hay que señalar que la mayor parte de los sistemas CAD son comerciales y
+representan un gasto para los hospitales. México es un país en vías de
+desarrollo que adopta el papel de \textit{consumidor} de tecnología, la
 comunidad científica trabaja en el desarrollo de algoritmos para la elaboración
-de sistemas CADs y otras tecnologías que permitan la reducción de la brecha
+de sistemas CAD y otras tecnologías que permitan la reducción de la brecha
 tecnológica.
-
-% notar la palabra creemos
-Creemos que una colección de mamogramas digitales es realmente útil a la
-comunidad
