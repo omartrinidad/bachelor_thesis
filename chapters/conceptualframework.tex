@@ -51,7 +51,7 @@ discreta como se muestra en la Ecuación~\ref{eq:discretized}.
   \caption[Escala de grises]{Escalas de grises~\cite{burger2008digital}} 
   \label{table:grayscales}
 \begin{center}
-{\small
+{\scriptsize
     \begin{tabular}{c|c|c}
     \hline
     {\bf Bits por pixel} & 
@@ -75,26 +75,20 @@ escala de grises} en cambio tienen un sólo canal por pixel. El rango de valores
 que puede tomar cada pixel es conocido como \textit{bit de profundidad}. Cada
 pixel puede almacenar $2^k$ valores diferentes que son números enteros en el
 rango: $[0\dots2^k - 1]$ donde $0$ representa el color negro y $2^k$ el color
-blanco el blanco. La Tabla~\ref{table:grayscales} sumariza información sobre
-las imágenes en escala de grises y en la Figura~\ref{grayscales} podemos ver la
-misma imagen con diferentes niveles de grises.
+blanco. La Tabla~\ref{table:grayscales} sumariza información sobre las imágenes
+en escala de grises y en la Figura~\ref{grayscales} podemos ver la misma imagen
+con diferentes niveles de grises.
 
 \begin{figure}[h]
     \centering
 
-    %\subfloat[150 dpi]{\includegraphics[height=40mm]{images/dpi/dpi150.jpg}}
-    %\subfloat[125 dpi]{\includegraphics[height=40mm]{images/dpi/dpi125.jpg}}
-    %\subfloat[100 dpi]{\includegraphics[height=40mm]{images/dpi/dpi100.jpg}}
-    %\subfloat[75 dpi]{\includegraphics[height=40mm]{images/dpi/dpi75.jpg}}
-    %\bigskip
+    \subfloat[50 dpi]{\includegraphics[height=36mm]{images/dpi/dpi50.jpg}}
+    \subfloat[25 dpi]{\includegraphics[height=36mm]{images/dpi/dpi25.jpg}}
+    \subfloat[10 dpi]{\includegraphics[height=36mm]{images/dpi/dpi10.jpg}}
+    \subfloat[5 dpi]{\includegraphics[height=36mm]{images/dpi/dpi5.jpg}}
 
-    \subfloat[50 dpi]{\includegraphics[height=40mm]{images/dpi/dpi50.jpg}}
-    \subfloat[25 dpi]{\includegraphics[height=40mm]{images/dpi/dpi25.jpg}}
-    \subfloat[10 dpi]{\includegraphics[height=40mm]{images/dpi/dpi10.jpg}}
-    \subfloat[5 dpi]{\includegraphics[height=40mm]{images/dpi/dpi5.jpg}}
-
-  \caption[Niveles de grises]{Imagen de Lenna obtenida de \textit{The USC-SIPI Image Database}
-  vista con distintos distintos valores \textit{dpi}}
+  \caption[Niveles de grises]{Vista con distintos distintos valores
+  \textit{dpi}. (Imagen obtenida de \cite{sipi})}
   
   \label{grayscales}
 \end{figure}
@@ -108,18 +102,13 @@ diferente resolución.
 
 \begin{figure}[h]
     \centering
-    %\subfloat[256 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna256.jpg}}
-    %\subfloat[128 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna128.jpg}}
-    %\subfloat[64 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna64.jpg}}
-    %\subfloat[32 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna32.jpg}}
-    %\bigskip
-    \subfloat[16 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna16.jpg}}
-    \subfloat[8 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna8.jpg}}
-    \subfloat[4 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna4.jpg}}
-    \subfloat[2 niveles de grises]{\includegraphics[height=40mm]{images/lenna/lenna2.jpg}}
 
-  \caption[Resolución]{Diferentes resoluciones. Imagen de Lenna obtenida de
-  \textit{The USC-SIPI Image Database}}
+    \subfloat[16 niveles de grises]{\includegraphics[height=36mm]{images/lenna/lenna16.jpg}}
+    \subfloat[8 niveles de grises]{\includegraphics[height=36mm]{images/lenna/lenna8.jpg}}
+    \subfloat[4 niveles de grises]{\includegraphics[height=36mm]{images/lenna/lenna4.jpg}}
+    \subfloat[2 niveles de grises]{\includegraphics[height=36mm]{images/lenna/lenna2.jpg}}
+
+  \caption[Resolución]{Diferentes resoluciones. (Imagen obtenida de \cite{sipi})}
   
   \label{resolution}
 \end{figure}
@@ -140,28 +129,35 @@ histogramas es una tarea básica en el procesamiento de imágenes.
 \begin{figure}[h]
     \centering
 
-    \subfloat[Bajo contraste\label{hist:a}]{\includegraphics[height=40mm]{images/histo/rightskewed.jpg}}
-    \subfloat[Contraste normal\label{hist:b}]{\includegraphics[height=40mm]{images/histo/mandril.jpg}}
-    \subfloat[Contraste modificado\label{hist:d}]{\includegraphics[height=40mm]{images/histo/completerange.jpg}}
-    \subfloat[Alto contraste\label{hist:c}]{\includegraphics[height=40mm]{images/histo/leftskewed.jpg}}
+    \subfloat[Contraste normal\label{hist:b}]{\includegraphics[height=36mm]{images/histo/mandril.jpg}}
+    \subfloat[Contraste modificado\label{hist:d}]{\includegraphics[height=36mm]{images/histo/completerange.jpg}}
+    \subfloat[Bajo contraste\label{hist:a}]{\includegraphics[height=36mm]{images/histo/rightskewed.jpg}}
+    \subfloat[Alto contraste\label{hist:c}]{\includegraphics[height=36mm]{images/histo/leftskewed.jpg}}
 
     \bigskip
 
-    \subfloat[Histograma de \protect\subref{hist:a}]{\includegraphics[height=40mm]{images/histo/histogram-right.jpg}}
-    \subfloat[Histograma de \protect\subref{hist:b}]{\includegraphics[height=40mm]{images/histo/histogram-mandril.jpg}}
+    \subfloat[Histograma de \protect\subref{hist:a}]{\includegraphics[height=36mm]{images/histo/histogram-right.jpg}}
+    \subfloat[Histograma de \protect\subref{hist:c}]{\includegraphics[height=36mm]{images/histo/histogram-left.jpg}}
 
     \bigskip
 
-    \subfloat[Histograma de \protect\subref{hist:d}]{\includegraphics[height=40mm]{images/histo/completerange-histo.jpg}}
-    \subfloat[Histograma de \protect\subref{hist:c}]{\includegraphics[height=40mm]{images/histo/histogram-left.jpg}}
+    \subfloat[Histograma de \protect\subref{hist:b}]{\includegraphics[height=36mm]{images/histo/histogram-mandril.jpg}}
+    \subfloat[Histograma de \protect\subref{hist:d}]{\includegraphics[height=36mm]{images/histo/completerange-histo.jpg}}
 
-  \caption[Histogramas]{La misma imagen con diferentes contrastes y su
-  respectivo histograma. En \protect\subref{hist:a} se visualiza la imagen con
-  un bajo contraste. Imagen del Mandril obtenida de \textit{The USC-SIPI Image
-  Database}}
-  
-  \label{fig:histograms}
+  \caption[Histogramas y contraste]{Histogramas y contraste. En
+  \protect\subref{hist:b} se visualiza la imagen original y en
+  \protect\subref{hist:d} la misma imagen después de modificar su contraste. En
+  \protect\subref{hist:a} se visualiza la imagen con un bajo nivel de contraste
+  y en \protect\subref{hist:c} en cambio la imagen tiene un alto nivel de
+  contraste. (Imagen obtenida de \cite{sipi})}
+  \label{fig:histograms} 
 \end{figure}
+
+Procesar una imagen implica modificar los valores de sus píxeles, cuando la
+operación que se ejecuta modifica un pixel independientemente del valor de sus
+píxeles vecinos se conoce como \textit{operaciones sobre el punto} y cuando se
+modifica un pixel tomando en cuenta el valor de sus pixeles vecinos se conoce
+como \textit{filtro}.
 
 \section{Imágenes médicas}
 
@@ -184,11 +180,11 @@ por la \textbf{medicina nuclear} se valen del uso de isótopos radioactivos. Por
 \begin{figure}[h]
     \centering
 
-    \subfloat[Tomografía]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[Tomografía]{\includegraphics[height=36mm]{images/computed-tomography.png}}
     \hspace{1cm}
-    \subfloat[Resonancia magnética]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[Resonancia magnética]{\includegraphics[height=36mm]{images/computed-tomography.png}}
     \hspace{1cm}
-    \subfloat[Ultrasonido]{\includegraphics[height=40mm]{images/computed-tomography.png}}
+    \subfloat[Ultrasonido]{\includegraphics[height=36mm]{images/computed-tomography.png}}
 
   \caption[Algunos tipos de imágenes médicas]{Diferentes imágenes médicas
   obtenidas de \textit{The Cancer Imaging Archive}}
@@ -274,7 +270,7 @@ de un archivo DICOM.
   \caption[Etiquetas DICOM]{Algunas etiquetas DICOM} 
   \label{dicom:tags}
 \begin{center}
-{\small
+{\scriptsize
     \begin{tabular}{c|c}
     \hline
     {\bf Etiqueta} & 
@@ -305,19 +301,22 @@ y un sistema de clasificación para los estudios mamográficos. En la Tabla
   \caption[Categorías de evaluación BIRADS]{Categorías de evaluación BIRADS}
   \label{birads}
 \begin{center}
-{\small
-    \begin{tabular}{c|c}
+{\scriptsize
+    \rowcolors{1}{}{lightgray} 
+    \begin{tabular}{c | >{\centering\arraybackslash}m{1.8in} |
+    >{\centering\arraybackslash}m{1.8in} }
     \hline
     {\bf Categoría} & 
-    {\bf Descripción} \\
+    {\bf Descripción} &
+    {\bf Sugerencia} \\
     \hline
-    0 & Necesita evalucación adicional y/o más mamografías para comparar\\
-    1 & Negativo\\
-    2 & Hallazgo(s) benigno(s)\\
-    3 & Hallazgo(s) benigno(s) probable(s). Se sugiere un seguimiento corto\\
-    4 & Anormalidades sospechosas. Biopsia debe ser considerada \\
-    5 & Altamente sugestivo de malignidad. Acciones apropiadas se deben tomar\\
-    6 & Malignidad probada\\
+    0 & Necesita evaluación adicional y/o más mamografías para comparar&\\
+    1 & Negativo&\\
+    2 & Hallazgo(s) benigno(s)&\\
+    3 & Hallazgo(s) benigno(s) probable(s). & Se sugiere un seguimiento corto\\
+    4 & Anormalidades sospechosas. & Una biopsia debe ser considerada \\
+    5 & Altamente sugestivo de malignidad. & Se deben tomar acciones apropiadas\\
+    6 & Malignidad probada&\\
     \hline
     \end{tabular}
 }
@@ -498,7 +497,7 @@ las características de varias bases de datos.
   \caption{Algunas bases de datos de mamografías digitales} 
   \label{table:overviewdb}
 \begin{center}
-{\small
+{\scriptsize
     \rowcolors{1}{}{lightgray} 
     \begin{tabular}
     {c| >{\centering\arraybackslash}m{1in} | >{\centering\arraybackslash}m{1in}|c| 
