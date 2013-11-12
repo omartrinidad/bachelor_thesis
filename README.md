@@ -6,8 +6,8 @@
 - Final PDF
 - Tex file
 
-The thesis is written in Spanish and also in English according to the UJAT,
-DAIS format.
+The thesis is written in Spanish according to the UJAT, DAIS format. However, I
+have developed a more fancy style.
 
 # ToDo:
 

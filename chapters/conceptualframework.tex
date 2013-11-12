@@ -183,11 +183,11 @@ por la \textbf{medicina nuclear} se valen del uso de isótopos radioactivos. Por
 \begin{figure}[h]
     \centering
 
-    \subfloat[Tomografía]{\includegraphics[height=36mm]{images/computed-tomography.png}}
+    \subfloat[Tomografía]{\includegraphics[height=36mm]{images/medical/ct.jpg}}
     \hspace{1cm}
-    \subfloat[Resonancia magnética]{\includegraphics[height=36mm]{images/computed-tomography.png}}
+    \subfloat[Resonancia magnética]{\includegraphics[height=36mm]{images/medical/mr.jpg}}
     \hspace{1cm}
-    \subfloat[Ultrasonido]{\includegraphics[height=36mm]{images/computed-tomography.png}}
+    \subfloat[Radiografía]{\includegraphics[height=36mm]{images/medical/cr-dx.jpg}}
 
   \caption[Algunos tipos de imágenes médicas]{Diferentes imágenes médicas
   obtenidas de \textit{The Cancer Imaging Archive}}
@@ -433,13 +433,13 @@ La Ecualización Adaptativa de Histogramas (AHE\footnote{Adaptive Histogram
 Equalization}) a diferencia de HE calcula el histograma de varias regiones de
 la imagen (\textit{histogramas locales}).
 
-AHE tiene algunas desventajas, lentitud y mejora de ruido, por lo que muchas
-variantes de AHE han sido propuestas~\cite{pizer1987adaptive}. La variante más
-destacada es la técnica llamada Ecualización Adaptativa de Histogramas con
-Contraste Limitado (CLAHE\footnote{Contrast-Limited Adaptive Histogram
-Equalization}~\cite{zuiderveld1994contrast}. CLAHE ha sido ampliamente
-utilizado para modificar el contraste de mamografías~\cite{pisano1998contrast,
-maitra2012technique}.
+AHE tiene algunas desventajas, es lento y tiende a mejorar el ruido, por lo que
+muchas variantes de AHE han sido propuestas~\cite{pizer1987adaptive}. La
+variante más destacada es la técnica llamada Ecualización Adaptativa de
+Histogramas con Contraste Limitado (CLAHE\footnote{Contrast-Limited Adaptive
+Histogram Equalization}~\cite{zuiderveld1994contrast}). CLAHE ha sido
+ampliamente utilizado para modificar el contraste de
+mamografías~\cite{pisano1998contrast, maitra2012technique}.
 
 Rahmati~\cite{rahmati2010new} y Mohan~\cite{mohan2013modified} proponen mejoras
 a CLAHE. Según Rahmati CLAHE mejora linealmente el frente y el fondo de la
@@ -463,10 +463,13 @@ miniMIAS, ver Figura~\ref{fig:muscle}.
     \subfloat[\label{muscle:b}]{\includegraphics[height=45mm]{images/muscle/muscleremotion.jpg}}
     \hspace{1cm}
     \subfloat[\label{muscle:c}]{\includegraphics[height=45mm]{images/muscle/closeupmuscle.jpg}}
+
   \caption[Remoción del músculo pectoral]
-  {Remoción del músculo pectoral. En \protect\subref{muscle:a} se aprecia la 
-  imagen original, \protect\subref{muscle:b} muestra la remoción del músculo y 
-  \protect\subref{muscle:c} es un acercamiento}
+  {Remoción del músculo pectoral. En \protect\subref{muscle:a} se aprecia la
+  mamografía original, \protect\subref{muscle:b} muestra la remoción del
+  músculo y \protect\subref{muscle:c} es un acercamiento. (Imagen obtenida de
+  ~\cite{akram2013preprocessing})} 
+
   \label{fig:muscle}
 \end{figure}
 
@@ -526,7 +529,7 @@ las características de varias bases de datos.
     IRMA      & -    & 10'509 & MLO \& CC & LJPEG & Alemania       & 2008 & yes & yes \\[3.1ex] 
     MIRaCLe   & 196  & 10480  & MLO \& CC & LJPEG & Grecia         & 2009 & yes & yes \\[3.1ex] 
     GPCalma   & 967  & 3369   & MLO \& CC & DICOM & Italia         & 2002 & no  & yes \\[3.1ex] 
-    AMDI      & 967  & 3369   & MLO \& CC & DICOM & Italia         & 2002 & no  & yes \\[3.1ex] 
+    AMDI      & 967  & 3369   & MLO \& CC & DICOM & Canadá         & 2002 & no  & yes \\[3.1ex] 
     \hline
     \end{tabular}
 }
@@ -559,16 +562,16 @@ similares cuando la emisión de un diagnóstico se torna complicada. De este
 mismo proyecto se ha desprendido un sistema educativo~\cite{guliato2009indiam}.
 
 MIDAS\footnote{Mammographic Image Database for Automated Analysis} contiene
-muestras digitales tomadas entre la población femenina de
-Brasil~\cite{fernandes2012midas}. De esta base de datos destaca la inclusión de
-secuencias de datos genómicas de los pacientes y su apertura a la colaboración
-externa. BancoWeb otra base de datos brasileña creada por
-LAPIMO\footnote{Laboratório de Análise e Processamento de Imagens Médicas e
-Odontológicas}~\cite{matheus2011online}.
+muestras digitales tomadas entre la población femenina de Brasil, de esta base
+de datos destaca la inclusión de secuencias de datos genómicas de los pacientes
+y su apertura a la colaboración externa~\cite{fernandes2012midas}. BancoWeb
+otra base de datos brasileña creada por LAPIMO\footnote{Laboratório de Análise
+e Processamento de Imagens Médicas e Odontológicas}~\cite{matheus2011online}.
 
 GPCalma\footnote{Grid Platform for Computer Assisted Library for MAmmography}
 es una base de datos distribuida~\cite{lauria2006gpcalma}. GPCalma tiene la
-particularidad de ser un proyecto vigente a pesar de tener mucho tiempo.
+particularidad de ser un proyecto vigente a pesar de haber iniciado hace muchos
+años.
 
 INbreast es un proyecto reciente~\cite{moreira2012inbreast}. Esta colección
 contiene sólo mamografías digitales. Los autores proveen un conjunto de
