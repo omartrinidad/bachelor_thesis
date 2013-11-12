@@ -6,8 +6,8 @@ pinturas rupestres en la Cueva de Altamira, pasando por los códices Mayas, los
 daguerrotipos, las cámaras \textit{Pinhole} o los rayos X de Röntgen hasta las
 imágenes del Curiosity Rover de la NASA. En este capítulo se introducen
 conceptos básicos sobre las imágenes digitales, su procesamiento y su utilidad
-en la lucha contra el cáncer de mama, de la misma manera hacemos un estudio de 
-trabajos similares.
+en la lucha contra el cáncer de mama, al final del capítulo se hace un estudio
+de trabajos similares.
 
 \section{Breve introducción a las imágenes digitales}
 
@@ -87,8 +87,8 @@ con diferentes niveles de grises.
     \subfloat[10 dpi]{\includegraphics[height=36mm]{images/dpi/dpi10.jpg}}
     \subfloat[5 dpi]{\includegraphics[height=36mm]{images/dpi/dpi5.jpg}}
 
-  \caption[Niveles de grises]{Vista con distintos distintos valores
-  \textit{dpi}. (Imagen obtenida de \cite{sipi})}
+  \caption[Niveles de grises]{Niveles de grises. Imagen visualizada con
+  distintos valores \textit{dpi}. (Imagen obtenida de \cite{sipi})}
   
   \label{grayscales}
 \end{figure}
@@ -130,7 +130,7 @@ histogramas es una tarea básica en el procesamiento de imágenes.
     \centering
 
     \subfloat[Contraste normal\label{hist:b}]{\includegraphics[height=36mm]{images/histo/mandril.jpg}}
-    \subfloat[Contraste modificado\label{hist:d}]{\includegraphics[height=36mm]{images/histo/completerange.jpg}}
+    \subfloat[Contraste óptimo\label{hist:d}]{\includegraphics[height=36mm]{images/histo/completerange.jpg}}
     \subfloat[Bajo contraste\label{hist:a}]{\includegraphics[height=36mm]{images/histo/rightskewed.jpg}}
     \subfloat[Alto contraste\label{hist:c}]{\includegraphics[height=36mm]{images/histo/leftskewed.jpg}}
 
@@ -153,11 +153,14 @@ histogramas es una tarea básica en el procesamiento de imágenes.
   \label{fig:histograms} 
 \end{figure}
 
-Procesar una imagen implica modificar los valores de sus píxeles, cuando la
-operación que se ejecuta modifica un pixel independientemente del valor de sus
-píxeles vecinos se conoce como \textit{operaciones sobre el punto} y cuando se
-modifica un pixel tomando en cuenta el valor de sus pixeles vecinos se conoce
-como \textit{filtro}.
+Procesar una imagen implica modificar el valor de sus píxeles. En las
+\textit{operaciones sobre el punto} el valor de cada nuevo pixel depende
+exclusivamente de su valor previo. Las operaciones sobre el punto están muy
+relacionadas con la modificación de histogramas. Técnicas como ecualización de
+histogramas o especificación de histogramas son operaciones sobre el punto. Por
+otra parte existen técnicas que ocupan más de un pixel de la imagen original
+para calcular el valor de los nuevos píxeles, estas técnicas son conocidas como
+\textit{filtros}.
 
 \section{Imágenes médicas}
 
