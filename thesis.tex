@@ -33,7 +33,7 @@
 \usepackage{enumerate}
 %\usepackage{times}
 %\usepackage{biblatex} \addbibresource{thesis.bib}
-\usepackage{titlesec}
+\usepackage[sc]{titlesec}
 \usepackage{titletoc}
 \usepackage{setspace}
     \onehalfspacing %space between lines
@@ -101,7 +101,7 @@
     [\addvspace{1pt}] % space below the title
 
 % configure links
-\usepackage[pagebackref, bookmarks = true]{hyperref}
+\usepackage[pagebackref]{hyperref}
 \hypersetup{
     colorlinks,
     citecolor    = blue,
@@ -110,8 +110,9 @@
 \usepackage{bookmark}
 
 % backreferences
-\renewcommand*{\backreflastsep}{, }
-\renewcommand*{\backreftwosep}{, }
+\usepackage{backref}
+\renewcommand*{\backreflastsep}{ y~}
+\renewcommand*{\backreftwosep}{ y~}
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
     \ifcase #1 %
@@ -130,8 +131,8 @@
 
 \renewcommand{\familydefault}{\sfdefault}
 
-% hack backref
-\input{hackbackref.tex}
+% hack backref for 'precise' backreference (problems with double reference)
+% \input{hackbackref.tex}
 
 % title page
 \input{front.tex}
@@ -161,6 +162,12 @@
 
 % dedicatoria y agradecimientos
 \input{chapters/thanks.tex}
+
+\ifelectronic
+    \newgeometry{twoside, vmargin={2.5cm, 2.5cm}, hmargin={3.2cm, 1.8cm}}
+\else
+    \newgeometry{vmargin={2.5cm, 2.5cm}, hmargin={2.5cm, 2.5cm}} %oneside
+\fi 
 
 % table of contents
 \begingroup
@@ -195,12 +202,6 @@
 \setlength{\parskip}{\baselineskip}
 
 \input{chapters/summary.tex}
-
-\ifelectronic
-    \newgeometry{twoside, vmargin={2.5cm, 2.5cm}, hmargin={3.2cm, 1.8cm}}
-\else
-    \newgeometry{vmargin={2.5cm, 2.5cm}, hmargin={2.5cm, 2.5cm}} %oneside
-\fi 
 
 % content
 % \input{chapters/introduction.tex}
