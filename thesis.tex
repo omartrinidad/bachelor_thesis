@@ -45,11 +45,11 @@
 % \usepackage{todonotes}
 \usepackage{multirow} % combine cells in tabular environment
 \usepackage{amsmath} % multiline equation, split
-\usepackage{minted} % fancy code hightlighting as Pygments
-    \usemintedstyle{murphy}
-    \renewcommand{\theFancyVerbLine}{
-        \sffamily\textcolor[rgb]{0.1,0.1,0.1}{\scriptsize\arabic{FancyVerbLine}}
-    }
+%\usepackage{minted} % fancy code hightlighting as Pygments
+%    \usemintedstyle{murphy}
+%    \renewcommand{\theFancyVerbLine}{
+%        \sffamily\textcolor[rgb]{0.1,0.1,0.1}{\scriptsize\arabic{FancyVerbLine}}
+%    }
 
 % \usepackage[none]{hyphenat} % problems with hyphenation
 
@@ -121,6 +121,12 @@
         (página #2). % page
     \else
         (páginas #2). % pages
+    \fi
+}
+\renewcommand*{\backrefentrycount}[2]{%
+    #1%
+    \ifnum#2>1 %
+        (#2)b %
     \fi
 }
 

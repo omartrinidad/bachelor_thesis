@@ -2,6 +2,8 @@
 
 filename=thesis
 
+default: pdf
+
 #pdf: ps
 #	 ps2pdf ${filename}.ps
 
@@ -9,13 +11,14 @@ filename=thesis
 #	 dvips ${filename}.dvi
 
 pdf:
-	 pdflatex -shell-escape ${filename}
-	 bibtex ${filename} || true
-	 pdflatex -shell-escape ${filename}
-	 pdflatex -shell-escape ${filename}
+	 pdflatex -output-directory=out ${filename} 
+	 bibtex out/${filename} 
+	 pdflatex -output-directory=out ${filename}
+	 pdflatex -output-directory=out ${filename}
+	 # -shell-escape # used with minted
 
 read:
-	 evince ${filename}.pdf &
+	 evince out/${filename}.pdf &
 
 clean:
 	 rm -f ${filename}.ps ${filename}.log ${filename}.aux 
