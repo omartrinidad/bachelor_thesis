@@ -9,6 +9,16 @@
 The thesis is written in Spanish according to the UJAT, DAIS format. However, I
 have developed a more fancy style.
 
+# What do you need?
+
++ You need to download the last version of TeXLive which have a lot of packages.
+
+## Caveat
+
+- If you are Ubuntu user avoid install TeXLive using `apt-get install tex-live`
+  because the packages are not updated.
+- These files were not tested in LaTeX distribution for Windows.
+
 # ToDo:
 
 - Correct numeration in the first pages
