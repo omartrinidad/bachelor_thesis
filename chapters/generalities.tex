@@ -3,29 +3,7 @@
 % restart the count with arabic numbers
 \pagenumbering{arabic} \setcounter{page}{1}
 
-\begin{figure}[h]
-    \centering
-
-    \includegraphics[height=55mm]{images/art-mammogram.jpg}
-
-  \caption[An image that can save a life] {An image that can save a life
-  (\textit{Imagen que puede salvar una vida}). Mamografía que muestra una
-  lesión posiblemente cancerosa. (Imagen presentada en la \nth{12} conferencia
-  europea de biología computacional en la exhibición de arte y ciencia.)}
-
-  \label{bits}
-\end{figure}
-
-El documento está organizado como sigue: en el presente
-Capítulo~\ref{generalidades} se da una revisión de las generalidades de nuestro
-proyecto, después se detallan algunos conceptos sobre imágenes digitales y
-también se hace una revisión de la literatura existente en el
-Capítulo~\ref{marco}. En el Capítulo~\ref{desarrollo} se presenta el método
-utilizado. En el Capítulo~\ref{resultados} se da cuenta de los resultados y
-finalmente en el Capítulo~\ref{conclusiones} se hace un recuento de lo que se
-hizo y se expone el trabajo futuro.
-
-\section{Antecedentes}
+%\section{Antecedentes}
 
 El cáncer de mama es un grave problema de salud pública, de acuerdo con la
 Organización Mundial de la Salud en 2008 fue el tipo de cáncer más común entre
@@ -34,7 +12,21 @@ INEGI las estadísticas son similares en México~\cite{mxcancer, inegi}. La
 detección temprana de este padecimiento es la mejor forma de reducir el número
 de decesos, a su vez, el método más comúnmente empleado para ello es el estudio
 de mamografías\footnote{Los términos mamografía, mamograma y mastografía son
-equivalentes y serán utilizados a lo largo de este documento indistintamente.}. 
+equivalentes y serán utilizados a lo largo de este documento indistintamente.}.
+
+\begin{figure}[h]
+    \centering
+
+    \includegraphics[height=55mm]{images/art-mammogram.jpg}
+
+  \caption[An image that can save a life] {An image that can save a life
+  (\textit{Imagen que puede salvar una vida}). Mamografía que muestra una
+  lesión posiblemente cancerosa. (Imagen presentada en la \nth{12} conferencia
+  europea de biología computacional de la ISCB (International Society for
+  Computational Biology) en la exhibición de arte y ciencia.)}
+
+  \label{bits}
+\end{figure}
 
 % tarea repetitiva, mejorar los de 'tarea subjetiva'
 % peor aún --> even worse
@@ -57,7 +49,7 @@ los sistemas de detección asistida por computadora y los sistemas de
 diagnóstico asistido por computadora algunos autores suelen abreviar los
 primeros como CADe y los últimos como CADi o CADx.} van más allá y su fin es
 emitir un juicio sobre las lesiones, clasificando a estas como malignas o
-benignas~\cite{castellino2005computer}. 
+benignas~\cite{castellino2005computer}.
 
 Los sistemas CAD fueron diseñados para ayudar a los radiólogos en la
 interpretación de imágenes médicas. Aunque la precisión de los sistemas CAD no
@@ -81,7 +73,7 @@ Graham Casasús.
 La concepción y creación de bases de datos\footnote{El contexto en el que se
 utiliza el término base de datos en este trabajo en la mayoría de los casos no
 se refiere a bases de datos relacionales.} de mamografías no es un tema nuevo.
-Nishiwaka plantea un enunciado interesante: 
+Nishiwaka plantea un enunciado interesante:
 
 \begin{quotation}
 \em En el futuro, las bases de datos estarán constituidas por mamogramas digitales;
@@ -90,7 +82,7 @@ utilizados~\cite{nishikawa1998mammographic}.
 \end{quotation}
 
 Las bases de datos mamográficas juegan un rol importante en el desarrollo de
-algoritmos relacionados a los sistemas CAD. 
+algoritmos relacionados a los sistemas CAD.
 
 La concepción de una base de datos no es trivial, Moreira hace un recuento de
 las características que una base de datos debe
@@ -100,18 +92,18 @@ establece que lo importante no es tener una gran cantidad de imágenes pero sí
 una gran variedad~\cite{zheng2010computer}.
 
 \begin{table}
-  \caption[Requerimientos de una base de datos mamográfica]{Requerimientos de una base de datos mamográfica} 
+  \caption[Requerimientos de una base de datos mamográfica]{Requerimientos de una base de datos mamográfica}
   \label{features}
 \begin{center}
 {\small
-    \rowcolors{1}{}{lightgray} 
-    \begin{tabular}{c | >{\arraybackslash}m{3.5in}} 
-    \hline 
-    {\bf Requerimiento} & 
-    {\bf Descripción} \\ 
+    \rowcolors{1}{}{lightgray}
+    \begin{tabular}{c | >{\arraybackslash}m{3.5in}}
+    \hline
+    {\bf Requerimiento} &
+    {\bf Descripción} \\
     \hline
     Selección de casos   & Lesiones de todo tipo y mamas con diferentes densidades\\
-    Validez              & Los diágnosticos deben ser estrictamente corroborados 
+    Validez              & Los diágnosticos deben ser estrictamente corroborados
                            y donde sea posible exámenes de biopsia deben ser aplicados\\
     Información asociada & Historia clínica (edad, historial familiar, exámenes previos)\\
     Organización         & División adecuada de las imágenes, por casos, por paquetes\\
@@ -128,11 +120,11 @@ mamogramas, cumpliendose la predicción de Nishikawa, la totalidad de los
 mamografías que recolectamos son digitales. Nuestro enfoque incluye además la
 peculiaridad de preprocesar cada ejemplar. El \textit{preprocesamiento} que es
 la etapa previa al procesamiento de imágenes \textit{per se}, de
-preparación~\cite{ponraj2011survey}. 
+preparación~\cite{ponraj2011survey}.
 
 \section{Objetivos}
 
-\subsection{Objetivo general} 
+\subsection{Objetivo general}
 
 Crear un banco de datos de dominio público con mamografías digitales
 preprocesadas.
@@ -165,7 +157,21 @@ de radiólogos principiantes.
 % mejorar la redacción de este párrafo
 Hay que señalar que la mayor parte de los sistemas CAD son comerciales y
 representan un gasto para los hospitales. México es un país en vías de
-desarrollo que adopta el papel de \textit{consumidor} de tecnología, la
+desarrollo que adopta el papel de consumidor de tecnología, la
 comunidad científica trabaja en el desarrollo de algoritmos para la elaboración
 de sistemas CAD y otras tecnologías que permitan la reducción de la brecha
 tecnológica.
+
+%\section{Caso de estudio}
+%Poner aquí algo que sea relacionado a la metodología, revisión de literatura.
+
+\section{Estructura de la tesis}
+
+El documento está organizado como sigue: en el presente
+Capítulo~\ref{generalidades} se da una revisión de las generalidades de nuestro
+proyecto, después se detallan algunos conceptos sobre imágenes digitales y
+también se hace una revisión de la literatura existente en el
+Capítulo~\ref{marco}. En el Capítulo~\ref{desarrollo} se presenta el método
+utilizado. En el Capítulo~\ref{resultados} se da cuenta de los resultados y
+finalmente en el Capítulo~\ref{conclusiones} se hace un recuento de lo que se
+hizo y se expone el trabajo futuro.

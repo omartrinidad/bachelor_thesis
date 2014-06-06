@@ -6,13 +6,13 @@ también se aborda una interfaz gráfica de usuario (GUI).
 
 \section{Colección de mamografías}
 
-La colección recibe el nombre \textbf{Colección de Mamografías Digitales
+La colección recibe el nombre \textit{Colección de Mamografías Digitales
 Preprocesadas} (CPDM\footnote{Con el objetivo de que sea accesible a mayor
 número de investigadores el nombre oficial de la colección está en inglés:
 \textit{Collection of Preprocessed Digital Mammograms}.}. CPDM se constituye
 como una fuente de imágenes médicas destinadas al uso de la comunidad
 científica. Está disponible públicamente. La colección incluye las mamografías
-crudas y las preprocesadas. 
+crudas y las preprocesadas.
 
 \section{Estructura de CPDM}
 
@@ -31,7 +31,7 @@ utilizando la opinión de los médicos.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{structure.tex}
-\shorthandon{>} 
+\shorthandon{>}
 
 \section{Interfaz gráfica}
 %colormap bone
@@ -46,14 +46,14 @@ La GUI desarrollada tiene un objeto \texttt{uipanel} a la izquierda y un
 objecto \texttt{axes} a la derecha (ver Figura~\ref{main:before}). El objeto
 \texttt{uipanel} contiene la vista previa de las imágenes, allí el usuario
 puede elegir cualquiera de las imágenes con un click y en el objeto
-\texttt{axes} se visualiza la elección del usuario. 
+\texttt{axes} se visualiza la elección del usuario.
 
 \begin{figure}[h]
   \begin{center}
     {\includegraphics[height=40mm]{images/gui/main-before}}
   \end{center}
-  \caption[GUI: Inicio]{Captura de pantalla de la GUI justo después de inicializar la aplicación} 
-  \label{main:before} 
+  \caption[GUI: Inicio]{Captura de pantalla de la GUI justo después de inicializar la aplicación}
+  \label{main:before}
 \end{figure}
 
 Se agregó la opción de elegir uno o más archivos para que el usuario tenga la
@@ -65,8 +65,8 @@ Figura~\ref{fig:openfile}).
     {\includegraphics[height=40mm]{images/gui/open-file}}
   \end{center}
   \caption[GUI: Selección de archivos]
-  {Cuadro de diálogo que permite seleccionar una o más imágenes en formato DICOM} 
-  \label{fig:openfile} 
+  {Cuadro de diálogo que permite seleccionar una o más imágenes en formato DICOM}
+  \label{fig:openfile}
 \end{figure}
 
 Se puede navegar en la imagen utilizando las teclas de movimiento o el juego de
@@ -82,9 +82,9 @@ imagen en el objeto \texttt{axes}.
 
   \caption[GUI: Ventana principal 2]{Captura de pantalla de la GUI. A la
   izquierda el componente vertical es el objeto \texttt{uipanel} y a la derecha
-  el componente \texttt{axes}} 
+  el componente \texttt{axes}}
 
-  \label{main:after} 
+  \label{main:after}
 \end{figure}
 
 La mayor parte de las operaciones de preprocesamiento ocurre al momento de
@@ -94,7 +94,7 @@ ha eliminado el ruido. El usuario tiene la posibilidad de mejorar el contraste
 de la región visualizada en la sección derecha de la GUI. La interfaz cuenta
 con una opción que permite modificar los parámetros de la función que
 implementa el algoritmo CLAHE mencionado en la sección anterior (ver
-Figura~\ref{options}). 
+Figura~\ref{options}).
 
 Los parámetros modificables por el usuario son \texttt{Tiles by Column} y
 \texttt{Tyles by Row}, elementos que establecen el número de divisiones
@@ -109,8 +109,8 @@ Enhancement Limit}, que específica el valor límite de la mejora del contraste,
     {\includegraphics[height=50mm]{images/gui/options}}
   \end{center}
   \caption[GUI: Modificación de parámetros]
-  {Ventana que nos permite modificar los valores de entrada de la función CLAHE} 
-  \label{options} 
+  {Ventana que nos permite modificar los valores de entrada de la función CLAHE}
+  \label{options}
 \end{figure}
 
 \section{Retroalimentación médica}
