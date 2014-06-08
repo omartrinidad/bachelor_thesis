@@ -8,17 +8,17 @@ presenta el método de preprocesamiento propuesto.
 
 Las mastografías fueron recolectadas en el Hospital de Alta Especialidad Juan
 Graham Casasús. Los casos originalmente son almacenadas en discos compactos y
-organizados con un archivo DICOMDIR. 
+organizados con un archivo DICOMDIR.
 
 \begin{table}[h]
-  \caption[Etiquetas DICOM]{Etiquetas DICOM que permanecen en la imagen} 
+  \caption[Etiquetas DICOM]{Etiquetas DICOM que permanecen en la imagen}
   \label{table:dicomtags}
 \begin{center}
 {\scriptsize
-    \rowcolors{1}{}{lightgray} 
+    \rowcolors{1}{}{lightgray}
     \begin{tabular}{c|c}
     \hline
-    {\bf Etiquetas} & 
+    {\bf Etiquetas} &
     {\bf Descripción} \\
     \hline
         (7fe0, 0010) & Datos de pixel\\
@@ -49,7 +49,7 @@ Processing Toolbox~\cite{ipt}.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{flowchart.tex}
-\shorthandon{>} 
+\shorthandon{>}
 
 \subsection{Reducción del área de trabajo}
 
@@ -61,7 +61,7 @@ Holguín~\cite{dehghani2011method, holguinpre}.
 % thresholding
 Aplicamos un método de tres fases para lograr la reducción: umbralización,
 eliminación de objetos y corte automático. En la Figura~\ref{reduction} se
-muestra cada una de estas fases. 
+muestra cada una de estas fases.
 
 La primera fase es la \textit{umbralización}, cuyo propósito es separar el
 objeto de interés del fondo. Para lograr este cometido, inicialmente la imagen
@@ -82,7 +82,7 @@ función \texttt{im2bw} de Matlab. El resultado se muestra en la Figura
     \subfloat[No etiquetas\label{area:c}]{\includegraphics[height=35mm]{images/area/deleteobj.jpg}}
 
     \bigskip
-    
+
     \subfloat[Dibujo de bordes\label{area:d}]{\includegraphics[height=35mm]{images/area/bordering.jpg}}
     \subfloat[Imagen reducida\label{area:e}]{\includegraphics[height=35mm]{images/area/reduced.jpg}}
 
@@ -105,14 +105,14 @@ función de Matlab llamada \texttt{bwboundaries}. Esta función encuentra los
 bordes de un objeto utilizando el algoritmo Moore-Neighbor modificado por el
 criterio de paro de Jacob~\cite{gonzalez2009digital}. Los bordes son utilizados
 para determinar los puntos extremos de cada seno (ver~\ref{area:d}). El segundo
-paso es hacer el corte usando estos puntos extremos (ver~\ref{area:e}). 
+paso es hacer el corte usando estos puntos extremos (ver~\ref{area:e}).
 
 \subsection{Conversión de bits}
 
 Como ya se mencionó antes, las imágenes están en el formato DICOM. El formato
-DICOM representa las imágenes con 4'096 niveles de grises, esto es 12 bits de
+DICOM representa las imágenes con 4,096 niveles de grises, esto es 12 bits de
 profundidad. Matlab representa estas imágenes utilizando 16 bits de
-profundidad, o sea, 65'536 niveles de grises~\cite{mustra2008efficient}. Cuando
+profundidad, o sea, 65,536 niveles de grises~\cite{mustra2008efficient}. Cuando
 una imagen de 12 bits es visualizada con un visor de 16 bits, esta luce oscura,
 ver Figura~\ref{bits}. Para mostrar la imagen correctamente esta necesita ser
 convertida a una imagen de 16 bits. Se aplicó la Ecuación~\ref{eq:bitconv} a
@@ -167,11 +167,11 @@ máximo que $w$ puede alcanzar.
 
 % pseudocode
 % ref this code
-\algrenewcommand{\alglinenumber}[1]{\footnotesize\textbf{\ttfamily#1}} 
+\algrenewcommand{\alglinenumber}[1]{\footnotesize\textbf{\ttfamily#1}}
 % avoid two points in the numbering and add ttfamily font
 \algrenewcommand\algorithmicif{\ttfamily\textbf{{if}}}
 \begin{algorithm}
-\caption{AMF implemented by~\cite{gonzalez2009digital}}
+\caption{Filtro Adaptativo de la Mediana tal y como lo explica~\cite{gonzalez2009digital}}
 \begin{algorithmic}[1]
 % initialize variables ?
 \State Level A:
@@ -180,7 +180,7 @@ máximo que $w$ puede alcanzar.
 \Else
     \State increase the window size % or w = w + 2
     \If {$w \leq S_{max}$}
-       \State repeat Level A 
+       \State repeat Level A
     \Else
         \State output is $Zmed$
     \EndIf
@@ -204,12 +204,12 @@ $w$ (línea 9).
 Si la condición en la línea 2 es verdadera se descarta $Zmed$ como impulso y el
 algoritmo continua en el nivel B. En el nivel B, cuando la condición en la
 línea 11 es verdadera, entonces $Zxy$ no es un impulso, en ese caso no hay
-ningún cambio (línea 12); de otra forma, el pixel cantral toma el valor de
+ningún cambio (línea 12); de otra forma, el pixel central toma el valor de
 $Zmed$.
 
 \shorthandoff{>} % hack to combine tikZ and Spanish
     \input{adaptivemf.tex}
-\shorthandon{>} 
+\shorthandon{>}
 
 En la Figura~\ref{fig:amf} se ilustra el funcionamiento de AMF con diferentes
 escenarios. En~\ref{fig:nochanges} el tamaño de $w$ es 3 (color azul) y
@@ -254,15 +254,15 @@ contraste utilizando CLAHE.
     \subfloat[\label{contr:c}]{\includegraphics[height=35mm]{images/contrast/after-clahe}}
     \hspace{12pt}
     \subfloat[\label{contr:d}]{\includegraphics[height=35mm]{images/contrast/after-clahe-hist}}
-  \end{center} 
+  \end{center}
 
   \caption[Técnica CLAHE]{Técnica CLAHE. En \protect\subref{contr:a} se observa
   en detalle una lesión, \protect\subref{contr:b} es el histograma de
   \protect\subref{contr:a}, \protect\subref{contr:c} es la lesión después de
   aplicar la técnica CLAHE, \protect\subref{contr:d} es el histograma de
-  \protect\subref{contr:c}.} 
+  \protect\subref{contr:c}.}
 
-  \label{img:clahe} 
+  \label{img:clahe}
 \end{figure}
 
 \subsection{Compresión}
@@ -276,7 +276,7 @@ con la menor pérdida de calidad. El método aplicado tiene tres pasos:
 encogimiento de la imagen, conversión de la profundidad de píxeles y
 mejoramiento de la imagen. A continuación se describen estos pasos:
 
-\subsubsection{Encogimiento de la imagen.} 
+\subsubsection{Encogimiento de la imagen.}
 
 La Figura~\ref{comp:a} es la imagen obtenida en la fase anterior y su
 histograma correspondiente se puede ver en la Figura~\ref{comp:b}. De este
@@ -304,11 +304,11 @@ histograma del que se obtiene.
   \protect\subref{comp:b}, \protect\subref{comp:c} es el histograma  mostrado
   en \protect\subref{comp:b} después de ser encogido y \protect\subref{comp:d}
   es la imagen oscura generada a partir del histograma encogido.}
-  
+
   \label{img:shrinking-one}
 \end{figure}
 
-\subsubsection{Conversión de la profundidad de píxeles.} 
+\subsubsection{Conversión de la profundidad de píxeles.}
 
 En este paso la meta es reducir el tamaño de la imagen. Se necesitan tres
 subpasos. Extraemos el histograma de la imagen encogida (ver
@@ -316,7 +316,7 @@ Figura~\ref{comp:e}), que es similar al que se muestra en la
 Figura~\ref{comp:c}. Después, calculamos \textit{nivel máximo de encogimiento}
 de la imagen, haciendo uso del arreglo numérico que representa el histograma de
 la Figura~\ref{comp:e}. Computamos el porcentaje de valores diferentes a ceros
-(niveles de grises utilizados) en dicho arreglo. 
+(niveles de grises utilizados) en dicho arreglo.
 
 El valor obtenido es la entrada de la función de Matlab IPT \texttt{imadjust}.
 Esta función ajusta la intensidad de valores en una imagen. Una nueva imagen de
@@ -340,8 +340,8 @@ concentración de niveles de grises permanece intacta.
   muestra el histograma generado a partir de la mamografía oscura mostrada en
   \protect\ref{comp:d}, \protect\subref{comp:f} es la imagen de 8 bits
   generada con la función \texttt{imadjust} y \protect\subref{comp:g} es su
-  histograma, que es similar al histograma que se muestra en~\ref{comp:b}}. 
-  
+  histograma, que es similar al histograma que se muestra en~\ref{comp:b}}.
+
   \label{img:shrinking-two}
 \end{figure}
 
@@ -351,8 +351,8 @@ Finalmente, ejecutamos un proceso de normalización. El objetivo de este paso es
 mejorar la calidad de la imagen que se obtuvo en el paso anterior.
 
 %\definecolor{bg}{rgb}{0.9,0.9,0.9}
-%\begin{minted}[linenos=true, 
-%               fontfamily=fi4, 
+%\begin{minted}[linenos=true,
+%               fontfamily=fi4,
 %               fontseries=ubx,
 %               samepage=false,
 %               bgcolor=bg]{matlab}
