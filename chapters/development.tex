@@ -109,12 +109,12 @@ paso es hacer el corte usando estos puntos extremos (ver~\ref{area:e}).
 
 \subsection{Conversión de bits}
 
-Como ya se mencionó antes, las imágenes están en el formato DICOM. El formato
-DICOM representa las imágenes con 4,096 niveles de grises, esto es 12 bits de
-profundidad. Matlab representa estas imágenes utilizando 16 bits de
-profundidad, o sea, 65,536 niveles de grises~\cite{mustra2008efficient}. Cuando
-una imagen de 12 bits es visualizada con un visor de 16 bits, esta luce oscura,
-ver Figura~\ref{bitsconv}. Para mostrar la imagen correctamente esta necesita ser
+Las imágenes están en el formato DICOM. El formato DICOM representa las
+imágenes con 4,096 niveles de grises, esto es 12 bits de profundidad. Matlab
+representa estas imágenes utilizando 16 bits de profundidad, o sea, 65,536
+niveles de grises~\cite{mustra2008efficient}. Cuando una imagen de 12 bits es
+visualizada con un visor de 16 bits, esta luce oscura, ver
+Figura~\ref{bitsconv}. Para mostrar la imagen correctamente esta necesita ser
 convertida a una imagen de 16 bits. Se aplicó la Ecuación~\ref{eq:bitconv} a
 cada pixel en la imagen para realizar la conversión.
 
@@ -158,12 +158,10 @@ Filter}) tal como es implementado por González~\cite{gonzalez2009digital}. La
 idea principal de AMF es remover los \textit{píxeles ruidosos}, que son
 aquellos rodeados por píxeles vecinos con valores muy diferentes. Tan pronto
 como AMF detecta un pixel ruidoso lo reemplaza por el valor de la mediana de
-los píxeles vecinos.
-
-El algoritmo usa una ventana $w$ con un tamaño de $3\times3$ que recorre toda
-la imagen. En cada ubicación, el valor mínimo $Zmin$, el valor máximo $Zmax$ y
-la mediana $Zmed$ son calculados. $Zxy$ es el centro de $w$. $Smax$ es el tamaño
-máximo que $w$ puede alcanzar.
+los píxeles vecinos. El algoritmo usa una ventana $w$ con un tamaño de
+$3\times3$ que recorre toda la imagen. En cada ubicación, el valor mínimo
+$Zmin$, el valor máximo $Zmax$ y la mediana $Zmed$ son calculados. $Zxy$ es el
+centro de $w$. $Smax$ es el tamaño máximo que $w$ puede alcanzar.
 
 % pseudocode
 % ref this code
@@ -174,22 +172,22 @@ máximo que $w$ puede alcanzar.
 \caption{Filtro Adaptativo de la Mediana tal y como lo explica~\cite{gonzalez2009digital}}
 \begin{algorithmic}[1]
 % initialize variables ?
-\State Level A:
+\State Nivel A:
 \If {$Zmin < Zmed < Zmax$}
-        \State go to Level B
+        \State ir al nivel B
 \Else
-    \State increase the window size % or w = w + 2
+    \State incrementar el tamaño de la ventana% or w = w + 2
     \If {$w \leq S_{max}$}
-       \State repeat Level A
+       \State repetir nivel A
     \Else
-        \State output is $Zmed$
+        \State la salida es $Zmed$
     \EndIf
 \EndIf
-\State Level B:
+\State Nivel B;
 \If {$Zmin < Zxy < Zmax$}
-    \State output is $Zxy$
+    \State la salida es $Zxy$
 \Else
-    \State output is $Zmed$
+    \State la salida es$Zmed$
 \EndIf
 \end{algorithmic}
 \end{algorithm}
@@ -229,20 +227,42 @@ elementos \texttt{[230, 230, 135, 230, 3, 230, 90, 230, 149]}. $Zmin$ es 3,
 $Zmed$ es 230 (color rojo), $Zmax$ es 230 y $Zxy$ es 3 (color verde). Iniciamos
 en el nivel A, dado que $Zmed$ es un impulso se incrementa el tamaño de la
 ventana, en esta ocasión tomaremos en cuenta la variable $Smax$, suponiendo que
-su valor es 5, repetimos el nivel A. En~\ref{fig:repeat} el tamaño de $w$ ahora
+su valor es 5, repetimos el nivel A. 
+
+En~\ref{fig:repeat} el tamaño de $w$ ahora
 es 5, $Zmin$ es 3, $Zmed$ es 139, $Zmax$ es 234 y $Zxy$ es 3. Dado que $Zmed$
 no es un impulso pasamos al nivel B, $Zxy$ sí es un impulso, el valor de $Zxy$
 se cambia por $Zmed$.
 
 \subsection{Mejora de contraste}
 
+En las imágenes mamográficas mejorar el contraste de regiones pequeñas es más
+importante que mejorar el contraste de forma global~\cite{mohan2013modified}.
+La Ecualización Adaptativa de Histogramas (AHE\footnote{Adaptive Histogram
+Equalization}) a diferencia de HE calcula el histograma de varias regiones de
+la imagen (\textit{histogramas locales}).
+
+AHE tiene algunas desventajas, es lento y tiende a mejorar el ruido, por lo que
+muchas variantes de AHE han sido propuestas~\cite{pizer1987adaptive}. La
+variante más destacada es la técnica llamada Ecualización Adaptativa de
+Histogramas con Contraste Limitado (CLAHE\footnote{Contrast-Limited Adaptive
+Histogram Equalization}~\cite{zuiderveld1994contrast}). CLAHE ha sido
+ampliamente utilizado para modificar el contraste de
+mamografías~\cite{pisano1998contrast, maitra2012technique}.
+
+Rahmati~\cite{rahmati2010new} y Mohan~\cite{mohan2013modified} proponen mejoras
+a CLAHE. Según Rahmati CLAHE mejora linealmente el frente y el fondo de la
+imagen, o sea, se incrementa la visibilidad de las masas pero simultáneamente
+se crean intensidades engañosas en el fondo, lo que puede conducir a la
+detección de falsos positivos.
+
 Para mejorar el contraste aplicamos la ecualización de histogramas. Debido a la
-efectividad probada del algoritmo CLAHE, como se discutió en el capítulo
-anterior, utilizamos la función llamada \texttt{adaptivehisteq} de Matlab IPT
-que implementa CLAHE. Los parámetros de esta función son modificados con ayuda
-de los radiólogos. La configuración final es aplicada a un área específica de
-la imagen. En la Figura~\ref{img:clahe} se muestra un ejemplo de la mejora de
-contraste utilizando CLAHE.
+efectividad probada del algoritmo CLAHE, utilizamos la función llamada
+\texttt{adaptivehisteq} de Matlab IPT que implementa este algoritmo. Los
+parámetros de esta función son modificados con ayuda de los radiólogos. La
+configuración final es aplicada a un área específica de la imagen. En la
+Figura~\ref{img:clahe} se muestra un ejemplo de la mejora de contraste
+utilizando CLAHE.
 
 % show lesion images
 \begin{figure}[h!]
@@ -321,7 +341,9 @@ la Figura~\ref{comp:e}. Computamos el porcentaje de valores diferentes a ceros
 El valor obtenido es la entrada de la función de Matlab IPT \texttt{imadjust}.
 Esta función ajusta la intensidad de valores en una imagen. Una nueva imagen de
 8 bits de profundidad se obtiene como resultado de esta función (ver
-Figura~\ref{comp:f}). El histograma de la imagen original (ver
+Figura~\ref{comp:f}).
+
+El histograma de la imagen original (ver
 Figura~\ref{comp:b}) es muy similar al histograma de la imagen final (ver
 Figura~\ref{comp:g}). Los picos son los mismos lo que indica que la
 concentración de niveles de grises permanece intacta.

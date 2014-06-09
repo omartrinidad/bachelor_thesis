@@ -2,22 +2,24 @@
 \label{conclusiones}
 
 En este trabajo se abordó la creación de una colección de mamografías digitales
-y el método de preprocesamiento que se les aplicó. Además como subproducto se
-creó una interfaz gráfica que permite a los médicos manipular niveles de
-contraste de la imagen. La colección es de dominio público. 
+y el método de preprocesamiento que se les aplicó. La recolección de imágenes
+mamográficas se llevó a cabo durante alrededor de cuatro meses. El método está
+formado de cinco fases: reducción del área de trabajo, conversión de bits,
+eliminación de ruido, mejora de contraste y compresión.
 
-El método está formado de cinco fases, aunque no se implementó una evaluación
-cuantitativa para comprobar la efectividad de los algoritmos empleados, un
-grupo de médicos evaluaron los resultados de manera cualitativa, los resultados
-son positivos.
+Además como subproducto se creó una interfaz gráfica que permite a los médicos
+manipular niveles de contraste de la imagen. La colección es de dominio
+público. Aunque no se implementó una evaluación cuantitativa para comprobar la
+efectividad de los algoritmos empleados, un grupo de médicos evaluaron los
+resultados de manera cualitativa, los resultados son positivos.
 
 El código fuente del método de preprocesamiento y también de la interfaz
 gráfica está disponible en línea bajo el controlador de versiones Git en el
-repositorio: \url{github.com/omartrinidad/preprocessing}. Se licenció el código
-fuente con la licencia MIT\footnote{Massachussets Institute Technology} de
-código abierto.
+siguiente repositorio: \url{github.com/omartrinidad/preprocessing}. Se licenció
+el código fuente con la licencia MIT\footnote{Massachussets Institute
+Technology} de código abierto.
 
-\section{Problemas abiertos}
+\section{Trabajos futuros}
 
 Aunque CPDM es un recurso valioso, es necesario continuar el proceso de
 recolección y también enriquecer las fichas de información incluyendo en estas
@@ -30,7 +32,7 @@ es posible construir un sistema web más robusto que permita al usuario hacer
 consultas dinámicas. Es posible enriquecer el \textit{frontend} con un diseño
 responsivo y el \textit{backend} con la inclusión de un sistema manejador de
 base de datos. Por ejemplo, para DDSM, fue construido un \textit{servicio
-web}~\cite{rose2006web}. 
+web}~\cite{rose2006web}.
 
 Aunque la construcción de un sistema CAD es la contribución más destacada
 derivada de una colección de este tipo, también se pueden generar sistemas de

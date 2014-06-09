@@ -7,7 +7,7 @@
 
 El cáncer de mama es un grave problema de salud pública, de acuerdo con la
 Organización Mundial de la Salud en 2008 fue el tipo de cáncer más común entre
-las mujeres y el que más muertes provocó~\cite{cancerreport}. De acuerdo con el
+las mujeres y el que más muertes provocó~\cite{cancerreport}. Según el
 INEGI las estadísticas son similares en México~\cite{mxcancer, inegi}. La
 detección temprana de este padecimiento es la mejor forma de reducir el número
 de decesos, a su vez, el método más comúnmente empleado para ello es el estudio
@@ -19,13 +19,13 @@ equivalentes y serán utilizados a lo largo de este documento indistintamente.}.
 
     \includegraphics[height=55mm]{images/art-mammogram.jpg}
 
-  \caption[An image that can save a life] {An image that can save a life
-  (\textit{Imagen que puede salvar una vida}). Mamografía que muestra una
-  lesión posiblemente cancerosa. (Imagen presentada en la \nth{12} conferencia
-  europea de biología computacional de la ISCB (International Society for
-  Computational Biology) en la exhibición de arte y ciencia.)}
+  \caption[An image that can save a life] {An image that can save a life.
+      Mamografía que muestra una lesión posiblemente cancerosa. Imagen
+      presentada por los autores en la \nth{12} Conferencia Europea de Biología
+      Computacional de la ISCB (International Society for Computational
+  Biology) en la Exhibición de Arte y Ciencia.}
 
-  \label{bits}
+  \label{savealife}
 \end{figure}
 
 % tarea repetitiva, mejorar los de 'tarea subjetiva'
@@ -62,27 +62,24 @@ La elaboración de sistemas de este tipo es una tarea compleja, el primer reto a
 sortear es obtener imágenes de prueba. El acceso a imágenes médicas con
 propósitos de investigación es complicado debido a cuestiones de privacidad.
 Este trabajo aborda la construcción de una colección de mamogramas digitales
-preprocesados (y) de dominio público bautizada como \textit{Colección de
+preprocesados y de dominio público, bautizada como \textit{Colección de
 Mamogramas Digitales Preprocesados} (CPDM, por sus siglas en inglés:
 \textit{Collection of Preprocessed Digital Mammograms}). Los estudios fueron
 recolectadas durante cuatro meses en Hospital de Alta Especialidad Dr. Juan
-Graham Casasús.
+Graham Casasús, uno de los centros médicos más importantes del sureste del
+país.
 
 \section{Planteamiento del problema}
 
 La concepción y creación de bases de datos\footnote{El contexto en el que se
 utiliza el término base de datos en este trabajo en la mayoría de los casos no
 se refiere a bases de datos relacionales.} de mamografías no es un tema nuevo.
-Nishiwaka plantea un enunciado interesante:
-
-\begin{quotation}
-\em En el futuro, las bases de datos estarán constituidas por mamogramas digitales;
-actualmente (1998) mamogramas digitalizados están siendo
-utilizados~\cite{nishikawa1998mammographic}.
-\end{quotation}
-
-Las bases de datos mamográficas juegan un rol importante en el desarrollo de
-algoritmos relacionados a los sistemas CAD.
+Nishiwaka plantea un enunciado interesante: \textit{ En el futuro, las bases de
+datos estarán constituidas por mamogramas digitales; actualmente (1998)
+mamogramas digitalizados están siendo
+utilizados~\cite{nishikawa1998mammographic}.} Las bases de datos mamográficas
+juegan un rol importante en el desarrollo de algoritmos relacionados a los
+sistemas CAD.
 
 La concepción de una base de datos no es trivial, Moreira hace un recuento de
 las características que una base de datos debe
@@ -132,7 +129,10 @@ preprocesadas.
 \subsection{Objetivos específicos}
 
 \begin{itemize}
-    % hablar sobre la literatura ¿?
+
+    \item Revisar de forma exhaustiva la literatura existente sobre las
+        técnicas de preprocesamiento de mamografías existentes y las colecciones
+        de imágenes a las que actualmente se puede acceder.
     \item Preprocesar los mamogramas para eliminar el ruido y mejorar el
     contraste y también ejecutar otras tareas que resulten convenientes.
     \item Crear una ficha electrónica para cada caso que contenga datos
@@ -157,10 +157,10 @@ de radiólogos principiantes.
 % mejorar la redacción de este párrafo
 Hay que señalar que la mayor parte de los sistemas CAD son comerciales y
 representan un gasto para los hospitales. México es un país en vías de
-desarrollo que adopta el papel de consumidor de tecnología, la
-comunidad científica trabaja en el desarrollo de algoritmos para la elaboración
-de sistemas CAD y otras tecnologías que permitan la reducción de la brecha
-tecnológica.
+desarrollo que adopta el papel de consumidor de tecnología. Las colecciones de
+acceso público son recursos valiosos para la comunidad científica que trabaja en el
+desarrollo de algoritmos para la elaboración de sistemas CAD y otras
+tecnologías libres que permitan la reducción de la brecha tecnológica.
 
 %\section{Caso de estudio}
 %Poner aquí algo que sea relacionado a la metodología, revisión de literatura.

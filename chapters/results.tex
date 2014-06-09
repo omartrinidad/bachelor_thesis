@@ -1,29 +1,64 @@
-\chapter{Contribuciones}
+\chapter{Resultados y contribuciones}
 \label{resultados}
 
-En este capítulo se exponen las características de la colección de mamografías y
-también se aborda una interfaz gráfica de usuario (GUI).
+En este capítulo se exponen las características de la colección de mamografías
+y también se aborda una interfaz gráfica de usuario (GUI) que se desarrolló con
+la finalidad de facilitar la manipulación de los mamogramas.
 
 \section{Colección de mamografías}
 
 La colección recibe el nombre \textit{Colección de Mamografías Digitales
 Preprocesadas} (CPDM\footnote{Con el objetivo de que sea accesible a mayor
 número de investigadores el nombre oficial de la colección está en inglés:
-\textit{Collection of Preprocessed Digital Mammograms}.}. CPDM se constituye
+\textit{Collection of Preprocessed Digital Mammograms}.}). CPDM se constituye
 como una fuente de imágenes médicas destinadas al uso de la comunidad
 científica. Está disponible públicamente. La colección incluye las mamografías
-crudas y las preprocesadas.
+crudas y las preprocesadas. El número de total de casos es 60, la mayoría de
+estos casos tiene cuatro imágenes como mínimo, correspondiente a las cuatro
+proyecciones que normalmente tiene un estudio. Algunos casos tienen más de
+cuatro imágenes.
 
 \section{Estructura de CPDM}
 
 La Figura~\ref{fig:structure} nos muestra como están organizados los
 directorios de la colección. Cada estudio tiene una ficha que contiene datos
 del paciente como fecha de nacimiento, fecha del estudio, vista de la imagen,
-nombre del archivo y el reporte BIRADS. Cada caso es almacenado en una carpeta,
-que contiene la ficha descriptiva y las imágenes con extensión \texttt{.dcm}.
-El nombre de cada imagen es la combinación del número de caso más la proyección
-correspondiente, por ejemplo, la mama derecha con proyección MLO del primer
-caso recibirá el nombre \texttt{0001rmlo.dcm}.
+nombre del archivo y el reporte BIRADS, en la Tabla ~\ref{samplecard} se puede
+apreciar la información contenida en una de las fichas descriptivas. 
+
+Cada caso es almacenado en una carpeta, que contiene la ficha descriptiva y las
+imágenes con extensión \texttt{.dcm}. El nombre de cada imagen es la
+combinación del número de caso más la proyección correspondiente, por ejemplo,
+la mama derecha con proyección MLO del primer caso recibirá el nombre
+\texttt{0001rmlo.dcm}.
+
+\begin{table}
+    \caption{Ejemplo de una ficha descriptiva}{Ejemplo de una ficha descriptiva}
+  \label{samplecard}
+\begin{center}
+{\small
+    \begin{tabular}{c|c|c|c|r}
+    \hline
+
+    {\bf \phantom{i}\# } &
+    {\bf Fecha de nacimiento} &
+    {\bf Fecha del estudio} &
+    {\bf BIRADS} &
+    {\bf Vista} \\
+    \hline
+        \multirow{4}{*}{0001} &
+        \multirow{4}{*}{1980-10-10} &
+        \multirow{4}{*}{2011-07-21} &
+        \multirow{4}{*}{4} &
+                            L-CC \\
+            &   &   &   &   R-CC \\
+            &   &   &   &   L-MLO \\
+            &   &   &   &   R-MLO \\
+    \hline
+    \end{tabular}
+}
+\end{center}
+\end{table}
 
 La colección está disponible en la siguiente dirección:
 \url{www.casi.dais.mx/cpdm/index.html}. La evaluación de resultados se realizó
@@ -115,11 +150,9 @@ Enhancement Limit}, que específica el valor límite de la mejora del contraste,
 
 \section{Retroalimentación médica}
 
-Con ayuda de médicos del Hospital Juan Graham Casasú se realizó una medición
+Con ayuda de médicos del Hospital Juan Graham Casasús se realizó una medición
 cualitativa de los resultados. Se realizaron alrededor de cinco visitas
 periódicas para obtener una retroalimentación de la mejora en la calidad de la
 imagen. La calidad de la imagen es casi similar a la que se obtiene al utilizar
 software comercial. Cabe destacar que en las primeras pruebas sólo se mejoró la
 visualización del tejido graso y no del tejido mamario.
-
-
